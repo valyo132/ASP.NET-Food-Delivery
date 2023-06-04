@@ -5,5 +5,7 @@ namespace GustoExpress.Services.Data.Contracts
     public interface IRestaurantService
     {
         Task<List<AllRestaurantViewModel>> All(string city);
+
+        Task Create(CreateRestaurantViewModel model);
     }
 }

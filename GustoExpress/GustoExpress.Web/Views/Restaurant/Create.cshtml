@@ -1,0 +1,103 @@
+﻿@using GustoExpress.Web.ViewModels;
+@model CreateRestaurantViewModel
+
+<div>
+    <h1 class="mt-3 fw-bold text-center">
+        <svg width="64px" height="64px" viewBox="0 0 52.00 52.00" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+                <g id="Group_49" data-name="Group 49" transform="translate(-788.946 -1785.428)">
+                    <path id="Path_131" data-name="Path 131"
+                          d="M814.946,1793.095a24,24,0,0,0-24,24h48A24,24,0,0,0,814.946,1793.095Z" fill="#ffffff"
+                          stroke="#0d0c0c" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></path>
+                    <line id="Line_51" data-name="Line 51" x2="48" transform="translate(790.946 1825.761)"
+                          fill="#ffffff" stroke="#0d0c0c" stroke-linecap="round" stroke-linejoin="round"
+                          stroke-width="4"></line>
+                    <line id="Line_52" data-name="Line 52" y2="5.667" transform="translate(814.946 1787.428)"
+                          fill="#ffffff" stroke="#0d0c0c" stroke-linecap="round" stroke-linejoin="round"
+                          stroke-width="4"></line>
+                </g>
+            </g>
+        </svg>
+        GustoExpress
+    </h1>
+</div>
+
+<section class="py-3 my-5 bg-light" style="width: 100%;height: 100%;">
+    <div class="container-lg">
+        <form asp-action="Create" asp-controller="Restaurant" method="post">
+            <div class="my-3 row justify-content-center">
+                <div class="mx-4 col-lg-6">
+                    <label asp-for="Name" class="form-label">Name:</label>
+                    <input asp-for="Name" type="string" class="form-control">
+                    <span asp-validation-for="Name" style="color:red"></span>
+                    <br />
+
+                    <div class="form-floating">
+                        <textarea asp-for="Description" class="form-control" placeholder="Leave a comment here"
+                                  id="floatingTextarea"></textarea>
+                        <label asp-for="Description">Description</label>
+                        <span asp-validation-for="Description" style="color:red"></span>
+                    </div>
+                    <br />
+
+                    <label asp-for="City" class="form-label">City:</label>
+                    <input asp-for="City" type="text" class="form-control">
+                    <span asp-validation-for="City" style="color:red"></span>
+                    <br />
+
+                    <label asp-for="DeliveryPrice" class="form-label">Delivery price:</label>
+                    <input asp-for="DeliveryPrice" type="number" class="form-control">
+                    <span asp-validation-for="DeliveryPrice" style="color:red"></span>
+                    <br />
+
+                    <label class="form-label">Time to deliver:</label>
+                    <div class="row">
+                        <div class="mb-3 col-lg-6">
+                            <input asp-for="MinTimeToDeliver" type="number" class="form-control" placeholder="From: mm" required>
+                            <span asp-validation-for="MinTimeToDeliver" style="color:red"></span>
+                        </div>
+                        <div class="col-lg-6">
+                            <input asp-for="MaxTimeToDeliver" type="number" class="form-control" placeholder="From: mm" required>
+                            <span asp-validation-for="MaxTimeToDeliver" style="color:red"></span>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <div class="col-lg-4">
+                    <img class="img-thumbnail" id="preview" src="#" alt="Preview Image"
+                         style="display: none; width: 200px;">
+
+                    <label for="formFile" class="form-label">Choose image:</label>
+                    <input class="form-control" type="file" id="formFile" onchange="placeImage(event)">
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="mt-3 btn btn-outline-secondary"
+                            style="width: 150px;">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script>
+    function placeImage(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.getElementById('preview');
+            output.src = reader.result;
+            output.style.display = 'block';
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
