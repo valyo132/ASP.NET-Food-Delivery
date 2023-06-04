@@ -361,6 +361,16 @@
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
         }
+      },
+      "GustoExpress.Data.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/GustoExpress.Data.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GustoExpress.Data.Common.dll": {}
+        }
       }
     }
   },
@@ -811,10 +821,16 @@
         "system.runtime.compilerservices.unsafe.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "GustoExpress.Data.Common/1.0.0": {
+      "type": "project",
+      "path": "../GustoExpress.Data.Common/GustoExpress.Data.Common.csproj",
+      "msbuildProject": "../GustoExpress.Data.Common/GustoExpress.Data.Common.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "GustoExpress.Data.Common >= 1.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.11"
     ]
   },
@@ -844,7 +860,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data.Common\\GustoExpress.Data.Common.csproj": {
+              "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data.Common\\GustoExpress.Data.Common.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

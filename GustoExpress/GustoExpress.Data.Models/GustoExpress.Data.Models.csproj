@@ -10,4 +10,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GustoExpress.Data.Common\GustoExpress.Data.Common.csproj" />
+  </ItemGroup>
+
 </Project>

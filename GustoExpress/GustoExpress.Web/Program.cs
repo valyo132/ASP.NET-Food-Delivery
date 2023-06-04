@@ -1,4 +1,7 @@
 using GustoExpress.Data.Models;
+using GustoExpress.Services.Data;
+using GustoExpress.Services.Data.Contracts;
+using GustoExpress.Services.Mapping;
 using GustoExpress.Web.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +28,13 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = "/Identity/Account/AccessDenied";
     options.SlidingExpiration = true;
 });
+
+builder.Services.AddAutoMapper(cfg =>
+{
+    cfg.AddProfile<GustoExpressProfile>();
+});
+
+builder.Services.AddTransient<IRestaurantService, RestaurantService>();
 
 var app = builder.Build();
 

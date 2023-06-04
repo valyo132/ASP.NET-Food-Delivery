@@ -13,6 +13,18 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\images\\HomePage\\foodDelivery.png",
+      "PackagePath": "staticwebassets\\images\\HomePage\\foodDelivery.png"
+    },
+    {
+      "Id": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\images\\Restaurants\\download.png",
+      "PackagePath": "staticwebassets\\images\\Restaurants\\download.png"
+    },
+    {
+      "Id": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\images\\Restaurants\\og_image.jpg",
+      "PackagePath": "staticwebassets\\images\\Restaurants\\og_image.jpg"
+    },
+    {
       "Id": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

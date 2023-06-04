@@ -6,5 +6,8 @@ namespace GustoExpress.Data.Models
     {
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
+
+        public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
+        public ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
     }
 }

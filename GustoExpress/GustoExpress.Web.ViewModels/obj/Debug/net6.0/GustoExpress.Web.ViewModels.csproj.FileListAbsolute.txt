@@ -1,0 +1,17 @@
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.ViewModels\bin\Debug\net6.0\GustoExpress.Web.ViewModels.deps.json
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.ViewModels\bin\Debug\net6.0\GustoExpress.Web.ViewModels.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.ViewModels\bin\Debug\net6.0\GustoExpress.Web.ViewModels.pdb
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.ViewModels\bin\Debug\net6.0\GustoExpress.Data.Common.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.ViewModels\bin\Debug\net6.0\GustoExpress.Data.Models.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.ViewModels\bin\Debug\net6.0\GustoExpress.Data.Models.pdb
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.ViewModels\bin\Debug\net6.0\GustoExpress.Data.Common.pdb
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.ViewModels\obj\Debug\net6.0\GustoExpress.Web.ViewModels.csproj.AssemblyReference.cache
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.ViewModels\obj\Debug\net6.0\GustoExpress.Web.ViewModels.GeneratedMSBuildEditorConfig.editorconfig
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.ViewModels\obj\Debug\net6.0\GustoExpress.Web.ViewModels.AssemblyInfoInputs.cache
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.ViewModels\obj\Debug\net6.0\GustoExpress.Web.ViewModels.AssemblyInfo.cs
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.ViewModels\obj\Debug\net6.0\GustoExpress.Web.ViewModels.csproj.CoreCompileInputs.cache
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.ViewModels\obj\Debug\net6.0\GustoExpress.Web.ViewModels.csproj.CopyComplete
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.ViewModels\obj\Debug\net6.0\GustoExpress.Web.ViewModels.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.ViewModels\obj\Debug\net6.0\refint\GustoExpress.Web.ViewModels.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.ViewModels\obj\Debug\net6.0\GustoExpress.Web.ViewModels.pdb
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.ViewModels\obj\Debug\net6.0\ref\GustoExpress.Web.ViewModels.dll

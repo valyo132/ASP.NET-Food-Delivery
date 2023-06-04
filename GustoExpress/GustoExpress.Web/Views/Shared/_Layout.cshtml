@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - GustoExpress.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/GustoExpress.Web.styles.css" asp-append-version="true" />
 </head>
@@ -12,7 +13,27 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GustoExpress.Web</a>
+                <div>
+                    <svg class="ms-3" wid th="25px" height="25px" viewBox="0 0 52.00 52.00"
+                         xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <g id="Group_49" data-name="Group 49" transform="translate(-788.946     -1785.428)">
+                                <path id="Path_131" data-name="Path 131"
+                                      d="M814.946,1793.095a24,24,0,0,0-24,24h48A24,24,0,0,0,814.946,1793.095Z" fill="#ffffff"
+                                      stroke="#0d0c0c" stroke-linecap="round" stroke-linejoi n="round" stroke-width="4"></path>
+                                <line id="Line_51" data-name="Line 51" x2="48" transform="translate(790.946 1825.761)"
+                                      fill="#ffffff" stroke="#0d0c0c" stroke-linecap="round" stroke-linejoin="round"
+                                      stroke-width="4"></line>
+                                <line id="Line_52" data-name="Line 52" y2="5.667" transform="translate(814.946 1787.428)"
+                                      fill="#ffffff" stroke="#0d0c0c" stroke-linecap="round" stroke-linejoin="round"
+                                      stroke-width="4"></li      ne>
+                            </g>
+                        </g>
+                    </svg>
+                    <a class="navbar-brand fw-bold" asp-area="" asp-controller="Home" asp-action="Index">GustoExpress</a>
+                </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

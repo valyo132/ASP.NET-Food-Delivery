@@ -282,3 +282,13 @@ G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\runtimes
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\GustoExpress.Data.Models.dll
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\GustoExpress.Data.Models.pdb
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\GustoExpress.Data.Common.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\GustoExpress.Data.Common.pdb
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\AutoMapper.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\GustoExpress.Services.Data.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\GustoExpress.Services.Mapping.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\GustoExpress.Web.ViewModels.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\GustoExpress.Services.Data.pdb
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\GustoExpress.Services.Mapping.pdb
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\GustoExpress.Web.ViewModels.pdb

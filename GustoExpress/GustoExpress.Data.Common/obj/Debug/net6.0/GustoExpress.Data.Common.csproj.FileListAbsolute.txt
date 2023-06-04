@@ -1,0 +1,12 @@
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.Common\bin\Debug\net6.0\GustoExpress.Data.Common.deps.json
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.Common\bin\Debug\net6.0\GustoExpress.Data.Common.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.Common\bin\Debug\net6.0\GustoExpress.Data.Common.pdb
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.Common\obj\Debug\net6.0\GustoExpress.Data.Common.csproj.AssemblyReference.cache
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.Common\obj\Debug\net6.0\GustoExpress.Data.Common.GeneratedMSBuildEditorConfig.editorconfig
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.Common\obj\Debug\net6.0\GustoExpress.Data.Common.AssemblyInfoInputs.cache
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.Common\obj\Debug\net6.0\GustoExpress.Data.Common.AssemblyInfo.cs
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.Common\obj\Debug\net6.0\GustoExpress.Data.Common.csproj.CoreCompileInputs.cache
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.Common\obj\Debug\net6.0\GustoExpress.Data.Common.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.Common\obj\Debug\net6.0\refint\GustoExpress.Data.Common.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.Common\obj\Debug\net6.0\GustoExpress.Data.Common.pdb
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.Common\obj\Debug\net6.0\ref\GustoExpress.Data.Common.dll

@@ -1,6 +1,4 @@
-﻿using GustoExpress.Data.Models;
-using GustoExpress.Web.Models;
-using Microsoft.AspNetCore.Identity;
+﻿using GustoExpress.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -15,8 +13,13 @@ namespace GustoExpress.Web.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string? city)
         {
+            if (city != null)
+            {
+                return RedirectToAction("All", "Restaurant", new { city });
+            }
+
             return View();
         }
 

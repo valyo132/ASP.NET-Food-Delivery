@@ -820,10 +820,21 @@
           }
         }
       },
+      "GustoExpress.Data.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/GustoExpress.Data.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GustoExpress.Data.Common.dll": {}
+        }
+      },
       "GustoExpress.Data.Models/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "GustoExpress.Data.Common": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.11"
         },
         "compile": {
@@ -2088,6 +2099,11 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "GustoExpress.Data.Common/1.0.0": {
+      "type": "project",
+      "path": "../GustoExpress.Data.Common/GustoExpress.Data.Common.csproj",
+      "msbuildProject": "../GustoExpress.Data.Common/GustoExpress.Data.Common.csproj"
     },
     "GustoExpress.Data.Models/1.0.0": {
       "type": "project",

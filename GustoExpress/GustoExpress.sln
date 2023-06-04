@@ -3,11 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GustoExpress.Web", "GustoExpress.Web\GustoExpress.Web.csproj", "{94A89F54-0C6C-42C4-8DFA-DD1C9201B5CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GustoExpress.Web", "GustoExpress.Web\GustoExpress.Web.csproj", "{94A89F54-0C6C-42C4-8DFA-DD1C9201B5CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GustoExpress.Data", "GustoExpress.Data\GustoExpress.Data.csproj", "{2ED7ED6B-2BD9-4DDB-B169-B7083A4E73A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GustoExpress.Data", "GustoExpress.Data\GustoExpress.Data.csproj", "{2ED7ED6B-2BD9-4DDB-B169-B7083A4E73A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GustoExpress.Data.Models", "GustoExpress.Data.Models\GustoExpress.Data.Models.csproj", "{25195295-8741-4AA4-AE30-84A642D3D136}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GustoExpress.Data.Models", "GustoExpress.Data.Models\GustoExpress.Data.Models.csproj", "{25195295-8741-4AA4-AE30-84A642D3D136}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GustoExpress.Data.Common", "GustoExpress.Data.Common\GustoExpress.Data.Common.csproj", "{CC4C6298-0420-4615-9470-F1D9F7F133E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GustoExpress.Services.Data", "GustoExpress.Services.Data\GustoExpress.Services.Data.csproj", "{6D164A16-3F8F-41AF-B5F5-7F3AF0EBD412}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GustoExpress.Web.ViewModels", "GustoExpress.Web.ViewModels\GustoExpress.Web.ViewModels.csproj", "{DADD970D-E8A0-4178-8EE9-748AE8C73E7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GustoExpress.Services.Mapping", "GustoExpress.Services.Mapping\GustoExpress.Services.Mapping.csproj", "{BD2FE82F-A8BD-4453-996D-110F495D43C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +35,22 @@ Global
 		{25195295-8741-4AA4-AE30-84A642D3D136}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25195295-8741-4AA4-AE30-84A642D3D136}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25195295-8741-4AA4-AE30-84A642D3D136}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC4C6298-0420-4615-9470-F1D9F7F133E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC4C6298-0420-4615-9470-F1D9F7F133E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC4C6298-0420-4615-9470-F1D9F7F133E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC4C6298-0420-4615-9470-F1D9F7F133E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D164A16-3F8F-41AF-B5F5-7F3AF0EBD412}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D164A16-3F8F-41AF-B5F5-7F3AF0EBD412}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D164A16-3F8F-41AF-B5F5-7F3AF0EBD412}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D164A16-3F8F-41AF-B5F5-7F3AF0EBD412}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DADD970D-E8A0-4178-8EE9-748AE8C73E7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DADD970D-E8A0-4178-8EE9-748AE8C73E7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DADD970D-E8A0-4178-8EE9-748AE8C73E7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DADD970D-E8A0-4178-8EE9-748AE8C73E7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD2FE82F-A8BD-4453-996D-110F495D43C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD2FE82F-A8BD-4453-996D-110F495D43C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD2FE82F-A8BD-4453-996D-110F495D43C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD2FE82F-A8BD-4453-996D-110F495D43C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,7 +2,24 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="py-5">
+    <div class="container-md">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-6">
+                <h1 class="text-center">Where are you now?</h1>
+                <form>
+                    <div class="input-group align-items-center rounded">
+                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-geo-alt"></i></span>
+                        <input class="rounded-end form-control" type="text" name="city" placeholder="Sofia" required>
+                    </div>
+                    <div class="my-3 text-center">
+                        <button class="ms-3 px-4 rounded btn btn-success" asp-action="Index" asp-controller="Home">Let's eat</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-6">
+                <img src="~/images/HomePage/foodDelivery.png">
+            </div>
+        </div>
+    </div>
+</section>

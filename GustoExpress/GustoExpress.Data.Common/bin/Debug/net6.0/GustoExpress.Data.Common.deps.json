@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "GustoExpress.Data.Common/1.0.0": {
+        "runtime": {
+          "GustoExpress.Data.Common.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GustoExpress.Data.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -13,3 +13,5 @@ G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data\obj\Debug\net6.0\ref\Gus
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data\bin\Debug\net6.0\GustoExpress.Data.Models.dll
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data\bin\Debug\net6.0\GustoExpress.Data.Models.pdb
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data\obj\Debug\net6.0\GustoExpress.Data.csproj.CopyComplete
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data\bin\Debug\net6.0\GustoExpress.Data.Common.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data\bin\Debug\net6.0\GustoExpress.Data.Common.pdb

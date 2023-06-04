@@ -2,6 +2,35 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "AutoMapper/12.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "AutoMapper.Extensions.Microsoft.DependencyInjection/12.0.1": {
+        "type": "package",
+        "dependencies": {
+          "AutoMapper": "[12.0.1]",
+          "Microsoft.Extensions.Options": "6.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -961,7 +990,7 @@
           }
         }
       },
-      "Microsoft.CSharp/4.5.0": {
+      "Microsoft.CSharp/4.7.0": {
         "type": "package",
         "compile": {
           "ref/netcoreapp2.0/_._": {}
@@ -3714,10 +3743,21 @@
           "bin/placeholder/GustoExpress.Data.dll": {}
         }
       },
+      "GustoExpress.Data.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/GustoExpress.Data.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GustoExpress.Data.Common.dll": {}
+        }
+      },
       "GustoExpress.Data.Models/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "GustoExpress.Data.Common": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.11"
         },
         "compile": {
@@ -3726,10 +3766,81 @@
         "runtime": {
           "bin/placeholder/GustoExpress.Data.Models.dll": {}
         }
+      },
+      "GustoExpress.Services.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AutoMapper": "12.0.1",
+          "GustoExpress.Data": "1.0.0",
+          "GustoExpress.Web.ViewModels": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GustoExpress.Services.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GustoExpress.Services.Data.dll": {}
+        }
+      },
+      "GustoExpress.Services.Mapping/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AutoMapper": "12.0.1",
+          "GustoExpress.Web.ViewModels": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GustoExpress.Services.Mapping.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GustoExpress.Services.Mapping.dll": {}
+        }
+      },
+      "GustoExpress.Web.ViewModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "GustoExpress.Data.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GustoExpress.Web.ViewModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GustoExpress.Web.ViewModels.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "AutoMapper/12.0.1": {
+      "sha512": "hvV62vl6Hp/WfQ24yzo3Co9+OPl8wH8hApwVtgWpiAynVJkUcs7xvehnSftawL8Pe8FrPffBRM3hwzLQqWDNjA==",
+      "type": "package",
+      "path": "automapper/12.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "automapper.12.0.1.nupkg.sha512",
+        "automapper.nuspec",
+        "icon.png",
+        "lib/netstandard2.1/AutoMapper.dll",
+        "lib/netstandard2.1/AutoMapper.xml"
+      ]
+    },
+    "AutoMapper.Extensions.Microsoft.DependencyInjection/12.0.1": {
+      "sha512": "+g/K+Vpe3gGMKGzjslMOdqNlkikScDjWfVvmWTayrDHaG/n2pPmFBMa+jKX1r/h6BDGFdkyRjAuhFE3ykW+r1g==",
+      "type": "package",
+      "path": "automapper.extensions.microsoft.dependencyinjection/12.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+        "automapper.extensions.microsoft.dependencyinjection.nuspec",
+        "icon.png",
+        "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
+      ]
+    },
     "Humanizer.Core/2.8.26": {
       "sha512": "OiKusGL20vby4uDEswj2IgkdchC1yQ6rwbIkZDVBPIR6al2b7n3pC91elBul9q33KaBgRKhbZH3+2Ur4fnWx2A==",
       "type": "package",
@@ -4746,10 +4857,10 @@
         "microsoft.codeanalysis.workspaces.msbuild.nuspec"
       ]
     },
-    "Microsoft.CSharp/4.5.0": {
-      "sha512": "kaj6Wb4qoMuH3HySFJhxwQfe8R/sJsNJnANrvv8WdFPMoNbKY5htfNscv+LHCu5ipz+49m2e+WQXpLXr9XYemQ==",
+    "Microsoft.CSharp/4.7.0": {
+      "sha512": "pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA==",
       "type": "package",
-      "path": "microsoft.csharp/4.5.0",
+      "path": "microsoft.csharp/4.7.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4762,6 +4873,7 @@
         "lib/netcoreapp2.0/_._",
         "lib/netstandard1.3/Microsoft.CSharp.dll",
         "lib/netstandard2.0/Microsoft.CSharp.dll",
+        "lib/netstandard2.0/Microsoft.CSharp.xml",
         "lib/portable-net45+win8+wp8+wpa81/_._",
         "lib/uap10.0.16299/_._",
         "lib/win8/_._",
@@ -4771,7 +4883,7 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "microsoft.csharp.4.5.0.nupkg.sha512",
+        "microsoft.csharp.4.7.0.nupkg.sha512",
         "microsoft.csharp.nuspec",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
@@ -10480,16 +10592,39 @@
       "path": "../GustoExpress.Data/GustoExpress.Data.csproj",
       "msbuildProject": "../GustoExpress.Data/GustoExpress.Data.csproj"
     },
+    "GustoExpress.Data.Common/1.0.0": {
+      "type": "project",
+      "path": "../GustoExpress.Data.Common/GustoExpress.Data.Common.csproj",
+      "msbuildProject": "../GustoExpress.Data.Common/GustoExpress.Data.Common.csproj"
+    },
     "GustoExpress.Data.Models/1.0.0": {
       "type": "project",
       "path": "../GustoExpress.Data.Models/GustoExpress.Data.Models.csproj",
       "msbuildProject": "../GustoExpress.Data.Models/GustoExpress.Data.Models.csproj"
+    },
+    "GustoExpress.Services.Data/1.0.0": {
+      "type": "project",
+      "path": "../GustoExpress.Services.Data/GustoExpress.Services.Data.csproj",
+      "msbuildProject": "../GustoExpress.Services.Data/GustoExpress.Services.Data.csproj"
+    },
+    "GustoExpress.Services.Mapping/1.0.0": {
+      "type": "project",
+      "path": "../GustoExpress.Services.Mapping/GustoExpress.Services.Mapping.csproj",
+      "msbuildProject": "../GustoExpress.Services.Mapping/GustoExpress.Services.Mapping.csproj"
+    },
+    "GustoExpress.Web.ViewModels/1.0.0": {
+      "type": "project",
+      "path": "../GustoExpress.Web.ViewModels/GustoExpress.Web.ViewModels.csproj",
+      "msbuildProject": "../GustoExpress.Web.ViewModels/GustoExpress.Web.ViewModels.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.1",
       "GustoExpress.Data >= 1.0.0",
       "GustoExpress.Data.Models >= 1.0.0",
+      "GustoExpress.Services.Data >= 1.0.0",
+      "GustoExpress.Services.Mapping >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 6.0.11",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.16",
       "Microsoft.AspNetCore.Identity.UI >= 6.0.16",
@@ -10530,6 +10665,12 @@
             },
             "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data\\GustoExpress.Data.csproj": {
               "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data\\GustoExpress.Data.csproj"
+            },
+            "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Services.Data\\GustoExpress.Services.Data.csproj": {
+              "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Services.Data\\GustoExpress.Services.Data.csproj"
+            },
+            "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Services.Mapping\\GustoExpress.Services.Mapping.csproj": {
+              "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Services.Mapping\\GustoExpress.Services.Mapping.csproj"
             }
           }
         }
@@ -10544,6 +10685,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+            "target": "Package",
+            "version": "[12.0.1, )"
+          },
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",
             "version": "[6.0.11, )"

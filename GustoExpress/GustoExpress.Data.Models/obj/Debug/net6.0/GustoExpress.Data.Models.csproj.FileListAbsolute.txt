@@ -10,3 +10,6 @@ G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.Models\obj\Debug\net6.0\
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.Models\obj\Debug\net6.0\refint\GustoExpress.Data.Models.dll
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.Models\obj\Debug\net6.0\GustoExpress.Data.Models.pdb
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.Models\obj\Debug\net6.0\ref\GustoExpress.Data.Models.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.Models\bin\Debug\net6.0\GustoExpress.Data.Common.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.Models\bin\Debug\net6.0\GustoExpress.Data.Common.pdb
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.Models\obj\Debug\net6.0\GustoExpress.Data.Models.csproj.CopyComplete
