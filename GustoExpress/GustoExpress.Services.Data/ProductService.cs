@@ -3,6 +3,7 @@ using GustoExpress.Data.Models;
 using GustoExpress.Services.Data.Contracts;
 using GustoExpress.Web.Data;
 using GustoExpress.Web.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace GustoExpress.Services.Data
 {
@@ -21,6 +22,11 @@ namespace GustoExpress.Services.Data
             _restaurantService = restaurantService;
         }
 
+        public async Task<Product> GetById(string id)
+        {
+            return await _context.Products.FirstOrDefaultAsync(p => p.Id.ToString() == id);
+        }
+
         public async Task<Product> CreateProduct(CreateProductViewModel model)
         {
             Product newProduct = _mapper.Map<Product>(model);
@@ -30,6 +36,16 @@ namespace GustoExpress.Services.Data
             await _context.SaveChangesAsync();
 
             return newProduct;
+        }
+
+        public async Task<Product> DeleteAsync(string id)
+        {
+            Product product = await GetById(id);
+            product.IsDeleted = true;
+
+            await _context.SaveChangesAsync();
+
+            return product;
         }
 
         public async Task SaveImageURL(string url, Product product)

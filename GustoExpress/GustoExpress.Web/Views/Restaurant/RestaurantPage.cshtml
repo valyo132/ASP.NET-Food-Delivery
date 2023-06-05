@@ -28,13 +28,13 @@
             </form>
         }
 
-        @foreach (var product in Model.Products)
+        @foreach (var product in Model.Products.Where(p => p.IsDeleted == false))
         {
             <!-- Product -->
             <article class="mt-5">
                 <div class="container">
                     <div class="col-lg-6">
-                        <div class="btn card border-0 shadow-sm" href="#">
+                        <div class="card border-0 shadow-sm" href="#">
                             <div class="row">
                                 <div class="col-7">
                                     <div class="card-body">
@@ -49,7 +49,13 @@
                                     <img class="img-fluid float-end" src="@product.ImageURL">
                                 </div>
                                 <div class="col-2">
-                                    <button class="btn rounded-circle border-0 shadow bg-light">+</button>
+                                    <form>
+                                        <button class="btn rounded-circle border-0 shadow bg-light"><i class="bi bi-plus"></i></button>
+                                        @if (this.User.IsInRole("Admin"))
+                                        {
+                                            <button asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@product.Id" class="my-2 btn rounded-circle border-0 shadow bg-danger" onclick="return confirm('Are you sure you want to delete product @product.Name from @Model.Name')"><i class="bi bi-trash3-fill"></i></button>
+                                        }
+                                    </form>
                                 </div>
                             </div>
                         </div>

@@ -40,7 +40,7 @@ namespace GustoExpress.Services.Data
         public async Task<List<AllRestaurantViewModel>> All(string city)
         {
             return await _context.Restaurants
-                .Where(r => r.City.CityName == city)
+                .Where(r => r.City.CityName == city && r.IsDeleted == false)
                 .ProjectTo<AllRestaurantViewModel>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }

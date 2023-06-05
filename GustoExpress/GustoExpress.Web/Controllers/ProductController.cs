@@ -44,6 +44,14 @@ namespace GustoExpress.Web.Controllers
             return View(obj);
         }
 
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteProduct(string id)
+        {
+            Product deletedProduct = await _productService.DeleteAsync(id);
+
+            return RedirectToAction("RestaurantPage", "Restaurant", new { id = deletedProduct.RestaurantId });
+        }
+
         private async Task SaveImage(IFormFile file, Product product)
         {
             string wwwRootPath = _webHostEnvironment.WebRootPath;

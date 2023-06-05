@@ -38,6 +38,8 @@ namespace GustoExpress.Data.Models
         [Required]
         public decimal Grams { get; set; }
 
+        public bool IsDeleted { get; set; } = false;
+
         public string? ImageURL { get; set; }
     }
 }

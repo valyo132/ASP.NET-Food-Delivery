@@ -31,7 +31,9 @@ namespace GustoExpress.Data.Models
 
         [Required]
         public string TimeToDeliver { get; set; } = null!;
-        
+
+        public bool IsDeleted { get; set; } = false;
+
         public string? ImageURL { get; set; }
 
         public ICollection<Product> Products { get; set; } = new HashSet<Product>();
