@@ -36,6 +36,7 @@ builder.Services.AddAutoMapper(cfg =>
 
 builder.Services.AddTransient<IRestaurantService, RestaurantService>();
 builder.Services.AddTransient<ICityService, CityService>();
+builder.Services.AddTransient<IProductService, ProductService>();
 
 var app = builder.Build();
 

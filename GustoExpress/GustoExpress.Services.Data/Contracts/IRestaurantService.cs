@@ -10,5 +10,6 @@ namespace GustoExpress.Services.Data.Contracts
         Task SaveImageURL(string url, Restaurant restaurant);
         Task<Restaurant> GetByIdAsync(string id);
         T ProjectTo<T>(Restaurant restaurant);
+        Task AddProduct(Product product);
     }
 }

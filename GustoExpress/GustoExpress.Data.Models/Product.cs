@@ -1,6 +1,6 @@
 ﻿using GustoExpress.Data.Models.Enums;
 using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations.Schema;
 using static GustoExpress.Data.Common.DataConstraints.Product;
 
 namespace GustoExpress.Data.Models
@@ -25,6 +25,10 @@ namespace GustoExpress.Data.Models
         [Required]
         [MaxLength(PRODUCT_DESCRIPTION_MAX_LENGHT), MinLength(PRODUCT_DESCRIPTION_MIN_LENGHT)]
         public string Description { get; set; } = null!;
+
+        [ForeignKey(nameof(Restaurant))]
+        public Guid RestaurantId { get; set; }
+        public Restaurant Restaurant { get; set; }
 
         [Required]
         public decimal Price { get; set; }

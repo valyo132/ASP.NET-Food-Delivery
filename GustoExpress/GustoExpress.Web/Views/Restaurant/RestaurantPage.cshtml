@@ -20,40 +20,43 @@
         <!-- Buttons group for Admin -->
         @if (this.User.IsInRole("Admin"))
         {
-            <div class="ms-5 mt-5 btn-group" role="group" aria-label="Basic outlined example">
-                <button type="button" class="me-1 btn btn-outline-primary">Add product</button>
-                <button type="button" class="btn btn-outline-primary">Edit restaurant</button>
-            </div>
+            <form>
+                <div class="ms-5 mt-5 btn-group" role="group" aria-label="Basic outlined example">
+                    <button asp-action="CreateProduct" asp-controller="Product" asp-route-id="@Model.Id" type="submit" class="me-1 btn btn-outline-primary">Add product</button>
+                    <button type="button" class="btn btn-outline-primary">Edit restaurant</button>
+                </div>
+            </form>
         }
 
-        <!-- Product -->
-        <article class="mt-5">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="btn card border-0 shadow-sm" href="#">
-                        <div class="row">
-                            <div class="col-7">
-                                <div class="card-body">
-                                    <h5 class="card-title fw-bold">Kebapche</h5>
-                                    <div class="card-text">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing
-                                        elit.
-                                        Laudantium, ratione!
-                                    </div> <br />
-                                    <i class="bi bi-truck"></i> 5.00lv.
+        @foreach (var product in Model.Products)
+        {
+            <!-- Product -->
+            <article class="mt-5">
+                <div class="container">
+                    <div class="col-lg-6">
+                        <div class="btn card border-0 shadow-sm" href="#">
+                            <div class="row">
+                                <div class="col-7">
+                                    <div class="card-body">
+                                        <h5 class="card-title fw-bold">@product.Name</h5>
+                                        <div class="card-text">
+                                            @product.Description
+                                        </div> <br />
+                                        <i class="bi bi-truck"></i> @product.Price lv.
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-3 d-flex align-items-center">
-                                <img class="img-fluid float-end" src="/images/download.png">
-                            </div>
-                            <div class="col-2">
-                                <button class="btn rounded-circle border-0 shadow bg-light">+</button>
+                                <div class="col-3 d-flex align-items-center">
+                                    <img class="img-fluid float-end" src="@product.ImageURL">
+                                </div>
+                                <div class="col-2">
+                                    <button class="btn rounded-circle border-0 shadow bg-light">+</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </article>
+            </article>
+        }
     </section>
 
     <!-- Shopping cart -->

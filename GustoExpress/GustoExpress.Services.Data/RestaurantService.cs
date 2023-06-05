@@ -26,7 +26,10 @@ namespace GustoExpress.Services.Data
 
         public async Task<Restaurant> GetByIdAsync(string id)
         {
-            return await _context.Restaurants.FirstOrDefaultAsync(r => r.Id.ToString() == id);
+            return await _context.Restaurants
+                .Include(r => r.Products)
+                .Include(r => r.Offers)
+                .FirstOrDefaultAsync(r => r.Id.ToString() == id);
         }
 
         public T ProjectTo<T>(Restaurant restaurant)
@@ -63,6 +66,14 @@ namespace GustoExpress.Services.Data
             await _context.SaveChangesAsync();
 
             return newRestaurant;
+        }
+
+        public async Task AddProduct(Product product)
+        {
+            var restaurant = await GetByIdAsync(product.RestaurantId.ToString());
+            restaurant.Products.Add(product);
+
+            await _context.SaveChangesAsync();
         }
 
         public async Task SaveImageURL(string url, Restaurant restaurant)

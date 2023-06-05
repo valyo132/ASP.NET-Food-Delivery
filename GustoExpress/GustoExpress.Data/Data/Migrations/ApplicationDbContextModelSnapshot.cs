@@ -134,8 +134,8 @@ namespace GustoExpress.Web.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<Guid?>("OfferId")
                         .HasColumnType("uniqueidentifier");
@@ -143,7 +143,7 @@ namespace GustoExpress.Web.Data.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid?>("RestaurantId")
+                    b.Property<Guid>("RestaurantId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -193,7 +193,7 @@ namespace GustoExpress.Web.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d5925bb4-381a-4115-b7e8-d7462fb678c3"),
+                            Id = new Guid("97352fb3-fff1-4137-8ba3-24eacd9b274d"),
                             CityId = new Guid("9c7ab005-24e6-4b2e-a54d-70cf4d9658d1"),
                             DeliveryPrice = 5.00m,
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -203,7 +203,7 @@ namespace GustoExpress.Web.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2821f72a-ce41-4b15-8106-f2770cfb0bcf"),
+                            Id = new Guid("1538ec84-fb26-4287-935c-8371df8861f8"),
                             CityId = new Guid("9c7ab005-24e6-4b2e-a54d-70cf4d9658d1"),
                             DeliveryPrice = 4.00m,
                             Description = "Nunc magna arcu, pharetra ut mi vitae, hendrerit laoreet lacus.",
@@ -517,9 +517,13 @@ namespace GustoExpress.Web.Data.Migrations
                         .WithMany("Products")
                         .HasForeignKey("OfferId");
 
-                    b.HasOne("GustoExpress.Data.Models.Restaurant", null)
+                    b.HasOne("GustoExpress.Data.Models.Restaurant", "Restaurant")
                         .WithMany("Products")
-                        .HasForeignKey("RestaurantId");
+                        .HasForeignKey("RestaurantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Restaurant");
                 });
 
             modelBuilder.Entity("GustoExpress.Data.Models.Restaurant", b =>
