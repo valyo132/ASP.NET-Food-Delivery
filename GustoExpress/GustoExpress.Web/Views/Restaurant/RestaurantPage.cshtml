@@ -1,0 +1,68 @@
+﻿@using GustoExpress.Web.ViewModels;
+@model RestaurantPageViewModel
+
+<div class="mt-4 row">
+    <!-- Restaurant and products -->
+    <section class="col-lg-8">
+        <div class="container-lg">
+            <div class="row rounded container shadow">
+                <div class="p-3 col-8">
+                    <h1>@Model.Name</h1>
+                    <i class="bi bi-clock"></i> @Model.TimeToDeliver min.
+                    <i class="ms-3 bi bi-truck"></i> @Model.DeliveryPrice lv.
+                </div>
+                <div class="col-4 d-flex align-items-center">
+                    <img class="my-3 img-fluid float-end" src="@Model.ImageURL" style="width: 220px">
+                </div>
+            </div>
+        </div>
+
+        <!-- Buttons group for Admin -->
+        @if (this.User.IsInRole("Admin"))
+        {
+            <div class="ms-5 mt-5 btn-group" role="group" aria-label="Basic outlined example">
+                <button type="button" class="me-1 btn btn-outline-primary">Add product</button>
+                <button type="button" class="btn btn-outline-primary">Edit restaurant</button>
+            </div>
+        }
+
+        <!-- Product -->
+        <article class="mt-5">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="btn card border-0 shadow-sm" href="#">
+                        <div class="row">
+                            <div class="col-7">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold">Kebapche</h5>
+                                    <div class="card-text">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing
+                                        elit.
+                                        Laudantium, ratione!
+                                    </div> <br />
+                                    <i class="bi bi-truck"></i> 5.00lv.
+                                </div>
+                            </div>
+                            <div class="col-3 d-flex align-items-center">
+                                <img class="img-fluid float-end" src="/images/download.png">
+                            </div>
+                            <div class="col-2">
+                                <button class="btn rounded-circle border-0 shadow bg-light">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- Shopping cart -->
+    <section class="col-lg-4">
+        <div class="container-lg bg-light">
+            <h2 class="text-center">Shopping cart</h2>
+            <div class="container my-1 text-center" style="height: 100%;">
+                Products
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,6 +1,7 @@
 ﻿using GustoExpress.Data.Models;
 using GustoExpress.Services.Data.Contracts;
 using GustoExpress.Web.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace GustoExpress.Services.Data
 {
@@ -22,6 +23,11 @@ namespace GustoExpress.Services.Data
             await _context.SaveChangesAsync();
 
             return newCity;
+        }
+
+        public async Task<City> GetCityAsync(string cityName)
+        {
+            return await _context.Cities.FirstOrDefaultAsync(x => x.CityName == cityName);
         }
     }
 }

@@ -5,6 +5,7 @@ using GustoExpress.Services.Data.Contracts;
 using GustoExpress.Web.Data;
 using GustoExpress.Web.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 
 namespace GustoExpress.Services.Data
 {
@@ -23,6 +24,16 @@ namespace GustoExpress.Services.Data
             _cityService = cityService;
         }
 
+        public async Task<Restaurant> GetByIdAsync(string id)
+        {
+            return await _context.Restaurants.FirstOrDefaultAsync(r => r.Id.ToString() == id);
+        }
+
+        public T ProjectTo<T>(Restaurant restaurant)
+        {
+            return _mapper.Map<T>(restaurant);
+        }
+
         public async Task<List<AllRestaurantViewModel>> All(string city)
         {
             return await _context.Restaurants
@@ -31,7 +42,7 @@ namespace GustoExpress.Services.Data
                 .ToListAsync();
         }
 
-        public async Task Create(CreateRestaurantViewModel model)
+        public async Task<Restaurant> Create(CreateRestaurantViewModel model)
         {
             Restaurant newRestaurant = new Restaurant();
             newRestaurant.Name = model.Name;
@@ -40,13 +51,23 @@ namespace GustoExpress.Services.Data
             newRestaurant.TimeToDeliver = $"{model.MinTimeToDeliver}-{model.MaxTimeToDeliver}";
             newRestaurant.ImageURL = model.ImageURL;
 
-            if (!_context.Cities.Any(c => c.CityName == model.City))
+            var city = await _cityService.GetCityAsync(model.City);
+
+            if (city == null)
             {
-                var city = await _cityService.CreateCity(model.City);
-                newRestaurant.City = city;
+                city = await _cityService.CreateCity(model.City);
             }
+            newRestaurant.City = city;
 
             await _context.Restaurants.AddAsync(newRestaurant);
+            await _context.SaveChangesAsync();
+
+            return newRestaurant;
+        }
+
+        public async Task SaveImageURL(string url, Restaurant restaurant)
+        {
+            restaurant.ImageURL = url;
             await _context.SaveChangesAsync();
         }
     }

@@ -10,6 +10,9 @@ namespace GustoExpress.Services.Mapping
         {
             CreateMap<Restaurant, AllRestaurantViewModel>();
 
+            CreateMap<Restaurant, RestaurantPageViewModel>()
+                .ForMember(x => x.City, y => y.MapFrom(s => s.City));
+
             CreateMap<CreateRestaurantViewModel, Restaurant>()
                 .ForMember(x => x.TimeToDeliver, y => y.MapFrom(s => $"{s.MinTimeToDeliver}-{s.MaxTimeToDeliver}"))
                 .ForMember(x => x.City, y => y.MapFrom(s => "City"));
