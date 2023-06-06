@@ -11,5 +11,6 @@ namespace GustoExpress.Web.ViewModels
         public decimal DeliveryPrice { get; set; }
         public string TimeToDeliver { get; set; } = null!;
         public string? ImageURL { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ctCjLOuM6ddZkkTywLFznQY7MIvxsfS3ECesDPjDdIQ=",
+  "Hash": "JGiinIparPDLP0XYfP8cwy2pp3OytsvgWOSqHWvhAMw=",
   "Source": "GustoExpress.Web",
   "BasePath": "_content/GustoExpress.Web",
   "Mode": "Default",
@@ -1139,6 +1139,23 @@
       "OriginalItemSpec": "wwwroot\\images\\Products\\3cc731ad-6f38-428f-9a5f-262ad52f37c1.jpeg"
     },
     {
+      "Identity": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\images\\Products\\50ec8ccb-0298-475d-8fa5-af3f4fe366e4.jpg",
+      "SourceId": "GustoExpress.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\",
+      "BasePath": "_content/GustoExpress.Web",
+      "RelativePath": "images/Products/50ec8ccb-0298-475d-8fa5-af3f4fe366e4.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Products\\50ec8ccb-0298-475d-8fa5-af3f4fe366e4.jpg"
+    },
+    {
       "Identity": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\images\\Products\\6a6ac5b7-fa48-4425-9f5b-46a01abe145a.jpg",
       "SourceId": "GustoExpress.Web",
       "SourceType": "Discovered",
@@ -1207,6 +1224,23 @@
       "OriginalItemSpec": "wwwroot\\images\\Products\\a050fa94-44e5-4470-8734-ad18fde2b50f.png"
     },
     {
+      "Identity": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\images\\Products\\aadadfce-53f3-4357-9e0d-e23445a59f0e.jfif",
+      "SourceId": "GustoExpress.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\",
+      "BasePath": "_content/GustoExpress.Web",
+      "RelativePath": "images/Products/aadadfce-53f3-4357-9e0d-e23445a59f0e.jfif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Products\\aadadfce-53f3-4357-9e0d-e23445a59f0e.jfif"
+    },
+    {
       "Identity": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\images\\Products\\cb6d70fa-57ad-4d23-875b-b594431a7840.jfif",
       "SourceId": "GustoExpress.Web",
       "SourceType": "Discovered",
@@ -1239,6 +1273,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\Products\\f08947a5-5b2c-467b-b921-0032e10c05c4.jpg"
+    },
+    {
+      "Identity": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\images\\Restaurants\\7b209b3a-fc37-41db-8f6a-5e0854be74ea.jpg",
+      "SourceId": "GustoExpress.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\",
+      "BasePath": "_content/GustoExpress.Web",
+      "RelativePath": "images/Restaurants/7b209b3a-fc37-41db-8f6a-5e0854be74ea.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Restaurants\\7b209b3a-fc37-41db-8f6a-5e0854be74ea.jpg"
     },
     {
       "Identity": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\images\\Restaurants\\download.png",

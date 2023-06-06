@@ -76,8 +76,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzdGF1cmFudFxBbGwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/ASP.NET-Food-Delivery/GustoExpress/GustoExpress.Web/Views/Restaurant/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzdGF1cmFudFxDcmVhdGUuY3NodG1s
+[G:/ASP.NET-Food-Delivery/GustoExpress/GustoExpress.Web/Views/Restaurant/CreateRestaurant.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzdGF1cmFudFxDcmVhdGVSZXN0YXVyYW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [G:/ASP.NET-Food-Delivery/GustoExpress/GustoExpress.Web/Views/Restaurant/RestaurantPage.cshtml]

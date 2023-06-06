@@ -36,7 +36,7 @@ namespace GustoExpress.Services.Data
         {
             Product newProduct = _mapper.Map<Product>(model);
             await _context.Products.AddAsync(newProduct);
-            await _restaurantService.AddProduct(newProduct);
+            await _restaurantService.AddProductAsync(newProduct);
 
             await _context.SaveChangesAsync();
 

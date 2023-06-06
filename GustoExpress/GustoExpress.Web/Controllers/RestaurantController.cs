@@ -19,6 +19,7 @@ namespace GustoExpress.Web.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
 
+        [HttpGet]
         public async Task<IActionResult> All(string city)
         {
             var restaurants = await _restaurantService.All(city);
@@ -35,17 +36,19 @@ namespace GustoExpress.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        [Authorize(Roles = "Admin")]
+        public IActionResult CreateRestaurant()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(IFormFile? file, CreateRestaurantViewModel obj)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> CreateRestaurant(IFormFile? file, CreateRestaurantViewModel obj)
         {
             if (ModelState.IsValid)
             {
-                Restaurant restaurant = await _restaurantService.Create(obj);
+                Restaurant restaurant = await _restaurantService.CreateAsync(obj);
 
                 if (file != null)
                     await SaveImage(file, restaurant);
@@ -54,6 +57,14 @@ namespace GustoExpress.Web.Controllers
             }
 
             return View(obj);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteRestaurant(string id)
+        {
+            await _restaurantService.DeleteAsync(id);
+
+            return RedirectToAction("Index", "Home");
         }
 
         private async Task SaveImage(IFormFile file, Restaurant restaurant)

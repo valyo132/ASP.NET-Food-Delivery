@@ -1,10 +1,8 @@
 ﻿using GustoExpress.Data.Models;
-using GustoExpress.Data.Models.Enums;
 using GustoExpress.Services.Data.Contracts;
 using GustoExpress.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GustoExpress.Web.Controllers
 {
@@ -13,12 +11,15 @@ namespace GustoExpress.Web.Controllers
     {
         private readonly IProductService _productService;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly ICategoryService _categoryService;
 
         public ProductController(IProductService productService,
-            IWebHostEnvironment webHostEnvironment)
+            IWebHostEnvironment webHostEnvironment,
+            ICategoryService categoryService)
         {
             _productService = productService;
             _webHostEnvironment = webHostEnvironment;
+            _categoryService = categoryService;
         }
 
         [HttpGet]
@@ -28,14 +29,7 @@ namespace GustoExpress.Web.Controllers
             ViewData["restaurantId"] = id;
             CreateProductViewModel productVm = new CreateProductViewModel()
             {
-                CategoryList = Enum.GetValues(typeof(Category))
-                .Cast<Category>()
-                .Select(e => new SelectListItem
-                {
-                    Value = e.ToString(),
-                    Text = e.ToString()
-                })
-                .ToList()
+                CategoryList = _categoryService.GetCategories()
             };
 
             return View(productVm);
@@ -52,7 +46,7 @@ namespace GustoExpress.Web.Controllers
                 if (file != null)
                     await SaveImage(file, product);
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("RestaurantPage", "Restaurant", new {id = product.RestaurantId});
             }
 
             return View(obj);
@@ -66,14 +60,7 @@ namespace GustoExpress.Web.Controllers
             ViewData["restaurantId"] = product.RestaurantId;
 
             var createProductVm = _productService.ProjectTo<CreateProductViewModel>(product);
-            createProductVm.CategoryList = Enum.GetValues(typeof(Category))
-                .Cast<Category>()
-                .Select(e => new SelectListItem
-                {
-                    Value = e.ToString(),
-                    Text = e.ToString()
-                })
-                .ToList();
+            createProductVm.CategoryList = _categoryService.GetCategories();
 
             return View(createProductVm);
         }

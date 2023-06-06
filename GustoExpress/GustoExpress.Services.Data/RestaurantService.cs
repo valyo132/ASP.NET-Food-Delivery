@@ -45,7 +45,7 @@ namespace GustoExpress.Services.Data
                 .ToListAsync();
         }
 
-        public async Task<Restaurant> Create(CreateRestaurantViewModel model)
+        public async Task<Restaurant> CreateAsync(CreateRestaurantViewModel model)
         {
             Restaurant newRestaurant = new Restaurant();
             newRestaurant.Name = model.Name;
@@ -68,7 +68,17 @@ namespace GustoExpress.Services.Data
             return newRestaurant;
         }
 
-        public async Task AddProduct(Product product)
+        public async Task<Restaurant> DeleteAsync(string id)
+        {
+            Restaurant restaurant = await GetByIdAsync(id);
+            restaurant.IsDeleted = true;
+
+            await _context.SaveChangesAsync();
+
+            return restaurant;
+        }
+
+        public async Task AddProductAsync(Product product)
         {
             var restaurant = await GetByIdAsync(product.RestaurantId.ToString());
             restaurant.Products.Add(product);
