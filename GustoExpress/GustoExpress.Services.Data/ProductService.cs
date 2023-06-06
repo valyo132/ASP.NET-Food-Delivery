@@ -27,6 +27,11 @@ namespace GustoExpress.Services.Data
             return await _context.Products.FirstOrDefaultAsync(p => p.Id.ToString() == id);
         }
 
+        public T ProjectTo<T>(Product product)
+        {
+            return _mapper.Map<T>(product);
+        }
+
         public async Task<Product> CreateProduct(CreateProductViewModel model)
         {
             Product newProduct = _mapper.Map<Product>(model);
@@ -36,6 +41,20 @@ namespace GustoExpress.Services.Data
             await _context.SaveChangesAsync();
 
             return newProduct;
+        }
+
+        public async Task<Product> EditProduct(string id, CreateProductViewModel model)
+        {
+            Product product = await GetById(id);
+            product.Name = model.Name;
+            product.Description = model.Description;
+            product.Category = model.Category;
+            product.Price = model.Price;
+            product.Grams = model.Grams;
+
+            await _context.SaveChangesAsync();
+
+            return product;
         }
 
         public async Task<Product> DeleteAsync(string id)

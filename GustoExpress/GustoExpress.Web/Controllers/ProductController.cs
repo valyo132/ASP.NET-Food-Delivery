@@ -1,8 +1,10 @@
 ﻿using GustoExpress.Data.Models;
+using GustoExpress.Data.Models.Enums;
 using GustoExpress.Services.Data.Contracts;
 using GustoExpress.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GustoExpress.Web.Controllers
 {
@@ -24,7 +26,19 @@ namespace GustoExpress.Web.Controllers
         public IActionResult CreateProduct(string id)
         {
             ViewData["restaurantId"] = id;
-            return View();
+            CreateProductViewModel productVm = new CreateProductViewModel()
+            {
+                CategoryList = Enum.GetValues(typeof(Category))
+                .Cast<Category>()
+                .Select(e => new SelectListItem
+                {
+                    Value = e.ToString(),
+                    Text = e.ToString()
+                })
+                .ToList()
+            };
+
+            return View(productVm);
         }
 
         [HttpPost]
@@ -39,6 +53,46 @@ namespace GustoExpress.Web.Controllers
                     await SaveImage(file, product);
 
                 return RedirectToAction("Index", "Home");
+            }
+
+            return View(obj);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> EditProduct(string id)
+        {
+            var product = await _productService.GetById(id);
+            ViewData["restaurantId"] = product.RestaurantId;
+
+            var createProductVm = _productService.ProjectTo<CreateProductViewModel>(product);
+            createProductVm.CategoryList = Enum.GetValues(typeof(Category))
+                .Cast<Category>()
+                .Select(e => new SelectListItem
+                {
+                    Value = e.ToString(),
+                    Text = e.ToString()
+                })
+                .ToList();
+
+            return View(createProductVm);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> EditProduct(IFormFile? file, string id, CreateProductViewModel obj)
+        {
+            if (ModelState.IsValid)
+            {
+                var editedProduct = await _productService.EditProduct(id, obj);
+
+                if (file != null)
+                {
+                    DeleteImage(editedProduct.ImageURL);
+                    await SaveImage(file, editedProduct);
+                }
+
+                return RedirectToAction("RestaurantPage", "Restaurant", new { id = obj.RestaurantId });
             }
 
             return View(obj);
@@ -66,6 +120,20 @@ namespace GustoExpress.Web.Controllers
 
             string imageURL = @"/images/Products/" + fileName;
             await _productService.SaveImageURL(imageURL, product);
+        }
+
+        private void DeleteImage(string file)
+        {
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
+
+            string imagePath = wwwRootPath + file;
+
+            FileInfo fileInfo = new FileInfo(imagePath);
+            if (fileInfo != null)
+            {
+                System.IO.File.Delete(imagePath);
+                fileInfo.Delete();
+            }
         }
     }
 }

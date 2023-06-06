@@ -16,7 +16,7 @@ namespace GustoExpress.Data.Seeding
                 CityId = Guid.Parse("9c7ab005-24e6-4b2e-a54d-70cf4d9658d1"),
                 DeliveryPrice = 5.00m,
                 TimeToDeliver = "20-30",
-                ImageURL = @"~\images\Restaurants\og_image.jpg"
+                ImageURL = @"\images\Restaurants\og_image.jpg"
             };
             restaurants.Add(currentRestaurant);
 
@@ -27,7 +27,7 @@ namespace GustoExpress.Data.Seeding
                 CityId = Guid.Parse("9c7ab005-24e6-4b2e-a54d-70cf4d9658d1"),
                 DeliveryPrice = 4.00m,
                 TimeToDeliver = "15-20",
-                ImageURL = @"~\images\Restaurants\download.png"
+                ImageURL = @"\images\Restaurants\download.png"
             };
             restaurants.Add(currentRestaurant);
 

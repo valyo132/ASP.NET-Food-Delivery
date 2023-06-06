@@ -292,3 +292,7 @@ G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\GustoExp
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\GustoExpress.Services.Data.pdb
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\GustoExpress.Services.Mapping.pdb
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\GustoExpress.Web.ViewModels.pdb
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

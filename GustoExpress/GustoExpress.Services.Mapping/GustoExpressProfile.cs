@@ -18,6 +18,8 @@ namespace GustoExpress.Services.Mapping
                 .ForMember(x => x.City, y => y.MapFrom(s => "City"));
 
             CreateMap<CreateProductViewModel, Product>();
+
+            CreateMap<Product, CreateProductViewModel>();
         }
     }
 }

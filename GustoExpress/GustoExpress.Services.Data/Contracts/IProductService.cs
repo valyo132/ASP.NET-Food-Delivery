@@ -6,8 +6,12 @@ namespace GustoExpress.Services.Data.Contracts
     public interface IProductService
     {
         Task<Product> GetById(string id);
+
+        T ProjectTo<T>(Product product);
         Task<Product> CreateProduct(CreateProductViewModel model);
-        Task SaveImageURL(string url, Product product);
+
+        Task<Product> EditProduct(string id, CreateProductViewModel model);
         Task<Product> DeleteAsync(string id);
+        Task SaveImageURL(string url, Product product);
     }
 }
