@@ -27,6 +27,7 @@ namespace GustoExpress.Services.Data
         public async Task<Restaurant> GetByIdAsync(string id)
         {
             return await _context.Restaurants
+                .Include(r => r.City)
                 .Include(r => r.Products)
                 .Include(r => r.Offers)
                 .FirstOrDefaultAsync(r => r.Id.ToString() == id);
@@ -54,7 +55,7 @@ namespace GustoExpress.Services.Data
             newRestaurant.TimeToDeliver = $"{model.MinTimeToDeliver}-{model.MaxTimeToDeliver}";
             newRestaurant.ImageURL = model.ImageURL;
 
-            var city = await _cityService.GetCityAsync(model.City);
+            City city = await _cityService.GetCityAsync(model.City);
 
             if (city == null)
             {
@@ -66,6 +67,27 @@ namespace GustoExpress.Services.Data
             await _context.SaveChangesAsync();
 
             return newRestaurant;
+        }
+
+        public async Task<Restaurant> EditRestaurantAsync(string id, CreateRestaurantViewModel model)
+        {
+            Restaurant restaurant = await GetByIdAsync(id);
+            restaurant.Name = model.Name;
+            restaurant.Description = model.Description;
+            restaurant.DeliveryPrice = model.DeliveryPrice;
+            restaurant.TimeToDeliver = $"{model.MinTimeToDeliver}-{model.MaxTimeToDeliver}";
+
+            City city = await _cityService.GetCityAsync(model.City);
+
+            if (city == null)
+            {
+                city = await _cityService.CreateCity(model.City);
+            }
+            restaurant.City = city;
+
+            await _context.SaveChangesAsync();
+
+            return restaurant;
         }
 
         public async Task<Restaurant> DeleteAsync(string id)

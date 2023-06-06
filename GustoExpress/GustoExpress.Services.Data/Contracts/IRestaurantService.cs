@@ -7,6 +7,7 @@ namespace GustoExpress.Services.Data.Contracts
     {
         Task<List<AllRestaurantViewModel>> All(string city);
         Task<Restaurant> CreateAsync(CreateRestaurantViewModel model);
+        Task<Restaurant> EditRestaurantAsync(string id, CreateRestaurantViewModel model);
         Task<Restaurant> DeleteAsync(string id);
         Task SaveImageURL(string url, Restaurant restaurant);
         Task<Restaurant> GetByIdAsync(string id);

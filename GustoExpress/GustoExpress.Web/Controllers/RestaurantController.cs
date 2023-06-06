@@ -1,4 +1,5 @@
 ﻿using GustoExpress.Data.Models;
+using GustoExpress.Services.Data;
 using GustoExpress.Services.Data.Contracts;
 using GustoExpress.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -53,7 +54,39 @@ namespace GustoExpress.Web.Controllers
                 if (file != null)
                     await SaveImage(file, restaurant);
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("RestaurantPage", "Restaurant", new { id = restaurant.Id });
+            }
+
+            return View(obj);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> EditRestaurant(string id)
+        {
+            Restaurant restaurant = await _restaurantService.GetByIdAsync(id);
+            CreateRestaurantViewModel restaurantViewModel = _restaurantService.ProjectTo<CreateRestaurantViewModel>(restaurant);
+
+            return View(restaurantViewModel);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> EditRestaurant(IFormFile? file, string id, CreateRestaurantViewModel obj)
+        {
+            if (ModelState.IsValid)
+            {
+                Restaurant restaurant = await _restaurantService.EditRestaurantAsync(id, obj);
+
+                if (file != null)
+                {
+                    if (restaurant.ImageURL != null)
+                        DeleteImage(restaurant.ImageURL);
+
+                    await SaveImage(file, restaurant);
+                }
+
+                // Change the return action to All in Restaurant
+                return RedirectToAction("RestaurantPage", "Restaurant", new { id = restaurant.Id });
             }
 
             return View(obj);
@@ -62,9 +95,24 @@ namespace GustoExpress.Web.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteRestaurant(string id)
         {
-            await _restaurantService.DeleteAsync(id);
+            Restaurant restaurant = await _restaurantService.DeleteAsync(id);
 
-            return RedirectToAction("Index", "Home");
+            // Change the return action to All in Restaurant
+            return RedirectToAction("Index", "Home", new { city = restaurant.City.CityName });
+        }
+
+        private void DeleteImage(string file)
+        {
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
+
+            string imagePath = wwwRootPath + file;
+
+            FileInfo fileInfo = new FileInfo(imagePath);
+            if (fileInfo != null)
+            {
+                System.IO.File.Delete(imagePath);
+                fileInfo.Delete();
+            }
         }
 
         private async Task SaveImage(IFormFile file, Restaurant restaurant)

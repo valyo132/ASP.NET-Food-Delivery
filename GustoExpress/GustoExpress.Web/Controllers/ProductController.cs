@@ -75,7 +75,9 @@ namespace GustoExpress.Web.Controllers
 
                 if (file != null)
                 {
-                    DeleteImage(editedProduct.ImageURL);
+                    if (editedProduct.ImageURL != null)
+                        DeleteImage(editedProduct.ImageURL);
+
                     await SaveImage(file, editedProduct);
                 }
 
