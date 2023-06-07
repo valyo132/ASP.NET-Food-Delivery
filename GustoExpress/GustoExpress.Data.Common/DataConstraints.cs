@@ -18,6 +18,14 @@
             public const int PRODUCT_DESCRIPTION_MIN_LENGHT = 5;
         }
 
+        public static class Offer
+        {
+            public const int OFFER_NAME_MIN_LENGHT = 3;
+            public const int OFFER_NAME_MAX_LENGHT = 20;
+            public const int OFFER_DESCRIPTION_MAX_LENGHT = 100;
+            public const int OFFER_DESCRIPTION_MIN_LENGHT = 5;
+        }
+
         public static class City
         {
             public const int CITY_NAME_MIN_LENGHT = 1;

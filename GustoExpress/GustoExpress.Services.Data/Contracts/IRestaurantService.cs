@@ -13,5 +13,6 @@ namespace GustoExpress.Services.Data.Contracts
         Task<Restaurant> GetByIdAsync(string id);
         T ProjectTo<T>(Restaurant restaurant);
         Task AddProductAsync(Product product);
+        Task AddOfferAsync(string restaurantId, Offer offer);
     }
 }

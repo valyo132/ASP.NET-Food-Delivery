@@ -35,7 +35,7 @@ namespace GustoExpress.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cities");
+                    b.ToTable("Cities", (string)null);
                 });
 
             modelBuilder.Entity("GustoExpress.Data.Models.Offer", b =>
@@ -44,8 +44,21 @@ namespace GustoExpress.Web.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<string>("ImageURL")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -57,7 +70,7 @@ namespace GustoExpress.Web.Data.Migrations
 
                     b.HasIndex("RestaurantId");
 
-                    b.ToTable("Offers");
+                    b.ToTable("Offers", (string)null);
                 });
 
             modelBuilder.Entity("GustoExpress.Data.Models.Order", b =>
@@ -82,7 +95,7 @@ namespace GustoExpress.Web.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("GustoExpress.Data.Models.OrderItem", b =>
@@ -106,7 +119,7 @@ namespace GustoExpress.Web.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderItems");
+                    b.ToTable("OrderItems", (string)null);
                 });
 
             modelBuilder.Entity("GustoExpress.Data.Models.Product", b =>
@@ -155,7 +168,7 @@ namespace GustoExpress.Web.Data.Migrations
 
                     b.HasIndex("RestaurantId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("GustoExpress.Data.Models.Restaurant", b =>
@@ -194,27 +207,27 @@ namespace GustoExpress.Web.Data.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.ToTable("Restaurants");
+                    b.ToTable("Restaurants", (string)null);
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e6665130-760d-48cd-bbe9-c7ccc8dc212a"),
+                            Id = new Guid("419ede12-6073-42fb-ac30-217430d61382"),
                             CityId = new Guid("9c7ab005-24e6-4b2e-a54d-70cf4d9658d1"),
                             DeliveryPrice = 5.00m,
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                            ImageURL = "~\\images\\Restaurants\\og_image.jpg",
+                            ImageURL = "\\images\\Restaurants\\og_image.jpg",
                             IsDeleted = false,
                             Name = "Aladin Foods",
                             TimeToDeliver = "20-30"
                         },
                         new
                         {
-                            Id = new Guid("51c21cb7-4a9b-4593-a115-1b35fc631181"),
+                            Id = new Guid("c5f0aaf2-99f2-43de-8e48-9a8fb97ccc44"),
                             CityId = new Guid("9c7ab005-24e6-4b2e-a54d-70cf4d9658d1"),
                             DeliveryPrice = 4.00m,
                             Description = "Nunc magna arcu, pharetra ut mi vitae, hendrerit laoreet lacus.",
-                            ImageURL = "~\\images\\Restaurants\\download.png",
+                            ImageURL = "\\images\\Restaurants\\download.png",
                             IsDeleted = false,
                             Name = "McDonald's",
                             TimeToDeliver = "15-20"
@@ -248,7 +261,7 @@ namespace GustoExpress.Web.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Reviews", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

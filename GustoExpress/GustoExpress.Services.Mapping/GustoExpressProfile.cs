@@ -25,6 +25,8 @@ namespace GustoExpress.Services.Mapping
             CreateMap<CreateProductViewModel, Product>();
 
             CreateMap<Product, CreateProductViewModel>();
+
+            CreateMap<CreateOfferViewModel, Offer>();
         }
     }
 }

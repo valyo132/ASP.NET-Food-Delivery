@@ -108,6 +108,14 @@ namespace GustoExpress.Services.Data
             await _context.SaveChangesAsync();
         }
 
+        public async Task AddOfferAsync(string restaurantId, Offer offer)
+        {
+            var restaurant = await GetByIdAsync(restaurantId);
+            restaurant.Offers.Add(offer);
+
+            await _context.SaveChangesAsync();
+        }
+
         public async Task SaveImageURL(string url, Restaurant restaurant)
         {
             restaurant.ImageURL = url;

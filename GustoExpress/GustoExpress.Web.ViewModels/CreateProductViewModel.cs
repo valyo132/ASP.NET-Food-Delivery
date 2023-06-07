@@ -10,6 +10,8 @@ namespace GustoExpress.Web.ViewModels
 {
     public class CreateProductViewModel
     {
+        [Required]
+        [MaxLength(PRODUCT_NAME_MAX_LENGHT), MinLength(PRODUCT_NAME_MIN_LENGHT)]
         public string Name { get; set; } = null!;
 
         [Required]

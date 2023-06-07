@@ -38,6 +38,7 @@ builder.Services.AddTransient<IRestaurantService, RestaurantService>();
 builder.Services.AddTransient<ICityService, CityService>();
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
+builder.Services.AddTransient<IOfferService, OfferService>();
 
 var app = builder.Build();
 

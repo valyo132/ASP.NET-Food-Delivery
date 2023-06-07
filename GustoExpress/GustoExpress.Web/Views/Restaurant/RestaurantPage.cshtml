@@ -20,44 +20,49 @@
         <!-- Buttons group for Admin -->
         @if (this.User.IsInRole("Admin"))
         {
-                <form>
-                    <div class="mt-5 ms-3 btn-group" role="group" aria-label="Basic outlined example">
-                        <button asp-action="CreateProduct" asp-controller="Product" asp-route-id="@Model.Id" type="submit" class="btn btn-outline-primary">Add product</button>
-                        <button type="button" class="ms-2 btn btn-outline-primary">Add offer</button>
-                        <button asp-action="EditRestaurant" asp-controller="Restaurant" asp-route-id="@Model.Id" type="submit" class="ms-2 btn btn-outline-primary">Edit restaurant</button>
-                        <button asp-action="DeleteRestaurant" asp-controller="Restaurant" asp-route-id="@Model.Id" onclick="return confirm('Are you sure you want to delete restaurant @Model.Name')" type="submit" class="ms-2 btn btn-outline-primary">Delete restaurant</button>
-                    </div>
-                </form>
+            <form>
+                <div class="mt-5 ms-3 btn-group" role="group" aria-label="Basic outlined example">
+                    <button asp-action="CreateProduct" asp-controller="Product" asp-route-id="@Model.Id" type="submit" class="btn btn-outline-primary">Add product</button>
+                    <button asp-action="CreateOffer" asp-controller="Offer" asp-route-id="@Model.Id" type="submit" class="ms-2 btn btn-outline-primary">Add offer</button>
+                    <button asp-action="EditRestaurant" asp-controller="Restaurant" asp-route-id="@Model.Id" type="submit" class="ms-2 btn btn-outline-primary">Edit restaurant</button>
+                    <button asp-action="DeleteRestaurant" asp-controller="Restaurant" asp-route-id="@Model.Id" onclick="return confirm('Are you sure you want to delete restaurant @Model.Name')" type="submit" class="ms-2 btn btn-outline-primary">Delete restaurant</button>
+                </div>
+            </form>
         }
 
-        @foreach (var product in Model.Products.Where(p => p.IsDeleted == false))
+        <!-- Offers -->
+        @if (Model.Offers.Any())
         {
-                <!-- Product -->
-                <article class="container mt-5">
+            <h2 class="ms-3 mt-4">Offers</h2>
+
+            @foreach (var offer in Model.Offers.Where(p => p.IsDeleted == false))
+            {
+                <!-- Offer -->
+                <article class="mt-2 container">
                     <div>
                         <div class="col-lg-10">
                             <div class="card border-0 shadow-sm">
                                 <div class="row" style="height:150px">
                                     <div class="col-7">
                                         <div class="card-body">
-                                            <h5 class="card-title fw-bold">@product.Name [@product.Grams]grams</h5>
+                                            <h5 class="card-title fw-bold">@offer.Name</h5>
                                             <div class="card-text">
-                                            @product.Description
+                                                @offer.Description
                                             </div> <br />
-                                            <i class="bi bi-currency-dollar"></i>@product.Price lv.
+                                            <i class="bi bi-currency-dollar"></i>@offer.Price lv.
                                         </div>
                                     </div>
                                     <div class="col-3 d-flex align-items-center">
-                                        <img class="img-fluid float-end" src="@product.ImageURL">
+                                        <img class="img-fluid float-end" src="@offer.ImageURL">
                                     </div>
                                     <div class="ms-4 col-1">
                                         <form>
-                                            <button class="mt-2 btn rounded-circle border-0 shadow bg-light"><i class="bi bi-plus"></i></button>
-                                        @if (this.User.IsInRole("Admin"))
-                                        {
-                                                    <button asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@product.Id" class="my-2 btn rounded-circle border-0 shadow bg-light" onclick="return confirm('Are you sure you want to delete product @product.Name from @Model.Name')"><i class="bi bi-trash3-fill"></i></button>
-                                                    <button asp-action="EditProduct" asp-controller="Product" asp-route-id="@product.Id" class="mb-2 btn rounded-circle border-0 shadow bg-light"><i class="bi bi-pencil-square"></i></button>
-                                        }
+                                            <button type="submit" class="mt-2 btn rounded-circle border-0 shadow bg-light"><i class="bi bi-plus"></i></button>
+                                            @if (this.User.IsInRole("Admin"))
+                                            {
+                                                <button asp-action="DeleteOffer" asp-controller="Offer" asp-route-id="@offer.Id" class="my-2 btn rounded-circle border-0 shadow bg-light" onclick="return confirm('Are you sure you want to delete offer @offer.Name from @Model.Name')"><i class="bi bi-trash3-fill"></i></button>
+                                                <button asp-action="EditOffer" asp-controller="Offer" asp-route-id="@offer.Id" class="mb-2 btn rounded-circle border-0 shadow bg-light"><i class="bi bi-pencil-square"></i></button>
+                                            }
                                         </form>
                                     </div>
                                 </div>
@@ -65,6 +70,44 @@
                         </div>
                     </div>
                 </article>
+            }
+        }
+
+        @foreach (var product in Model.Products.Where(p => p.IsDeleted == false))
+        {
+            <!-- Product -->
+            <article class="container mt-5">
+                <div>
+                    <div class="col-lg-10">
+                        <div class="card border-0 shadow-sm">
+                            <div class="row" style="height:150px">
+                                <div class="col-7">
+                                    <div class="card-body">
+                                        <h5 class="card-title fw-bold">@product.Name [@product.Grams]grams</h5>
+                                        <div class="card-text">
+                                            @product.Description
+                                        </div> <br />
+                                        <i class="bi bi-currency-dollar"></i>@product.Price lv.
+                                    </div>
+                                </div>
+                                <div class="col-3 d-flex align-items-center">
+                                    <img class="img-fluid float-end" src="@product.ImageURL">
+                                </div>
+                                <div class="ms-4 col-1">
+                                    <form>
+                                        <button type="submit" class="mt-2 btn rounded-circle border-0 shadow bg-light"><i class="bi bi-plus"></i></button>
+                                        @if (this.User.IsInRole("Admin"))
+                                        {
+                                            <button asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@product.Id" class="my-2 btn rounded-circle border-0 shadow bg-light" onclick="return confirm('Are you sure you want to delete product @product.Name from @Model.Name')"><i class="bi bi-trash3-fill"></i></button>
+                                            <button asp-action="EditProduct" asp-controller="Product" asp-route-id="@product.Id" class="mb-2 btn rounded-circle border-0 shadow bg-light"><i class="bi bi-pencil-square"></i></button>
+                                        }
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
         }
     </section>
 
