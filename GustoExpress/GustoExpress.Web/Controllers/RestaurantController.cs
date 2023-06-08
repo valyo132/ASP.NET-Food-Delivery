@@ -23,7 +23,7 @@ namespace GustoExpress.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> All(string city)
         {
-            var restaurants = await _restaurantService.All(city);
+            var restaurants = await _restaurantService.AllAsync(city);
             return View(restaurants);
         }
 
@@ -85,7 +85,6 @@ namespace GustoExpress.Web.Controllers
                     await SaveImage(file, restaurant);
                 }
 
-                // Change the return action to All in Restaurant
                 return RedirectToAction("RestaurantPage", "Restaurant", new { id = restaurant.Id });
             }
 
@@ -97,8 +96,7 @@ namespace GustoExpress.Web.Controllers
         {
             Restaurant restaurant = await _restaurantService.DeleteAsync(id);
 
-            // Change the return action to All in Restaurant
-            return RedirectToAction("Index", "Home", new { city = restaurant.City.CityName });
+            return RedirectToAction("All", "Restaurant", new { city = restaurant.City.CityName });
         }
 
         private void DeleteImage(string file)

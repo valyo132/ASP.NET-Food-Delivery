@@ -38,7 +38,7 @@ namespace GustoExpress.Services.Data
             return _mapper.Map<T>(restaurant);
         }
 
-        public async Task<List<AllRestaurantViewModel>> All(string city)
+        public async Task<List<AllRestaurantViewModel>> AllAsync(string city)
         {
             return await _context.Restaurants
                 .Where(r => r.City.CityName == city && r.IsDeleted == false)
@@ -59,7 +59,7 @@ namespace GustoExpress.Services.Data
 
             if (city == null)
             {
-                city = await _cityService.CreateCity(model.City);
+                city = await _cityService.CreateCityAsync(model.City);
             }
             newRestaurant.City = city;
 
@@ -81,7 +81,7 @@ namespace GustoExpress.Services.Data
 
             if (city == null)
             {
-                city = await _cityService.CreateCity(model.City);
+                city = await _cityService.CreateCityAsync(model.City);
             }
             restaurant.City = city;
 

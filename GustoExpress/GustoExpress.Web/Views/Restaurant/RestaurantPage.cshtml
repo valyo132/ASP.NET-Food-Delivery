@@ -1,6 +1,11 @@
 ﻿@using GustoExpress.Web.ViewModels;
 @model RestaurantPageViewModel
 
+<form asp-action="All" asp-controller="Restaurant" method="get">
+    <input type="hidden" name="city" value="@Model.City.CityName" />
+    <button class="btn btn-light rounded-1" type="submit"><i class="bi bi-arrow-left"></i> Go back</button>
+</form>
+
 <div class="mt-4 row">
     <!-- Restaurant and products -->
     <section class="col-lg-8">
@@ -34,6 +39,7 @@
         @if (Model.Offers.Any())
         {
             <partial name="_OffersPartial" model="@Model"/>
+            <hr class="mb-5" />  
         }
 
         @if (Model.Products.Any(p => p.IsDeleted == false))

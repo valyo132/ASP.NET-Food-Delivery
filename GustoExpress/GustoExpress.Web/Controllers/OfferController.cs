@@ -40,7 +40,7 @@ namespace GustoExpress.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                Offer offer = await _offerService.CreateOffer(id, obj);
+                Offer offer = await _offerService.CreateOfferAsync(id, obj);
 
                 if (file != null)
                 {
@@ -60,6 +60,7 @@ namespace GustoExpress.Web.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditOffer(string id)
         {
+            ViewData["restaurantId"] = id;
             Offer offer = await _offerService.GetByIdAsync(id);
             CreateOfferViewModel model = _offerService.ProjectTo<CreateOfferViewModel>(offer);
             model.ProductsToChoose = await _offerService.GetProductsByRestaurantIdAsync(offer.RestaurantId.ToString());

@@ -41,7 +41,7 @@ namespace GustoExpress.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                Product product = await _productService.CreateProduct(obj);
+                Product product = await _productService.CreateProductAsync(obj);
 
                 if (file != null)
                     await SaveImage(file, product);
@@ -56,7 +56,7 @@ namespace GustoExpress.Web.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditProduct(string id)
         {
-            var product = await _productService.GetById(id);
+            var product = await _productService.GetByIdAsync(id);
             ViewData["restaurantId"] = product.RestaurantId;
 
             var createProductVm = _productService.ProjectTo<CreateProductViewModel>(product);
@@ -71,7 +71,7 @@ namespace GustoExpress.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var editedProduct = await _productService.EditProduct(id, obj);
+                var editedProduct = await _productService.EditProductAsync(id, obj);
 
                 if (file != null)
                 {

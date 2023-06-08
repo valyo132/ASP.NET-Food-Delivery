@@ -14,7 +14,7 @@ namespace GustoExpress.Services.Data
             _context = context;
         }
 
-        public async Task<City> CreateCity(string cityName)
+        public async Task<City> CreateCityAsync(string cityName)
         {
             City newCity = new City();
             newCity.CityName = cityName;

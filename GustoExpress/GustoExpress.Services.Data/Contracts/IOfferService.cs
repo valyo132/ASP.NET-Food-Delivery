@@ -9,7 +9,7 @@ namespace GustoExpress.Services.Data.Contracts
         Task<Offer> GetByIdAsync(string id);
         T ProjectTo<T>(Offer offer);
         Task<IEnumerable<SelectListItem>> GetProductsByRestaurantIdAsync(string id);
-        Task<Offer> CreateOffer(string restaurantId, CreateOfferViewModel model);
+        Task<Offer> CreateOfferAsync(string restaurantId, CreateOfferViewModel model);
         Task<Offer> EditOfferAsync(string id, CreateOfferViewModel model);
         Task<Offer> DeleteOfferAsync(string id);
         Task SaveImageURL(string imageURL, Offer offer);

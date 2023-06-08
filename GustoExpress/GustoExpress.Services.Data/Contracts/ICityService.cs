@@ -4,7 +4,7 @@ namespace GustoExpress.Services.Data.Contracts
 {
     public interface ICityService
     {
-        Task<City> CreateCity(string cityName);
+        Task<City> CreateCityAsync(string cityName);
         Task<City> GetCityAsync(string cityName);
     }
 }

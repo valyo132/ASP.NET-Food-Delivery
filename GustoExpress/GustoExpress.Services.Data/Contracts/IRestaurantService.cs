@@ -5,7 +5,7 @@ namespace GustoExpress.Services.Data.Contracts
 {
     public interface IRestaurantService
     {
-        Task<List<AllRestaurantViewModel>> All(string city);
+        Task<List<AllRestaurantViewModel>> AllAsync(string city);
         Task<Restaurant> CreateAsync(CreateRestaurantViewModel model);
         Task<Restaurant> EditRestaurantAsync(string id, CreateRestaurantViewModel model);
         Task<Restaurant> DeleteAsync(string id);

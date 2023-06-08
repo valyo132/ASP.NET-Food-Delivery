@@ -5,7 +5,6 @@ using GustoExpress.Web.Data;
 using GustoExpress.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Policy;
 
 namespace GustoExpress.Services.Data
 {
@@ -51,14 +50,14 @@ namespace GustoExpress.Services.Data
                 .ToListAsync();
         }
 
-        public async Task<Offer> CreateOffer(string restaurantId, CreateOfferViewModel model)
+        public async Task<Offer> CreateOfferAsync(string restaurantId, CreateOfferViewModel model)
         {
             Offer offer = _mapper.Map<Offer>(model);
             var products = new List<Product>()
             {
-                await _productService.GetById(model.FirstProductId),
-                await _productService.GetById(model.SecondProductId),
-                await _productService.GetById(model.ThirdhProductId),
+                await _productService.GetByIdAsync(model.FirstProductId),
+                await _productService.GetByIdAsync(model.SecondProductId),
+                await _productService.GetByIdAsync(model.ThirdhProductId),
             };
             offer.OfferProducts = await CreateOfferProducts(products, offer);
 
@@ -99,9 +98,9 @@ namespace GustoExpress.Services.Data
             offer.Price = model.Price;
             var products = new List<Product>()
             {
-                await _productService.GetById(model.FirstProductId),
-                await _productService.GetById(model.SecondProductId),
-                await _productService.GetById(model.ThirdhProductId),
+                await _productService.GetByIdAsync(model.FirstProductId),
+                await _productService.GetByIdAsync(model.SecondProductId),
+                await _productService.GetByIdAsync(model.ThirdhProductId),
             };
             offer.OfferProducts = await CreateOfferProducts(products, offer);
 
