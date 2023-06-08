@@ -30,8 +30,13 @@ namespace GustoExpress.Services.Data
         public async Task<Offer> GetByIdAsync(string id)
         {
             return await _context.Offers
-                .Include(o => o.Products)
+                .Include(o => o.OfferProducts)
                 .FirstOrDefaultAsync(o => o.Id.ToString() == id);
+        }
+
+        public T ProjectTo<T>(Offer offer)
+        {
+            return _mapper.Map<T>(offer);
         }
 
         public async Task<IEnumerable<SelectListItem>> GetProductsByRestaurantIdAsync(string id)
@@ -55,10 +60,50 @@ namespace GustoExpress.Services.Data
                 await _productService.GetById(model.SecondProductId),
                 await _productService.GetById(model.ThirdhProductId),
             };
-            offer.Products = products.Where(p => p != null).ToList();
+            offer.OfferProducts = await CreateOfferProducts(products, offer);
 
             await _context.Offers.AddAsync(offer);
             await _restaurantService.AddOfferAsync(restaurantId, offer);
+
+            await _context.SaveChangesAsync();
+
+            return offer;
+        }
+
+        public async Task<List<OfferProduct>> CreateOfferProducts(ICollection<Product> products, Offer offer)
+        {
+            var offerProducts = new List<OfferProduct>();
+
+            foreach (var item in products)
+            {
+                if (item != null)
+                {
+                    OfferProduct offerProduct = new OfferProduct();
+                    offerProduct.Product = item;
+                    offerProduct.Offer = offer;
+
+                    await _context.OfferProducts.AddAsync(offerProduct);
+
+                    offerProducts.Add(offerProduct);
+                }
+            }
+
+            return offerProducts;
+        }
+
+        public async Task<Offer> EditOfferAsync(string id, CreateOfferViewModel model)
+        {
+            Offer offer = await GetByIdAsync(id);
+            offer.Name = model.Name;
+            offer.Description = model.Description;
+            offer.Price = model.Price;
+            var products = new List<Product>()
+            {
+                await _productService.GetById(model.FirstProductId),
+                await _productService.GetById(model.SecondProductId),
+                await _productService.GetById(model.ThirdhProductId),
+            };
+            offer.OfferProducts = await CreateOfferProducts(products, offer);
 
             await _context.SaveChangesAsync();
 

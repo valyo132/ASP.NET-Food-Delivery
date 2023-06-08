@@ -22,7 +22,11 @@ namespace GustoExpress.Data.Models
         [MaxLength(OFFER_DESCRIPTION_MAX_LENGHT), MinLength(OFFER_DESCRIPTION_MIN_LENGHT)]
         public string Description { get; set; }
 
-        public ICollection<Product> Products { get; set; } = new HashSet<Product>();
+        [ForeignKey(nameof(Restaurant))]
+        public Guid RestaurantId { get; set; }
+        public Restaurant Restaurant { get; set; }
+
+        public ICollection<OfferProduct> OfferProducts { get; set; } = new List<OfferProduct>();
 
         [Required]
         public decimal Price { get; set; }

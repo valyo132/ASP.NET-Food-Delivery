@@ -32,14 +32,14 @@
 
                     <input type="hidden" asp-for="RestaurantId" value="@ViewData["restaurantId"]" />
 
-                    <select class="form-select" aria-label="Default select example" asp-for="FirstProductId" asp-items="@Model.ProductsToChoose">
-                        <option selected>Select product</option>
+                    <select class="form-select" aria-label="Default select example" asp-for="FirstProductId" asp-items="@Model.ProductsToChoose" required>
                     </select>
+                    <span asp-validation-for="FirstProductId" style="color:red"></span>
                     <br />
 
-                    <select class="form-select" aria-label="Default select example" asp-for="SecondProductId" asp-items="@Model.ProductsToChoose">
-                        <option selected>Select product</option>
+                    <select class="form-select" aria-label="Default select example" asp-for="SecondProductId" asp-items="@Model.ProductsToChoose" required>
                     </select>
+                    <span asp-validation-for="SecondProductId" style="color:red"></span>
                     <br />
 
                     <select class="form-select" aria-label="Default select example" asp-for="ThirdhProductId" asp-items="@Model.ProductsToChoose">

@@ -68,6 +68,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJcQ3JlYXRlT2ZmZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[G:/ASP.NET-Food-Delivery/GustoExpress/GustoExpress.Web/Views/Offer/EditOffer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJcRWRpdE9mZmVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [G:/ASP.NET-Food-Delivery/GustoExpress/GustoExpress.Web/Views/Product/CreateProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxDcmVhdGVQcm9kdWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -98,6 +102,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [G:/ASP.NET-Food-Delivery/GustoExpress/GustoExpress.Web/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/ASP.NET-Food-Delivery/GustoExpress/GustoExpress.Web/Views/Shared/_OffersPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9PZmZlcnNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/ASP.NET-Food-Delivery/GustoExpress/GustoExpress.Web/Views/Shared/_ProductsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Qcm9kdWN0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [G:/ASP.NET-Food-Delivery/GustoExpress/GustoExpress.Web/Views/Shared/_ValidationScriptsPartial.cshtml]

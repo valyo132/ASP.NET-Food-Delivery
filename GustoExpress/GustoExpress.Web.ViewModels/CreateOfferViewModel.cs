@@ -17,7 +17,10 @@
         [MaxLength(OFFER_DESCRIPTION_MAX_LENGHT), MinLength(OFFER_DESCRIPTION_MIN_LENGHT)]
         public string Description { get; set; } = null!;
 
+        [Required]
         public string FirstProductId { get; set; } = null!;
+
+        [Required]
         public string SecondProductId { get; set; } = null!;
         public string ThirdhProductId { get; set; } = null!;
 

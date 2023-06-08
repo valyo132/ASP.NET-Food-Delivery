@@ -25,6 +25,7 @@ namespace GustoExpress.Web.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateOffer(string id)
         {
+            ViewData["RestaurantId"] = id;
             CreateOfferViewModel model = new CreateOfferViewModel()
             {
                 ProductsToChoose = await _offerService.GetProductsByRestaurantIdAsync(id)
@@ -55,13 +56,45 @@ namespace GustoExpress.Web.Controllers
             return View(obj);
         }
 
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> EditOffer(string id)
+        {
+            Offer offer = await _offerService.GetByIdAsync(id);
+            CreateOfferViewModel model = _offerService.ProjectTo<CreateOfferViewModel>(offer);
+            model.ProductsToChoose = await _offerService.GetProductsByRestaurantIdAsync(offer.RestaurantId.ToString());
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> EditOffer(IFormFile? file, string id, CreateOfferViewModel obj)
+        {
+            if (ModelState.IsValid)
+            {
+                Offer offer = await _offerService.EditOfferAsync(id, obj);
+
+                if (file != null)
+                {
+                    if (offer.ImageURL != null)
+                        DeleteImage(offer.ImageURL);
+
+                    await SaveImage(file, offer);
+                }
+
+                return RedirectToAction("RestaurantPage", "Restaurant", new { id = offer.RestaurantId });
+            }
+
+            return View(obj);
+        }
+
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteOffer(string id)
         {
             Offer deletedOffer = await _offerService.DeleteOfferAsync(id);
 
-            // Make the redirect to the restaurant page
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("RestaurantPage", "Restaurant", new { id = deletedOffer.RestaurantId });
         }
 
         private async Task SaveImage(IFormFile file, Offer offer)

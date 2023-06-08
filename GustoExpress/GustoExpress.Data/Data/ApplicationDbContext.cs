@@ -2,6 +2,7 @@
 using GustoExpress.Data.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace GustoExpress.Web.Data
 {
@@ -20,10 +21,17 @@ namespace GustoExpress.Web.Data
         public DbSet<Product> Products { get; set; } = null!;
         public DbSet<Restaurant> Restaurants { get; set; } = null!;
         public DbSet<Review> Reviews { get; set; } = null!;
+        public DbSet<OfferProduct> OfferProducts { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new RestaurantEntityConfiguration());
+
+            builder.Entity<Offer>()
+                .HasOne(o => o.Restaurant)
+                .WithMany(r => r.Offers)
+                .HasForeignKey(o => o.RestaurantId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(builder);
         }

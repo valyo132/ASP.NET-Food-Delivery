@@ -33,81 +33,16 @@
         <!-- Offers -->
         @if (Model.Offers.Any())
         {
-            <h2 class="ms-3 mt-4">Offers</h2>
-
-            @foreach (var offer in Model.Offers.Where(p => p.IsDeleted == false))
-            {
-                <!-- Offer -->
-                <article class="mt-2 container">
-                    <div>
-                        <div class="col-lg-10">
-                            <div class="card border-0 shadow-sm">
-                                <div class="row" style="height:150px">
-                                    <div class="col-7">
-                                        <div class="card-body">
-                                            <h5 class="card-title fw-bold">@offer.Name</h5>
-                                            <div class="card-text">
-                                                @offer.Description
-                                            </div> <br />
-                                            <i class="bi bi-currency-dollar"></i>@offer.Price lv.
-                                        </div>
-                                    </div>
-                                    <div class="col-3 d-flex align-items-center">
-                                        <img class="img-fluid float-end" src="@offer.ImageURL">
-                                    </div>
-                                    <div class="ms-4 col-1">
-                                        <form>
-                                            <button type="submit" class="mt-2 btn rounded-circle border-0 shadow bg-light"><i class="bi bi-plus"></i></button>
-                                            @if (this.User.IsInRole("Admin"))
-                                            {
-                                                <button asp-action="DeleteOffer" asp-controller="Offer" asp-route-id="@offer.Id" class="my-2 btn rounded-circle border-0 shadow bg-light" onclick="return confirm('Are you sure you want to delete offer @offer.Name from @Model.Name')"><i class="bi bi-trash3-fill"></i></button>
-                                                <button asp-action="EditOffer" asp-controller="Offer" asp-route-id="@offer.Id" class="mb-2 btn rounded-circle border-0 shadow bg-light"><i class="bi bi-pencil-square"></i></button>
-                                            }
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            }
+            <partial name="_OffersPartial" model="@Model"/>
         }
 
-        @foreach (var product in Model.Products.Where(p => p.IsDeleted == false))
+        @if (Model.Products.Any(p => p.IsDeleted == false))
         {
-            <!-- Product -->
-            <article class="container mt-5">
-                <div>
-                    <div class="col-lg-10">
-                        <div class="card border-0 shadow-sm">
-                            <div class="row" style="height:150px">
-                                <div class="col-7">
-                                    <div class="card-body">
-                                        <h5 class="card-title fw-bold">@product.Name [@product.Grams]grams</h5>
-                                        <div class="card-text">
-                                            @product.Description
-                                        </div> <br />
-                                        <i class="bi bi-currency-dollar"></i>@product.Price lv.
-                                    </div>
-                                </div>
-                                <div class="col-3 d-flex align-items-center">
-                                    <img class="img-fluid float-end" src="@product.ImageURL">
-                                </div>
-                                <div class="ms-4 col-1">
-                                    <form>
-                                        <button type="submit" class="mt-2 btn rounded-circle border-0 shadow bg-light"><i class="bi bi-plus"></i></button>
-                                        @if (this.User.IsInRole("Admin"))
-                                        {
-                                            <button asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@product.Id" class="my-2 btn rounded-circle border-0 shadow bg-light" onclick="return confirm('Are you sure you want to delete product @product.Name from @Model.Name')"><i class="bi bi-trash3-fill"></i></button>
-                                            <button asp-action="EditProduct" asp-controller="Product" asp-route-id="@product.Id" class="mb-2 btn rounded-circle border-0 shadow bg-light"><i class="bi bi-pencil-square"></i></button>
-                                        }
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
+            <partial name="_ProductsPartial" model="@Model"/>
+        }
+        else
+        {
+            <h1 class="mt-3 text-center">There are no products here!</h1>
         }
     </section>
 

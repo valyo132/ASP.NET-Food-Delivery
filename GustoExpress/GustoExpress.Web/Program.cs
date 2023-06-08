@@ -34,11 +34,11 @@ builder.Services.AddAutoMapper(cfg =>
     cfg.AddProfile<GustoExpressProfile>();
 });
 
-builder.Services.AddTransient<IRestaurantService, RestaurantService>();
-builder.Services.AddTransient<ICityService, CityService>();
-builder.Services.AddTransient<IProductService, ProductService>();
-builder.Services.AddTransient<ICategoryService, CategoryService>();
-builder.Services.AddTransient<IOfferService, OfferService>();
+builder.Services.AddScoped<IRestaurantService, RestaurantService>();
+builder.Services.AddScoped<ICityService, CityService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IOfferService, OfferService>();
 
 var app = builder.Build();
 
