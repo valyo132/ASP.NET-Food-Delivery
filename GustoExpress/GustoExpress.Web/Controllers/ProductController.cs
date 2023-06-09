@@ -46,6 +46,7 @@ namespace GustoExpress.Web.Controllers
                 if (file != null)
                     await SaveImage(file, product);
 
+                TempData["success"] = "Successfully created product!";
                 return RedirectToAction("RestaurantPage", "Restaurant", new {id = product.RestaurantId});
             }
 
@@ -81,6 +82,7 @@ namespace GustoExpress.Web.Controllers
                     await SaveImage(file, editedProduct);
                 }
 
+                TempData["success"] = "Successfully updated product!";
                 return RedirectToAction("RestaurantPage", "Restaurant", new { id = obj.RestaurantId });
             }
 
@@ -92,6 +94,7 @@ namespace GustoExpress.Web.Controllers
         {
             Product deletedProduct = await _productService.DeleteAsync(id);
 
+            TempData["success"] = "Successfully deleted product!";
             return RedirectToAction("RestaurantPage", "Restaurant", new { id = deletedProduct.RestaurantId });
         }
 

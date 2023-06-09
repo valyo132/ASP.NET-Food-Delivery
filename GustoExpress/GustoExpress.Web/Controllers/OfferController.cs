@@ -50,6 +50,7 @@ namespace GustoExpress.Web.Controllers
                     await SaveImage(file, offer);
                 }
 
+                TempData["success"] = "Successfully created offer!";
                 return RedirectToAction("RestaurantPage", "Restaurant", new { id = id });
             }
 
@@ -60,7 +61,6 @@ namespace GustoExpress.Web.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditOffer(string id)
         {
-            ViewData["restaurantId"] = id;
             Offer offer = await _offerService.GetByIdAsync(id);
             CreateOfferViewModel model = _offerService.ProjectTo<CreateOfferViewModel>(offer);
             model.ProductsToChoose = await _offerService.GetProductsByRestaurantIdAsync(offer.RestaurantId.ToString());
@@ -84,6 +84,7 @@ namespace GustoExpress.Web.Controllers
                     await SaveImage(file, offer);
                 }
 
+                TempData["success"] = "Successfully updated offer!";
                 return RedirectToAction("RestaurantPage", "Restaurant", new { id = offer.RestaurantId });
             }
 
@@ -95,6 +96,7 @@ namespace GustoExpress.Web.Controllers
         {
             Offer deletedOffer = await _offerService.DeleteOfferAsync(id);
 
+            TempData["success"] = "Successfully deleted offer!";
             return RedirectToAction("RestaurantPage", "Restaurant", new { id = deletedOffer.RestaurantId });
         }
 

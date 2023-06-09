@@ -1,10 +1,10 @@
 ﻿@using GustoExpress.Web.ViewModels;
 @model CreateOfferViewModel
 
-@*<form asp-action="RestaurantPage" asp-controller="Restaurant" method="get">
-    <input type="hidden" name="id" value="@ViewData["restaurantId"]" />
+<form asp-action="RestaurantPage" asp-controller="Restaurant" method="get">
+    <input type="hidden" name="id" value="@Model.RestaurantId" />
     <button class="btn btn-light rounded-1" type="submit"><i class="bi bi-arrow-left"></i> Go back</button>
-</form>*@
+</form>
 
 <div>
     <h1 class="mt-3 fw-bold text-center">
@@ -35,7 +35,7 @@
             <div class="my-3 row justify-content-center">
                 <div class="mx-4 col-lg-6">
 
-                    <input type="hidden" asp-for="RestaurantId" value="@ViewData["restaurantId"]" />
+                    <input type="hidden" asp-for="RestaurantId" value="@Model.RestaurantId" />
 
                     <select class="form-select" aria-label="Default select example" asp-for="FirstProductId" asp-items="@Model.ProductsToChoose" required>
                     </select>

@@ -1,6 +1,33 @@
 ﻿@using GustoExpress.Web.ViewModels;
 @model List<AllRestaurantViewModel>
 
+<form asp-action="Index" asp-controller="Home" method="get">
+    <button class="btn btn-light rounded-1" type="submit"><i class="bi bi-arrow-left"></i> Go back</button>
+</form>
+
+<div>
+    <h1 class="mt-3 fw-bold text-center">
+        <svg width="64px" height="64px" viewBox="0 0 52.00 52.00" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+                <g id="Group_49" data-name="Group 49" transform="translate(-788.946 -1785.428)">
+                    <path id="Path_131" data-name="Path 131"
+                          d="M814.946,1793.095a24,24,0,0,0-24,24h48A24,24,0,0,0,814.946,1793.095Z" fill="#ffffff"
+                          stroke="#0d0c0c" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></path>
+                    <line id="Line_51" data-name="Line 51" x2="48" transform="translate(790.946 1825.761)"
+                          fill="#ffffff" stroke="#0d0c0c" stroke-linecap="round" stroke-linejoin="round"
+                          stroke-width="4"></line>
+                    <line id="Line_52" data-name="Line 52" y2="5.667" transform="translate(814.946 1787.428)"
+                          fill="#ffffff" stroke="#0d0c0c" stroke-linecap="round" stroke-linejoin="round"
+                          stroke-width="4"></line>
+                </g>
+            </g>
+        </svg>
+        GustoExpress
+    </h1>
+</div>
+
 <section class="my-5">
     <div class="container-lg-7">
         @foreach (var restaurant in Model.Where(r => r.IsDeleted == false))
