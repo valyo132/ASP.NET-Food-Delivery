@@ -31,6 +31,7 @@
         public IEnumerable<SelectListItem> ProductsToChoose { get; set; }
 
         [Required]
+        [Range(1, (double)decimal.MaxValue)]
         public decimal Price { get; set; }
 
         public string? ImageURL { get; set; }

@@ -1,6 +1,4 @@
-﻿using GustoExpress.Data.Models;
-using GustoExpress.Services.Data;
-using GustoExpress.Services.Data.Contracts;
+﻿using GustoExpress.Services.Data.Contracts;
 using GustoExpress.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace GustoExpress.Web.Controllers
 {
     [Authorize]
-    public class RestaurantController : Controller
+    public class RestaurantController : BaseController
     {
         private readonly IRestaurantService _restaurantService;
         private readonly IWebHostEnvironment _webHostEnvironment;
@@ -23,17 +21,16 @@ namespace GustoExpress.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> All(string city)
         {
-            var restaurants = await _restaurantService.AllAsync(city);
+            List<AllRestaurantViewModel> restaurants = await _restaurantService.AllAsync(city);
             return View(restaurants);
         }
 
         [HttpGet]
         public async Task<IActionResult> RestaurantPage(string id)
         {
-            var restaurant = await _restaurantService.GetByIdAsync(id);
-            var restaurantViewModel = _restaurantService.ProjectTo<RestaurantPageViewModel>(restaurant);
+            RestaurantPageViewModel model = await _restaurantService.ProjectToModel<RestaurantPageViewModel>(id);
 
-            return View(restaurantViewModel);
+            return View(model);
         }
 
         [HttpGet]
@@ -49,7 +46,7 @@ namespace GustoExpress.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                Restaurant restaurant = await _restaurantService.CreateAsync(obj);
+                RestaurantViewModel restaurant = await _restaurantService.CreateAsync(obj);
 
                 if (file != null)
                     await SaveImage(file, restaurant);
@@ -65,10 +62,9 @@ namespace GustoExpress.Web.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditRestaurant(string id)
         {
-            Restaurant restaurant = await _restaurantService.GetByIdAsync(id);
-            CreateRestaurantViewModel restaurantViewModel = _restaurantService.ProjectTo<CreateRestaurantViewModel>(restaurant);
+            CreateRestaurantViewModel model = await _restaurantService.ProjectToModel<CreateRestaurantViewModel>(id);
 
-            return View(restaurantViewModel);
+            return View(model);
         }
 
         [Authorize(Roles = "Admin")]
@@ -76,7 +72,7 @@ namespace GustoExpress.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                Restaurant restaurant = await _restaurantService.EditRestaurantAsync(id, obj);
+                RestaurantViewModel restaurant = await _restaurantService.EditRestaurantAsync(id, obj);
 
                 if (file != null)
                 {
@@ -96,7 +92,7 @@ namespace GustoExpress.Web.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteRestaurant(string id)
         {
-            Restaurant restaurant = await _restaurantService.DeleteAsync(id);
+            RestaurantViewModel restaurant = await _restaurantService.DeleteAsync(id);
 
             TempData["success"] = "Successfully deleted restaurant!";
             return RedirectToAction("All", "Restaurant", new { city = restaurant.City.CityName });
@@ -116,7 +112,7 @@ namespace GustoExpress.Web.Controllers
             }
         }
 
-        private async Task SaveImage(IFormFile file, Restaurant restaurant)
+        private async Task SaveImage(IFormFile file, RestaurantViewModel restaurant)
         {
             string wwwRootPath = _webHostEnvironment.WebRootPath;
 

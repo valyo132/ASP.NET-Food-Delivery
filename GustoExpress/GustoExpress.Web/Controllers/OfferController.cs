@@ -1,15 +1,12 @@
-﻿using GustoExpress.Data.Models;
-using GustoExpress.Services.Data;
-using GustoExpress.Services.Data.Contracts;
+﻿using GustoExpress.Services.Data.Contracts;
 using GustoExpress.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GustoExpress.Web.Controllers
 {
     [Authorize]
-    public class OfferController : Controller
+    public class OfferController : BaseController
     {
         private readonly IOfferService _offerService;
         private readonly IWebHostEnvironment _webHostEnvironment;
@@ -40,7 +37,7 @@ namespace GustoExpress.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                Offer offer = await _offerService.CreateOfferAsync(id, obj);
+                OfferViewModel offer = await _offerService.CreateOfferAsync(id, obj);
 
                 if (file != null)
                 {
@@ -61,9 +58,8 @@ namespace GustoExpress.Web.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditOffer(string id)
         {
-            Offer offer = await _offerService.GetByIdAsync(id);
-            CreateOfferViewModel model = _offerService.ProjectTo<CreateOfferViewModel>(offer);
-            model.ProductsToChoose = await _offerService.GetProductsByRestaurantIdAsync(offer.RestaurantId.ToString());
+            CreateOfferViewModel model = await _offerService.ProjectToModel<CreateOfferViewModel>(id);
+            model.ProductsToChoose = await _offerService.GetProductsByRestaurantIdAsync(model.RestaurantId.ToString());
 
             return View(model);
         }
@@ -74,7 +70,7 @@ namespace GustoExpress.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                Offer offer = await _offerService.EditOfferAsync(id, obj);
+                OfferViewModel offer = await _offerService.EditOfferAsync(id, obj);
 
                 if (file != null)
                 {
@@ -94,13 +90,13 @@ namespace GustoExpress.Web.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteOffer(string id)
         {
-            Offer deletedOffer = await _offerService.DeleteOfferAsync(id);
+            OfferViewModel deletedOffer = await _offerService.DeleteOfferAsync(id);
 
             TempData["success"] = "Successfully deleted offer!";
             return RedirectToAction("RestaurantPage", "Restaurant", new { id = deletedOffer.RestaurantId });
         }
 
-        private async Task SaveImage(IFormFile file, Offer offer)
+        private async Task SaveImage(IFormFile file, OfferViewModel offer)
         {
             string wwwRootPath = _webHostEnvironment.WebRootPath;
 

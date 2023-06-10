@@ -27,9 +27,11 @@ namespace GustoExpress.Web.ViewModels
         public string RestaurantId { get; set; }
 
         [Required]
+        [Range(1, (double)decimal.MaxValue)]
         public decimal Price { get; set; }
 
         [Required]
+        [Range(1, (double)decimal.MaxValue)]
         public decimal Grams { get; set; }
 
         public string? ImageURL { get; set; }

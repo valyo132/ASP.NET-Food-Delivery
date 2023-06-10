@@ -19,12 +19,15 @@ namespace GustoExpress.Web.ViewModels
         public string City { get; set; } = null!;
 
         [Required]
+        [Range(1, (double)decimal.MaxValue)]
         public decimal DeliveryPrice { get; set; }
 
         [Required]
+        [Range(1, int.MaxValue)]
         public int MinTimeToDeliver { get; set; }
 
         [Required]
+        [Range(1, int.MaxValue)]
         public int MaxTimeToDeliver { get; set; }
 
         public string? ImageURL { get; set; }

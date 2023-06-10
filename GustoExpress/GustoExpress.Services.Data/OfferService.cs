@@ -26,16 +26,19 @@ namespace GustoExpress.Services.Data
             _restaurantService = restaurantService;
         }
 
+        public async Task<T> ProjectToModel<T>(string id)
+        {
+            Offer offer = await GetByIdAsync(id);
+            T model = ProjectTo<T>(offer);
+
+            return model;
+        }
+
         public async Task<Offer> GetByIdAsync(string id)
         {
             return await _context.Offers
                 .Include(o => o.OfferProducts)
                 .FirstOrDefaultAsync(o => o.Id.ToString() == id);
-        }
-
-        public T ProjectTo<T>(Offer offer)
-        {
-            return _mapper.Map<T>(offer);
         }
 
         public async Task<IEnumerable<SelectListItem>> GetProductsByRestaurantIdAsync(string id)
@@ -50,7 +53,7 @@ namespace GustoExpress.Services.Data
                 .ToListAsync();
         }
 
-        public async Task<Offer> CreateOfferAsync(string restaurantId, CreateOfferViewModel model)
+        public async Task<OfferViewModel> CreateOfferAsync(string restaurantId, CreateOfferViewModel model)
         {
             Offer offer = _mapper.Map<Offer>(model);
             var products = new List<Product>()
@@ -66,10 +69,45 @@ namespace GustoExpress.Services.Data
 
             await _context.SaveChangesAsync();
 
-            return offer;
+            return ProjectTo<OfferViewModel>(offer);
         }
 
-        public async Task<List<OfferProduct>> CreateOfferProducts(ICollection<Product> products, Offer offer)
+        public async Task<OfferViewModel> EditOfferAsync(string id, CreateOfferViewModel model)
+        {
+            Offer offer = await GetByIdAsync(id);
+            offer.Name = model.Name;
+            offer.Description = model.Description;
+            offer.Price = model.Price;
+            var products = new List<Product>()
+            {
+                await _productService.GetByIdAsync(model.FirstProductId),
+                await _productService.GetByIdAsync(model.SecondProductId),
+                await _productService.GetByIdAsync(model.ThirdhProductId),
+            };
+            offer.OfferProducts = await CreateOfferProducts(products, offer);
+
+            await _context.SaveChangesAsync();
+
+            return ProjectTo<OfferViewModel>(offer);
+        }
+
+        public async Task<OfferViewModel> DeleteOfferAsync(string id)
+        {
+            Offer offer = await GetByIdAsync(id);
+            offer.IsDeleted = true;
+
+            await _context.SaveChangesAsync();
+
+            return ProjectTo<OfferViewModel>(offer);
+        }
+
+        public async Task SaveImageURL(string imageURL, OfferViewModel offerVm)
+        {
+            Offer offer = await GetByIdAsync(offerVm.Id.ToString());
+            offer.ImageURL = imageURL;
+            await _context.SaveChangesAsync();
+        }
+        private async Task<List<OfferProduct>> CreateOfferProducts(ICollection<Product> products, Offer offer)
         {
             var offerProducts = new List<OfferProduct>();
 
@@ -90,39 +128,9 @@ namespace GustoExpress.Services.Data
             return offerProducts;
         }
 
-        public async Task<Offer> EditOfferAsync(string id, CreateOfferViewModel model)
+        private T ProjectTo<T>(Offer offer)
         {
-            Offer offer = await GetByIdAsync(id);
-            offer.Name = model.Name;
-            offer.Description = model.Description;
-            offer.Price = model.Price;
-            var products = new List<Product>()
-            {
-                await _productService.GetByIdAsync(model.FirstProductId),
-                await _productService.GetByIdAsync(model.SecondProductId),
-                await _productService.GetByIdAsync(model.ThirdhProductId),
-            };
-            offer.OfferProducts = await CreateOfferProducts(products, offer);
-
-            await _context.SaveChangesAsync();
-
-            return offer;
-        }
-
-        public async Task<Offer> DeleteOfferAsync(string id)
-        {
-            Offer offer = await GetByIdAsync(id);
-            offer.IsDeleted = true;
-
-            await _context.SaveChangesAsync();
-
-            return offer;
-        }
-
-        public async Task SaveImageURL(string imageURL, Offer offer)
-        {
-            offer.ImageURL = imageURL;
-            await _context.SaveChangesAsync();
+            return _mapper.Map<T>(offer);
         }
     }
 }

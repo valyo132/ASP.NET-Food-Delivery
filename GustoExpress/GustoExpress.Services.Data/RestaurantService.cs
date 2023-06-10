@@ -5,7 +5,6 @@ using GustoExpress.Services.Data.Contracts;
 using GustoExpress.Web.Data;
 using GustoExpress.Web.ViewModels;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
 
 namespace GustoExpress.Services.Data
 {
@@ -24,6 +23,13 @@ namespace GustoExpress.Services.Data
             _cityService = cityService;
         }
 
+        public async Task<T> ProjectToModel<T>(string id)
+        {
+            Restaurant restaurant = await GetByIdAsync(id);
+            T restaurantViewModel = ProjectTo<T>(restaurant);
+            return restaurantViewModel;
+        }
+
         public async Task<Restaurant> GetByIdAsync(string id)
         {
             return await _context.Restaurants
@@ -31,11 +37,6 @@ namespace GustoExpress.Services.Data
                 .Include(r => r.Products)
                 .Include(r => r.Offers)
                 .FirstOrDefaultAsync(r => r.Id.ToString() == id);
-        }
-
-        public T ProjectTo<T>(Restaurant restaurant)
-        {
-            return _mapper.Map<T>(restaurant);
         }
 
         public async Task<List<AllRestaurantViewModel>> AllAsync(string city)
@@ -46,7 +47,7 @@ namespace GustoExpress.Services.Data
                 .ToListAsync();
         }
 
-        public async Task<Restaurant> CreateAsync(CreateRestaurantViewModel model)
+        public async Task<RestaurantViewModel> CreateAsync(CreateRestaurantViewModel model)
         {
             Restaurant newRestaurant = new Restaurant();
             newRestaurant.Name = model.Name;
@@ -66,10 +67,10 @@ namespace GustoExpress.Services.Data
             await _context.Restaurants.AddAsync(newRestaurant);
             await _context.SaveChangesAsync();
 
-            return newRestaurant;
+            return ProjectTo<RestaurantViewModel>(newRestaurant);
         }
 
-        public async Task<Restaurant> EditRestaurantAsync(string id, CreateRestaurantViewModel model)
+        public async Task<RestaurantViewModel> EditRestaurantAsync(string id, CreateRestaurantViewModel model)
         {
             Restaurant restaurant = await GetByIdAsync(id);
             restaurant.Name = model.Name;
@@ -87,17 +88,16 @@ namespace GustoExpress.Services.Data
 
             await _context.SaveChangesAsync();
 
-            return restaurant;
+            return ProjectTo<RestaurantViewModel>(restaurant);
         }
 
-        public async Task<Restaurant> DeleteAsync(string id)
+        public async Task<RestaurantViewModel> DeleteAsync(string id)
         {
             Restaurant restaurant = await GetByIdAsync(id);
             restaurant.IsDeleted = true;
-
             await _context.SaveChangesAsync();
 
-            return restaurant;
+            return ProjectTo<RestaurantViewModel>(restaurant);
         }
 
         public async Task AddProductAsync(Product product)
@@ -116,10 +116,16 @@ namespace GustoExpress.Services.Data
             await _context.SaveChangesAsync();
         }
 
-        public async Task SaveImageURL(string url, Restaurant restaurant)
+        public async Task SaveImageURL(string url, RestaurantViewModel restaurantVm)
         {
-            restaurant.ImageURL = url;
+            Restaurant restraurant = await GetByIdAsync(restaurantVm.Id.ToString());
+            restraurant.ImageURL = url;
             await _context.SaveChangesAsync();
+        }
+
+        private T ProjectTo<T>(Restaurant restaurant)
+        {
+            return _mapper.Map<T>(restaurant);
         }
     }
 }

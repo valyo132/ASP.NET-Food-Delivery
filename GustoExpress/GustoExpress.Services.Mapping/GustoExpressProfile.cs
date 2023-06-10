@@ -10,6 +10,8 @@ namespace GustoExpress.Services.Mapping
         {
             CreateMap<Restaurant, AllRestaurantViewModel>();
 
+            CreateMap<Restaurant, RestaurantViewModel>();
+
             CreateMap<Restaurant, CreateRestaurantViewModel>()
                 .ForMember(x => x.MinTimeToDeliver, y => y.MapFrom(s => int.Parse(new string(s.TimeToDeliver.TakeWhile(c => c != '-').ToArray()))))
                 .ForMember(x => x.MaxTimeToDeliver, y => y.MapFrom(s => int.Parse(new string(s.TimeToDeliver.Skip(s.TimeToDeliver.IndexOf('-') + 1).ToArray()))))
@@ -26,7 +28,11 @@ namespace GustoExpress.Services.Mapping
 
             CreateMap<Product, CreateProductViewModel>();
 
+            CreateMap<Product, ProductViewModel>();
+
             CreateMap<CreateOfferViewModel, Offer>();
+
+            CreateMap<Offer, OfferViewModel>();
 
             CreateMap<Offer, CreateOfferViewModel>()
                 .ForMember(x => x.FirstProductId, y => y.MapFrom(s => s.OfferProducts.FirstOrDefault().ProductId))

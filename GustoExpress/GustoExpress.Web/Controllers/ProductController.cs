@@ -1,5 +1,4 @@
-﻿using GustoExpress.Data.Models;
-using GustoExpress.Services.Data.Contracts;
+﻿using GustoExpress.Services.Data.Contracts;
 using GustoExpress.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace GustoExpress.Web.Controllers
 {
     [Authorize]
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         private readonly IProductService _productService;
         private readonly IWebHostEnvironment _webHostEnvironment;
@@ -41,7 +40,7 @@ namespace GustoExpress.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                Product product = await _productService.CreateProductAsync(obj);
+                ProductViewModel product = await _productService.CreateProductAsync(obj);
 
                 if (file != null)
                     await SaveImage(file, product);
@@ -57,11 +56,10 @@ namespace GustoExpress.Web.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditProduct(string id)
         {
-            var product = await _productService.GetByIdAsync(id);
-            ViewData["restaurantId"] = product.RestaurantId;
-
-            var createProductVm = _productService.ProjectTo<CreateProductViewModel>(product);
+            CreateProductViewModel createProductVm = await _productService.ProjectToModel<CreateProductViewModel>(id);
             createProductVm.CategoryList = _categoryService.GetCategories();
+
+            ViewData["restaurantId"] = createProductVm.RestaurantId;
 
             return View(createProductVm);
         }
@@ -72,7 +70,7 @@ namespace GustoExpress.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var editedProduct = await _productService.EditProductAsync(id, obj);
+                ProductViewModel editedProduct = await _productService.EditProductAsync(id, obj);
 
                 if (file != null)
                 {
@@ -83,7 +81,7 @@ namespace GustoExpress.Web.Controllers
                 }
 
                 TempData["success"] = "Successfully updated product!";
-                return RedirectToAction("RestaurantPage", "Restaurant", new { id = obj.RestaurantId });
+                return RedirectToAction("RestaurantPage", "Restaurant", new { id = editedProduct.RestaurantId });
             }
 
             return View(obj);
@@ -92,13 +90,13 @@ namespace GustoExpress.Web.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteProduct(string id)
         {
-            Product deletedProduct = await _productService.DeleteAsync(id);
+            ProductViewModel deletedProduct = await _productService.DeleteAsync(id);
 
             TempData["success"] = "Successfully deleted product!";
             return RedirectToAction("RestaurantPage", "Restaurant", new { id = deletedProduct.RestaurantId });
         }
 
-        private async Task SaveImage(IFormFile file, Product product)
+        private async Task SaveImage(IFormFile file, ProductViewModel product)
         {
             string wwwRootPath = _webHostEnvironment.WebRootPath;
 

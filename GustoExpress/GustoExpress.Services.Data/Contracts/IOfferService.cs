@@ -6,12 +6,12 @@ namespace GustoExpress.Services.Data.Contracts
 {
     public interface IOfferService
     {
+        Task<T> ProjectToModel<T>(string id);
         Task<Offer> GetByIdAsync(string id);
-        T ProjectTo<T>(Offer offer);
         Task<IEnumerable<SelectListItem>> GetProductsByRestaurantIdAsync(string id);
-        Task<Offer> CreateOfferAsync(string restaurantId, CreateOfferViewModel model);
-        Task<Offer> EditOfferAsync(string id, CreateOfferViewModel model);
-        Task<Offer> DeleteOfferAsync(string id);
-        Task SaveImageURL(string imageURL, Offer offer);
+        Task<OfferViewModel> CreateOfferAsync(string restaurantId, CreateOfferViewModel model);
+        Task<OfferViewModel> EditOfferAsync(string id, CreateOfferViewModel model);
+        Task<OfferViewModel> DeleteOfferAsync(string id);
+        Task SaveImageURL(string imageURL, OfferViewModel offer);
     }
 }
