@@ -17,7 +17,17 @@
                                 <div class="card-text">
                                     @offer.Description
                                 </div> <br />
-                                <i class="bi bi-currency-dollar"></i>@offer.Price lv.
+                                @if (offer.Discount != null)
+                                {
+                                    <div class="p-0 container d-flex gap-3">
+                                        <p class="text-decoration-line-through"><i class="bi bi-currency-dollar"></i>@offer.Price lv.</p>
+                                        <p><i class="bi bi-currency-dollar"></i>@offer.DiscountedPrice lv.</p>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <p><i class="bi bi-currency-dollar"></i>@offer.Price lv.</p>
+                                }
                             </div>
                         </div>
                         <div class="col-3 d-flex align-items-center">

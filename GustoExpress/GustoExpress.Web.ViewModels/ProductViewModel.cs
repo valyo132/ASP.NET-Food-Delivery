@@ -1,5 +1,6 @@
 ﻿using GustoExpress.Data.Models;
 using GustoExpress.Data.Models.Enums;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -31,6 +32,13 @@ namespace GustoExpress.Web.ViewModels
         public decimal Price { get; set; }
 
         public decimal? Discount { get; set; }
+
+        [ValidateNever]
+        public decimal DiscountedPrice
+        {
+            get
+            { return this.Price - (this.Discount ?? 0); }
+        }
 
         [Required]
         public decimal Grams { get; set; }

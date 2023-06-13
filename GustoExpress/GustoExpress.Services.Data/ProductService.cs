@@ -54,6 +54,7 @@ namespace GustoExpress.Services.Data
             product.Category = model.Category;
             product.Price = model.Price;
             product.Grams = model.Grams;
+            product.Discount = model.Discount;
 
             await _context.SaveChangesAsync();
 

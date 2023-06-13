@@ -49,6 +49,9 @@ namespace GustoExpress.Web.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<decimal?>("Discount")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("ImageURL")
                         .HasColumnType("nvarchar(max)");
 

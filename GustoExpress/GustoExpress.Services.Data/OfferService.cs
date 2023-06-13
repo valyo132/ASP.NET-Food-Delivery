@@ -78,6 +78,7 @@ namespace GustoExpress.Services.Data
             offer.Name = model.Name;
             offer.Description = model.Description;
             offer.Price = model.Price;
+            offer.Discount = model.Discount;
             var products = new List<Product>()
             {
                 await _productService.GetByIdAsync(model.FirstProductId),

@@ -30,6 +30,9 @@ namespace GustoExpress.Web.ViewModels
         [Range(1, (double)decimal.MaxValue)]
         public decimal Price { get; set; }
 
+        [Range(1, (double)decimal.MaxValue)]
+        public decimal? Discount { get; set; }
+
         [Required]
         [Range(1, (double)decimal.MaxValue)]
         public decimal Grams { get; set; }

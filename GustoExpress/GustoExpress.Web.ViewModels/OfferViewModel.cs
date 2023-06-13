@@ -4,7 +4,7 @@
     using System.ComponentModel.DataAnnotations.Schema;
 
     using GustoExpress.Data.Models;
-
+    using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
     using static GustoExpress.Data.Common.DataConstraints.Offer;
 
     public class OfferViewModel
@@ -27,6 +27,15 @@
 
         [Required]
         public decimal Price { get; set; }
+
+        public decimal? Discount { get; set; }
+
+        [ValidateNever]
+        public decimal DiscountedPrice
+        {
+            get
+            { return this.Price - (this.Discount ?? 0); }
+        }
 
         public bool IsDeleted { get; set; } = false;
 

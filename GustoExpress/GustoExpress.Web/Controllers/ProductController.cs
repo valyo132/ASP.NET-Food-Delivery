@@ -70,6 +70,12 @@ namespace GustoExpress.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (obj.Discount > obj.Price)
+                {
+                    TempData["danger"] = "Invalid operation!";
+                    return RedirectToAction("RestaurantPage", "Restaurant", new { id = obj.RestaurantId });
+                }
+
                 ProductViewModel editedProduct = await _productService.EditProductAsync(id, obj);
 
                 if (file != null)

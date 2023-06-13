@@ -30,6 +30,7 @@ namespace GustoExpress.Data.Models
 
         [Required]
         public decimal Price { get; set; }
+        public decimal? Discount { get; set; }
 
         public bool IsDeleted { get; set; } = false;
 

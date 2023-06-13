@@ -34,6 +34,9 @@
         [Range(1, (double)decimal.MaxValue)]
         public decimal Price { get; set; }
 
+        [Range(1, (double)decimal.MaxValue)]
+        public decimal? Discount { get; set; }
+
         public string? ImageURL { get; set; }
     }
 }

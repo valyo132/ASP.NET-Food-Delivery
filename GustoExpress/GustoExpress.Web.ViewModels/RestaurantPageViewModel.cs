@@ -13,7 +13,7 @@ namespace GustoExpress.Web.ViewModels
 
         public string? ImageURL { get; set; }
 
-        public ICollection<Product> Products { get; set; } = new HashSet<Product>();
-        public ICollection<Offer> Offers { get; set; } = new HashSet<Offer>();
+        public ICollection<ProductViewModel> Products { get; set; } = new HashSet<ProductViewModel>();
+        public ICollection<OfferViewModel> Offers { get; set; } = new HashSet<OfferViewModel>();
     }
 }
