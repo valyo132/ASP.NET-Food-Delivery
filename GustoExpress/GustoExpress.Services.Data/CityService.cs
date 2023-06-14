@@ -27,7 +27,7 @@ namespace GustoExpress.Services.Data
 
         public async Task<City> GetCityAsync(string cityName)
         {
-            return await _context.Cities.FirstOrDefaultAsync(x => x.CityName == cityName);
+            return await _context.Cities.FirstOrDefaultAsync(x => x.CityName.ToLower() == cityName.ToLower());
         }
     }
 }
