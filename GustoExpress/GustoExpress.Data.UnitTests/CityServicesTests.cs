@@ -41,7 +41,7 @@ namespace GustoExpress.Services.Data.UnitTests
 
             var dbCity = cities.FirstOrDefault(c => c.CityName.ToLower() == name.ToLower());
 
-            Assert.IsNotNull(dbCity);
+            Assert.IsNotNull(serviceResult);
             Assert.That(dbCity.CityName, Is.EqualTo(serviceResult.CityName));
         }
 

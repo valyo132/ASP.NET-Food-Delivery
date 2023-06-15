@@ -193,3 +193,10 @@ G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.UnitTests\obj\Debug\net6
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.UnitTests\obj\Debug\net6.0\GustoExpress.Services.Data.UnitTests.pdb
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.UnitTests\obj\Debug\net6.0\GustoExpress.Services.Data.UnitTests.genruntimeconfig.cache
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.UnitTests\obj\Debug\net6.0\ref\GustoExpress.Services.Data.UnitTests.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.UnitTests\bin\Debug\net6.0\Castle.Core.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.UnitTests\bin\Debug\net6.0\Moq.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.UnitTests\bin\Debug\net6.0\System.Diagnostics.EventLog.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.UnitTests\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.Messages.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.UnitTests\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.UnitTests\bin\Debug\net6.0\GustoExpress.Services.Mapping.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Data.UnitTests\bin\Debug\net6.0\GustoExpress.Services.Mapping.pdb

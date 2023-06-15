@@ -11,6 +11,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.7" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
+    <PackageReference Include="Moq" Version="4.18.4" />
     <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
     <PackageReference Include="NUnit.Analyzers" Version="3.3.0" />
@@ -21,6 +22,7 @@
     <ProjectReference Include="..\GustoExpress.Data.Models\GustoExpress.Data.Models.csproj" />
     <ProjectReference Include="..\GustoExpress.Data\GustoExpress.Data.csproj" />
     <ProjectReference Include="..\GustoExpress.Services.Data\GustoExpress.Services.Data.csproj" />
+    <ProjectReference Include="..\GustoExpress.Services.Mapping\GustoExpress.Services.Mapping.csproj" />
   </ItemGroup>
 
 </Project>
