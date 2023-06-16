@@ -19,7 +19,7 @@
                                     <div class="card-text">
                                         @product.Description
                                     </div> <br />
-                                    @if (product.Discount != null)
+                                    @if (product.Discount != null && product.Discount > 0)
                                     {
                                         <div class="p-0 container d-flex gap-3">
                                             <p class="text-decoration-line-through"><i class="bi bi-currency-dollar"></i>@product.Price lv.</p>

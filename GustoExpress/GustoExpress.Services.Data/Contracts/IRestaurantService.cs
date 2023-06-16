@@ -12,7 +12,7 @@ namespace GustoExpress.Services.Data.Contracts
         Task<RestaurantViewModel> EditRestaurantAsync(string id, CreateRestaurantViewModel model);
         Task<RestaurantViewModel> DeleteAsync(string id);
         Task AddProductAsync(Product product);
-        Task AddOfferAsync(string restaurantId, Offer offer);
+        Task AddOfferAsync(Offer offer);
         Task SaveImageURL(string url, RestaurantViewModel restaurant);
     }
 }

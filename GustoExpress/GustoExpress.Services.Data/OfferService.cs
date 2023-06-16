@@ -65,7 +65,7 @@ namespace GustoExpress.Services.Data
             offer.OfferProducts = await CreateOfferProducts(products, offer);
 
             await _context.Offers.AddAsync(offer);
-            await _restaurantService.AddOfferAsync(restaurantId, offer);
+            await _restaurantService.AddOfferAsync(offer);
 
             await _context.SaveChangesAsync();
 

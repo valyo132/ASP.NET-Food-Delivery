@@ -30,7 +30,7 @@ namespace GustoExpress.Web.ViewModels
         [Range(1, (double)decimal.MaxValue)]
         public decimal Price { get; set; }
 
-        [Range(1, (double)decimal.MaxValue)]
+        [Range(0, (double)decimal.MaxValue)]
         public decimal? Discount { get; set; }
 
         [Required]

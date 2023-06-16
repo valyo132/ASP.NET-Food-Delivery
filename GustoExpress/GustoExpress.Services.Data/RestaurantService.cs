@@ -108,9 +108,9 @@ namespace GustoExpress.Services.Data
             await _context.SaveChangesAsync();
         }
 
-        public async Task AddOfferAsync(string restaurantId, Offer offer)
+        public async Task AddOfferAsync(Offer offer)
         {
-            var restaurant = await GetByIdAsync(restaurantId);
+            var restaurant = await GetByIdAsync(offer.RestaurantId.ToString());
             restaurant.Offers.Add(offer);
 
             await _context.SaveChangesAsync();
