@@ -5,10 +5,7 @@ using GustoExpress.Services.Mapping;
 using GustoExpress.Web.Data;
 using GustoExpress.Web.ViewModels;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Moq;
-using System.Runtime.CompilerServices;
-using System.Security.Permissions;
 
 namespace GustoExpress.Services.Data.UnitTests
 {
@@ -92,6 +89,24 @@ namespace GustoExpress.Services.Data.UnitTests
         }
 
         [Test]
+        public async Task Test_ProjectToModel_ShouldWork()
+        {
+            var _cityService = new Mock<ICityService>();
+            var _restaurantService = new RestaurantService(_context, _mapper, _cityService.Object);
+            var restaurantId = restaurants.First().Id.ToString();
+
+            var allRestaurantViewModel = await _restaurantService.ProjectToModel<AllRestaurantViewModel>(restaurantId);
+            var restaurantViewModel = await _restaurantService.ProjectToModel<RestaurantViewModel>(restaurantId);
+            var createRestaurantViewModel = await _restaurantService.ProjectToModel<CreateRestaurantViewModel>(restaurantId);
+            var restaurantPageViewModel = await _restaurantService.ProjectToModel<RestaurantPageViewModel>(restaurantId);
+
+            Assert.That(allRestaurantViewModel.GetType(), Is.EqualTo(typeof(AllRestaurantViewModel)));
+            Assert.That(restaurantViewModel.GetType(), Is.EqualTo(typeof(RestaurantViewModel)));
+            Assert.That(createRestaurantViewModel.GetType(), Is.EqualTo(typeof(CreateRestaurantViewModel)));
+            Assert.That(restaurantPageViewModel.GetType(), Is.EqualTo(typeof(RestaurantPageViewModel)));
+        }
+
+        [Test]
         public async Task Test_GetRestaurantById_ShouldWork()
         {
             var id = restaurants.First().Id;
@@ -116,7 +131,7 @@ namespace GustoExpress.Services.Data.UnitTests
 
             var actualResult = await _restaurantService.AllAsync("TestCity");
 
-            Assert.AreEqual(1, actualResult.Count);
+            Assert.That(actualResult.Count, Is.EqualTo(1));
             Assert.That(typeof(AllRestaurantViewModel), Is.EqualTo(actualResult.First().GetType()));
             Assert.That(typeof(List<AllRestaurantViewModel>), Is.EqualTo(actualResult.GetType()));
         }
@@ -189,7 +204,7 @@ namespace GustoExpress.Services.Data.UnitTests
             var restaurant = restaurants.First();
 
             Assert.IsNotNull(deletedRestaurant);
-            Assert.AreEqual(1, _context.Restaurants.Count(r => r.IsDeleted == true));
+            Assert.That(1, Is.EqualTo(_context.Restaurants.Count(r => r.IsDeleted == true)));
             Assert.That(restaurant.Id, Is.EqualTo(deletedRestaurant.Id));
         }
 
@@ -203,7 +218,7 @@ namespace GustoExpress.Services.Data.UnitTests
 
             var restaurantsProductsCount = _context.Restaurants.First().Products.Count;
 
-            Assert.AreEqual(1, restaurantsProductsCount);
+            Assert.That(1, Is.EqualTo(restaurantsProductsCount));
         }
 
         [Test]
@@ -228,7 +243,7 @@ namespace GustoExpress.Services.Data.UnitTests
             var restaurant = await _restaurantService.ProjectToModel<RestaurantViewModel>(restaurants.First().Id.ToString());
             await _restaurantService.SaveImageURL("Test URL", restaurant);
 
-            Assert.AreEqual("Test URL", restaurants.First().ImageURL);
+            Assert.That(restaurants.First().ImageURL, Is.EqualTo("Test URL"));
         }
     }
 }
