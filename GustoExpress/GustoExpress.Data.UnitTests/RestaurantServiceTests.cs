@@ -18,6 +18,7 @@ namespace GustoExpress.Services.Data.UnitTests
         private IEnumerable<OfferProduct> offerProducts;
         private ApplicationDbContext _context;
         private IMapper _mapper;
+        private IRestaurantService _restaurantService;
 
         [SetUp]
         public async Task Setup()
@@ -86,13 +87,14 @@ namespace GustoExpress.Services.Data.UnitTests
                 cfg.AddProfile<GustoExpressProfile>();
             });
             _mapper = configuration.CreateMapper();
+
+            var _cityService = new CityService(_context);
+            _restaurantService = new RestaurantService(_context, _mapper, _cityService);
         }
 
         [Test]
         public async Task Test_ProjectToModel_ShouldWork()
         {
-            var _cityService = new Mock<ICityService>();
-            var _restaurantService = new RestaurantService(_context, _mapper, _cityService.Object);
             var restaurantId = restaurants.First().Id.ToString();
 
             var allRestaurantViewModel = await _restaurantService.ProjectToModel<AllRestaurantViewModel>(restaurantId);
@@ -110,8 +112,6 @@ namespace GustoExpress.Services.Data.UnitTests
         public async Task Test_GetRestaurantById_ShouldWork()
         {
             var id = restaurants.First().Id;
-            var _cityService = new Mock<ICityService>();
-            var _restaurantService = new RestaurantService(_context, _mapper, _cityService.Object);
 
             var actualResult = await _restaurantService.GetByIdAsync(id.ToString());
 
@@ -126,9 +126,6 @@ namespace GustoExpress.Services.Data.UnitTests
         [Test]
         public async Task Test_AllAsyncMethod_ShouldWork()
         {
-            var _cityService = new Mock<ICityService>();
-            var _restaurantService = new RestaurantService(_context, _mapper, _cityService.Object);
-
             var actualResult = await _restaurantService.AllAsync("TestCity");
 
             Assert.That(actualResult.Count, Is.EqualTo(1));
@@ -139,9 +136,6 @@ namespace GustoExpress.Services.Data.UnitTests
         [Test]
         public async Task Test_AllAsyncMethod_ShouldReturnZero()
         {
-            var _cityService = new Mock<ICityService>();
-            var _restaurantService = new RestaurantService(_context, _mapper, _cityService.Object);
-
             var actualResult = await _restaurantService.AllAsync("Invalid City");
 
             Assert.That(0, Is.EqualTo(actualResult.Count));
@@ -150,9 +144,6 @@ namespace GustoExpress.Services.Data.UnitTests
         [Test]
         public async Task Test_CreateRestaurant_ShouldWork()
         {
-            var _cityService = new Mock<ICityService>();
-            var _restaurantService = new RestaurantService(_context, _mapper, _cityService.Object);
-
             CreateRestaurantViewModel model = new CreateRestaurantViewModel()
             {
                 Name = "Test",
@@ -170,35 +161,31 @@ namespace GustoExpress.Services.Data.UnitTests
             Assert.That(typeof(RestaurantViewModel), Is.EqualTo(actualResult.GetType()));
         }
 
-        // Not working
-        //[Test]
-        //public async Task Test_EditRestaurant_ShouldWork()
-        //{
-        //    var _cityService = new Mock<ICityService>();
-        //    var _restaurantService = new RestaurantService(_context, _mapper, _cityService.Object);
+        [Test]
+        public async Task Test_EditRestaurant_ShouldWork()
+        {
+            var restaurant = restaurants.First();
 
-        //    CreateRestaurantViewModel model = new CreateRestaurantViewModel()
-        //    {
-        //        Name = "EditedRestaurant",
-        //        Description = "Test restaurant",
-        //        City = "TestCity",
-        //        DeliveryPrice = 10,
-        //        MinTimeToDeliver = 10,
-        //        MaxTimeToDeliver = 10
-        //    };
+            CreateRestaurantViewModel model = new CreateRestaurantViewModel()
+            {
+                Name = "Edited restaurant",
+                Description = "Test restaurant",
+                City = "TestCity",
+                DeliveryPrice = 10,
+                MinTimeToDeliver = 10,
+                MaxTimeToDeliver = 10
+            };
 
-        //    var actualResult = await _restaurantService.EditRestaurantAsync(restaurants.First().Id.ToString(), model);
+            var actualResult = await _restaurantService.EditRestaurantAsync(restaurant.Id.ToString(), model);
 
-        //    Assert.AreEqual(typeof(RestaurantViewModel), actualResult.GetType());
-        //    //Assert.IsNotNull(_context.Restaurants.FirstOrDefault(r => r.Name == "EditedRestaurant"));
-        //}
+            Assert.IsNotNull(actualResult);
+            Assert.That(typeof(RestaurantViewModel), Is.EqualTo(actualResult.GetType()));
+            Assert.That(restaurant.Name, Is.EqualTo("Edited restaurant"));
+        }
 
         [Test]
         public async Task Test_Delete_ShouldWork()
         {
-            var _cityService = new Mock<ICityService>();
-            var _restaurantService = new RestaurantService(_context, _mapper, _cityService.Object);
-
             var deletedRestaurant = await _restaurantService.DeleteAsync(restaurants.First().Id.ToString());
 
             var restaurant = restaurants.First();
@@ -211,9 +198,6 @@ namespace GustoExpress.Services.Data.UnitTests
         [Test]
         public async Task Test_AddProductToRestaurant_ShouldWork()
         {
-            var _cityService = new Mock<ICityService>();
-            var _restaurantService = new RestaurantService(_context, _mapper, _cityService.Object);
-
             await _restaurantService.AddProductAsync(products.First());
 
             var restaurantsProductsCount = _context.Restaurants.First().Products.Count;
@@ -224,9 +208,6 @@ namespace GustoExpress.Services.Data.UnitTests
         [Test]
         public async Task Test_AddOffer_ShouldWork()
         {
-            var _cityService = new Mock<ICityService>();
-            var _restaurantService = new RestaurantService(_context, _mapper, _cityService.Object);
-
             await _restaurantService.AddOfferAsync(offers.First());
 
             var restaurantsOffersCount = _context.Restaurants.First().Offers.Count;
@@ -237,9 +218,6 @@ namespace GustoExpress.Services.Data.UnitTests
         [Test]
         public async Task Test_SaveImageURL_ShouldWork()
         {
-            var _cityService = new Mock<ICityService>();
-            var _restaurantService = new RestaurantService(_context, _mapper, _cityService.Object);
-
             var restaurant = await _restaurantService.ProjectToModel<RestaurantViewModel>(restaurants.First().Id.ToString());
             await _restaurantService.SaveImageURL("Test URL", restaurant);
 

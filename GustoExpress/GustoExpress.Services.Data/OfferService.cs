@@ -108,6 +108,7 @@ namespace GustoExpress.Services.Data
             offer.ImageURL = imageURL;
             await _context.SaveChangesAsync();
         }
+
         private async Task<List<OfferProduct>> CreateOfferProducts(ICollection<Product> products, Offer offer)
         {
             var offerProducts = new List<OfferProduct>();

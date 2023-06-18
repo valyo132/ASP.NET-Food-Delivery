@@ -85,7 +85,9 @@ namespace GustoExpress.Services.Data.UnitTests
             var createProductViewModel = await _productService.ProjectToModel<CreateProductViewModel>(products.First().Id.ToString());
             var productViewModel = await _productService.ProjectToModel<ProductViewModel>(products.First().Id.ToString());
 
+            Assert.IsNotNull(createProductViewModel);
             Assert.That(createProductViewModel.GetType(), Is.EqualTo(typeof(CreateProductViewModel)));
+            Assert.IsNotNull(productViewModel);
             Assert.That(productViewModel.GetType(), Is.EqualTo(typeof(ProductViewModel)));
         }
 
