@@ -63,3 +63,7 @@
         </div>
     </section>
 </div>
+
+<partial name="_CreateReviewPartial" model='new CreateReviewViewModel { RestaurantId = Model.Id.ToString() }' />
+
+<partial name="_ReviewsPartial" model="@Model.Reviews" />

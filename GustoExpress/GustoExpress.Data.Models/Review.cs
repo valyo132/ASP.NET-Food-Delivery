@@ -18,6 +18,10 @@ namespace GustoExpress.Data.Models
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
 
+        [ForeignKey(nameof(Restaurant))]
+        public Guid RestaurantId { get; set; }
+        public Restaurant Restaurant { get; set; }
+
         [Required]
         [MaxLength(REVIEW_TITLE_MAX_LENGHT), MinLength(REVIEW_TITLE_MIN_LENGHT)]
         public string Title { get; set; } = null!;

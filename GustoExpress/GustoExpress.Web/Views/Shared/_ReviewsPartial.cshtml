@@ -1,0 +1,27 @@
+﻿@using GustoExpress.Data.Models;
+@using GustoExpress.Web.ViewModels;
+@using Microsoft.AspNetCore.Identity;
+@model List<ReviewViewModel>
+@inject UserManager<ApplicationUser> UserManager
+
+@foreach (var review in Model)
+{
+    <section class="py-3 my-5 bg-light rounded-1">
+        <div class="container-lg">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <p class="fw-bold">@User.FindFirst("FriendlyName").Value</p>
+
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title:</label>
+                        <p class="mb-0">@review.Title</p>
+                    </div>
+
+                    <div class="form-floating">
+                        <p>@review.Text</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

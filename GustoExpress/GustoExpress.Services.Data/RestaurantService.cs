@@ -36,6 +36,7 @@ namespace GustoExpress.Services.Data
                 .Include(r => r.City)
                 .Include(r => r.Products)
                 .Include(r => r.Offers)
+                .Include(r => r.Reviews)
                 .FirstOrDefaultAsync(r => r.Id.ToString() == id);
         }
 

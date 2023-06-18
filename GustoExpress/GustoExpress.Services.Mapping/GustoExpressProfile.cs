@@ -38,6 +38,10 @@ namespace GustoExpress.Services.Mapping
                 .ForMember(x => x.FirstProductId, y => y.MapFrom(s => s.OfferProducts.FirstOrDefault().ProductId))
                 .ForMember(x => x.SecondProductId, y => y.MapFrom(s => s.OfferProducts.Skip(1).FirstOrDefault().ProductId))
                 .ForMember(x => x.ThirdhProductId, y => y.MapFrom(s => s.OfferProducts.Skip(2).FirstOrDefault().ProductId));
+
+            CreateMap<CreateReviewViewModel, Review>();
+
+            CreateMap<Review, ReviewViewModel>();
         }
     }
 }

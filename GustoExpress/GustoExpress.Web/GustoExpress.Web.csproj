@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Review\" />
     <Folder Include="wwwroot\images\HomePage\" />
     <Folder Include="wwwroot\images\Offers\" />
     <Folder Include="wwwroot\images\Products\" />

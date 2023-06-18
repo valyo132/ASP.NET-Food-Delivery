@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using GustoExpress.Data.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GustoExpress.Web.ViewModels
 {
@@ -7,6 +9,9 @@ namespace GustoExpress.Web.ViewModels
         public Guid Id { get; set; }
 
         public string UserId { get; set; } = null!;
+
+        [ForeignKey(nameof(UserId))]
+        public ApplicationUser User { get; set; } = null!;
 
         public string Title { get; set; } = null!;
 
