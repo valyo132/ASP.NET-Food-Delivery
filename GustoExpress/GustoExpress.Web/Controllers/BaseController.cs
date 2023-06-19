@@ -4,7 +4,6 @@ using System.Security.Claims;
 
 namespace GustoExpress.Web.Controllers
 {
-    [Authorize]
     public class BaseController : Controller
     {
         public string GetUserIdAsync()

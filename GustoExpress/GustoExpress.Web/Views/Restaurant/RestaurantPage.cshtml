@@ -39,13 +39,13 @@
         <!-- Offers -->
         @if (Model.Offers.Any())
         {
-            <partial name="_OffersPartial" model="@Model"/>
-            <hr class="mb-5" />  
+            <partial name="_OffersPartial" model="@Model" />
+            <hr class="mb-5" />
         }
 
         @if (Model.Products.Any(p => p.IsDeleted == false))
         {
-            <partial name="_ProductsPartial" model="@Model"/>
+            <partial name="_ProductsPartial" model="@Model" />
         }
         else
         {
