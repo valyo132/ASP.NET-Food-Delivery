@@ -1,21 +1,22 @@
 ﻿@using GustoExpress.Data.Models;
 @using GustoExpress.Web.ViewModels;
 @using Microsoft.AspNetCore.Identity;
+@using System.Security.Claims;
 @model List<ReviewViewModel>
 @inject UserManager<ApplicationUser> UserManager
 
 <h2 class="text-center">Reviews</h2>
 <hr />
 
-<section class="row py-3 my-5 rounded-1">
+<section class="row justify-content-center py-3 my-5 rounded-1">
     @foreach (var review in Model)
     {
         <input class="starsInput" type="hidden" value="@review.Stars" />
-        <div class="mt-4 col-8 p-4 container-lg rounded-2 border border-3 border-secondary">
-            <div class="justify-content-center">
+        <div class="row mt-4 col-lg-8 p-2 container-lg rounded-2 border border-3 border-secondary">
+            <div class="col-11 justify-content-center">
                 <div>
                     <div class="d-flex">
-                        <p class="m-1 fw-bold">@User.FindFirst("FriendlyName").Value </p>
+                        <p class="m-1 fw-bold">@review.User.FirstName @review.User.LastName</p>
                         <div class="text-center starContainer"></div>
                     </div>
 
@@ -28,6 +29,14 @@
                     </div>
                 </div>
             </div>
+            @if (review.UserId == @User.FindFirstValue(ClaimTypes.NameIdentifier))
+            {
+                <div class="col-1">
+                    <form method="post">
+                        <button type="submit" asp-action="DeleteReview" asp-controller="Review" class="my-2 btn rounded-circle shadow-sm border-0 bg-light" onclick="return confirm('Are you sure you want to delete your review?')" asp-route-id="@review.Id"><i class="bi bi-trash3-fill"></i></button>
+                    </form>
+                </div>
+            }
         </div>
     }
 </section>

@@ -30,5 +30,14 @@ namespace GustoExpress.Web.Controllers
             TempData["danger"] = "Invalid operation!";
             return RedirectToAction("RestaurantPage", "Restaurant", new { id = obj.RestaurantId });
         }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteReview(string id)
+        {
+            var deletedReview = await _reviewService.DeleteAsync(id);
+
+            TempData["success"] = "Successfully deleted review!";
+            return RedirectToAction("RestaurantPage", "Restaurant", new { id = deletedReview.RestaurantId });
+        }
     }
 }

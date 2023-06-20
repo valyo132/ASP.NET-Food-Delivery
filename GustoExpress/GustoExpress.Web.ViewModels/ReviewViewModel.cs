@@ -18,5 +18,7 @@ namespace GustoExpress.Web.ViewModels
         public string Text { get; set; } = null!;
 
         public int Stars { get; set; }
+
+        public string RestaurantId { get; set; } = null!;
     }
 }
