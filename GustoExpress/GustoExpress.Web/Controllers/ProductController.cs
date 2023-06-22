@@ -117,7 +117,6 @@ namespace GustoExpress.Web.Controllers
             string imageURL = @"/images/Products/" + fileName;
             await _productService.SaveImageURL(imageURL, product);
         }
-
         private void DeleteImage(string file)
         {
             string wwwRootPath = _webHostEnvironment.WebRootPath;

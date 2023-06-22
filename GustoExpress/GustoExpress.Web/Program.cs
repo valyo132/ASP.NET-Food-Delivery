@@ -3,6 +3,7 @@ using GustoExpress.Services.Data;
 using GustoExpress.Services.Data.Contracts;
 using GustoExpress.Services.Mapping;
 using GustoExpress.Web.Data;
+using GustoExpress.Web.Modelbinder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,7 +18,12 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddControllersWithViews();
+
+builder.Services.AddControllersWithViews(options =>
+{
+    options.ModelBinderProviders
+        .Insert(0, new DecimalModelBinderProvider());
+});
 
 builder.Services.ConfigureApplicationCookie(options =>
 {

@@ -98,20 +98,6 @@ namespace GustoExpress.Web.Controllers
             return RedirectToAction("All", "Restaurant", new { city = restaurant.City.CityName });
         }
 
-        private void DeleteImage(string file)
-        {
-            string wwwRootPath = _webHostEnvironment.WebRootPath;
-
-            string imagePath = wwwRootPath + file;
-
-            FileInfo fileInfo = new FileInfo(imagePath);
-            if (fileInfo != null)
-            {
-                System.IO.File.Delete(imagePath);
-                fileInfo.Delete();
-            }
-        }
-
         private async Task SaveImage(IFormFile file, RestaurantViewModel restaurant)
         {
             string wwwRootPath = _webHostEnvironment.WebRootPath;
@@ -126,6 +112,19 @@ namespace GustoExpress.Web.Controllers
 
             string imageURL = @"/images/Restaurants/" + fileName;
             await _restaurantService.SaveImageURL(imageURL, restaurant);
+        }
+        private void DeleteImage(string file)
+        {
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
+
+            string imagePath = wwwRootPath + file;
+
+            FileInfo fileInfo = new FileInfo(imagePath);
+            if (fileInfo != null)
+            {
+                System.IO.File.Delete(imagePath);
+                fileInfo.Delete();
+            }
         }
     }
 }

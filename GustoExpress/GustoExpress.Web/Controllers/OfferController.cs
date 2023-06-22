@@ -11,8 +11,7 @@ namespace GustoExpress.Web.Controllers
         private readonly IOfferService _offerService;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public OfferController(IOfferService offerService,
-            IWebHostEnvironment webHostEnvironment)
+        public OfferController(IOfferService offerService, IWebHostEnvironment webHostEnvironment)
         {
             _offerService = offerService;
             _webHostEnvironment = webHostEnvironment;
@@ -123,7 +122,6 @@ namespace GustoExpress.Web.Controllers
             string imageURL = @"/images/Offers/" + fileName;
             await _offerService.SaveImageURL(imageURL, offer);
         }
-
         private void DeleteImage(string file)
         {
             string wwwRootPath = _webHostEnvironment.WebRootPath;
