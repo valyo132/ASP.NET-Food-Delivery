@@ -1,4 +1,5 @@
 ﻿using GustoExpress.Data.Models;
+using System.Runtime.CompilerServices;
 
 namespace GustoExpress.Web.ViewModels
 {
@@ -12,6 +13,17 @@ namespace GustoExpress.Web.ViewModels
         public string TimeToDeliver { get; set; } = null!;
 
         public string? ImageURL { get; set; }
+
+        public double Rating
+        {
+            get
+            {
+                if (this.Reviews.Where(r => r.IsDeleted == false).Any())
+                    return this.Reviews.Where(r => r.IsDeleted == false).Average(r => r.Stars);
+
+                return 0;
+            }
+        }
 
         public ICollection<ProductViewModel> Products { get; set; } = new HashSet<ProductViewModel>();
         public ICollection<OfferViewModel> Offers { get; set; } = new HashSet<OfferViewModel>();

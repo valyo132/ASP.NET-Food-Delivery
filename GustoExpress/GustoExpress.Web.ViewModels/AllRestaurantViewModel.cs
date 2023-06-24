@@ -1,7 +1,7 @@
-﻿using GustoExpress.Data.Models;
-
-namespace GustoExpress.Web.ViewModels
+﻿namespace GustoExpress.Web.ViewModels
 {
+    using GustoExpress.Data.Models;
+
     public class AllRestaurantViewModel
     {
         public Guid Id { get; set; }

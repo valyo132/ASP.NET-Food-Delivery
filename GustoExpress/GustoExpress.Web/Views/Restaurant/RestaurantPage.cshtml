@@ -1,13 +1,16 @@
 ﻿@using GustoExpress.Web.ViewModels;
 @model RestaurantPageViewModel
 
+@{
+    ViewData["Title"] = Model.Name;
+}
+
 <form asp-action="All" asp-controller="Restaurant" method="get">
     <input type="hidden" name="city" value="@Model.City.CityName" />
     <button class="btn btn-light rounded-1" type="submit"><i class="bi bi-arrow-left"></i> Go back</button>
 </form>
 
 <div class="mt-4 row">
-    <!-- Restaurant and products -->
     <section class="col-lg-8">
         <div class="container-lg">
             <div class="row rounded container shadow">
@@ -15,7 +18,8 @@
                     <h1>@Model.Name</h1>
                     <p class="lead">@Model.Description</p>
                     <i class="bi bi-clock"></i> @Model.TimeToDeliver min.
-                    <i class="ms-3 bi bi-truck"></i> @Model.DeliveryPrice lv.
+                    <i class="ms-3 bi bi-truck"></i> @Model.DeliveryPrice lv. <br/>
+                    <i class="bi bi-star"></i> @Model.Rating (@Model.Reviews.Count(r => r.IsDeleted == false) reviews)
                 </div>
                 <div class="col-4 d-flex align-items-center">
                     <img class="my-3 img-fluid float-end" src="@Model.ImageURL" style="width: 220px">
