@@ -1,9 +1,9 @@
-﻿using GustoExpress.Data.Models;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace GustoExpress.Web.ViewModels
+﻿namespace GustoExpress.Web.ViewModels
 {
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    using GustoExpress.Data.Models;
+
     public class ReviewViewModel
     {
         public Guid Id { get; set; }
@@ -20,5 +20,9 @@ namespace GustoExpress.Web.ViewModels
         public int Stars { get; set; }
 
         public string RestaurantId { get; set; } = null!;
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime CreatedOn { get; set; }
     }
 }

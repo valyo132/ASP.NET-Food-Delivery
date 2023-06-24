@@ -34,7 +34,7 @@ namespace GustoExpress.Services.Data
         {
             Review reviewToDelete = await GetByIdAsync(id);
 
-            _context.Reviews.Remove(reviewToDelete);
+            reviewToDelete.IsDeleted = true;
             await _context.SaveChangesAsync();
 
             return ProjectTo<ReviewViewModel>(reviewToDelete);

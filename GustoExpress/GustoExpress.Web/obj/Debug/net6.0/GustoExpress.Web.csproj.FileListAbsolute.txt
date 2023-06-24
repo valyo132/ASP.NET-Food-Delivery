@@ -296,3 +296,4 @@ G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\Microsof
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\appsettings.Production.json

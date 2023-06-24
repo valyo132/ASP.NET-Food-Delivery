@@ -8,7 +8,7 @@
 <hr />
 
 <section class="row justify-content-center py-3 my-5 rounded-1">
-    @foreach (var review in Model)
+    @foreach (var review in Model.Where(r => r.IsDeleted == false))
     {
         <input class="starsInput" type="hidden" value="@review.Stars" />
         <div class="row mt-4 col-lg-8 p-2 container-lg rounded-2 border border-3 border-secondary">
@@ -18,13 +18,14 @@
                         <p class="m-1 fw-bold">@review.User.FirstName @review.User.LastName</p>
                         <div class="text-center starContainer"></div>
                     </div>
-
                     <div class="mb-3">
                         <p class="mb-0">@review.Title</p>
                     </div>
-
                     <div class="form-floating">
                         <p class="lead">@review.Text</p>
+                    </div>
+                    <div class="form-floating">
+                        <p>@review.CreatedOn.ToShortDateString()</p>
                     </div>
                 </div>
             </div>

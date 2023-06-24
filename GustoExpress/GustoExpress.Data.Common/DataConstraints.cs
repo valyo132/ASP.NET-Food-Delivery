@@ -35,7 +35,7 @@
         public static class Review
         {
             public const int REVIEW_TITLE_MIN_LENGHT = 3;
-            public const int REVIEW_TITLE_MAX_LENGHT = 20;
+            public const int REVIEW_TITLE_MAX_LENGHT = 40;
             public const int REVIEW_TEXT_MIN_LENGHT = 5;
             public const int REVIEW_TEXT_MAX_LENGHT = 250;
         }

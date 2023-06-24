@@ -32,5 +32,9 @@ namespace GustoExpress.Data.Models
 
         [Required]
         public int Stars { get; set; }
+
+        public bool IsDeleted { get; set; } = false;
+
+        public DateTime CreatedOn { get; set; } = DateTime.Now;
     }
 }
