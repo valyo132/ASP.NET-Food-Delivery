@@ -47,6 +47,7 @@
             <hr class="mb-5" />
         }
 
+        <!-- Products -->
         @if (Model.Products.Any(p => p.IsDeleted == false))
         {
             <partial name="_ProductsPartial" model="@Model" />

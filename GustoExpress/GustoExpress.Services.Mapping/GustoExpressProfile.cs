@@ -42,6 +42,8 @@ namespace GustoExpress.Services.Mapping
             CreateMap<CreateReviewViewModel, Review>();
 
             CreateMap<Review, ReviewViewModel>();
+
+            CreateMap<OrderItem, CreateOrderItemViewModel>();
         }
     }
 }

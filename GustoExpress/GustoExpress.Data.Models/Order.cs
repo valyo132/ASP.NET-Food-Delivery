@@ -28,5 +28,7 @@ namespace GustoExpress.Data.Models
 
         [Required]
         public decimal TotalCost { get; set; }
+
+        public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
     }
 }

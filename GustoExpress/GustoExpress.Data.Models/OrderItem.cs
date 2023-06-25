@@ -16,6 +16,9 @@ namespace GustoExpress.Data.Models
         [Required]
         public int Quantity { get; set; } = 1;
 
+        [Required]
+        public decimal TotalCost { get; set; }
+
         [ForeignKey(nameof(Product))]
         public Guid ProductId { get; set; }
         public Product Product { get; set; }

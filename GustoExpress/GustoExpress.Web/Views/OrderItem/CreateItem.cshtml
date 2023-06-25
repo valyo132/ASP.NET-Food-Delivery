@@ -1,0 +1,105 @@
+﻿@using GustoExpress.Web.ViewModels;
+@model CreateOrderItemViewModel
+
+<form method="post">
+    <div class="mt-5 col-9 card container pt-4">
+        @if (Model.Product != null)
+        {
+            <input type="hidden" asp-for="ProductId" value="@Model.Product.Id" />
+            <!-- Product -->
+            <div class="card-header ml-0 row justify-content-center">
+                <div class="col-12 col-md-6 text-center">
+                    <h1>@Model.Product.Name</h1>
+                    <p class="text-warning">@Model.Product.Category</p>
+                </div>
+            </div>
+            <div class="card-body row container">
+                <div class="container rounded p-2">
+                    <div class="row">
+                        <div class="col-8 col-lg-8">
+
+                            <div class="row text-center pl-2">
+                                <label class="col-2 p-0 text-start" asp-for="Quantity">Quantity:</label>
+                                <input id="quantity" class="p-1 border border-0 shadow shadow-sm col-2" type="number" asp-for="Quantity" onchange="getTotalCost(@Model.Product.Price)" />
+                                <span asp-validation-for="Quantity" style="color:red"></span>
+                            </div>
+                            <div class="mt-1 row text-center pl-2">
+                                <label class="col-2 p-0 text-start" asp-for="TotalCost">TotalCost:</label>
+                                <input id="totalCost" asp-for="TotalCost" class="p-0 border border-0 col-2 text-start" value="@Model.Product.Price" readonly />
+                            </div>
+                            <div class="row pl-2 mt-3">
+                                <label class="p-0 text-start" asp-for="Product.Description">Description</label>
+                                <p class="text-secondary">@Model.Product.Description</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-3 offset-lg-1 text-center">
+                            <img src="@Model.Product.ImageURL" width="100%" class="rounded" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <input type="hidden" asp-for="OfferId" value="@Model.Offer.Id" />
+            <!-- Offer -->
+            <div class="card-header ml-0 row justify-content-center">
+                <div class="col-12 col-md-6 text-center">
+                    <h1>@Model.Offer.Name</h1>
+                    <p class="text-warning">Offer</p>
+                </div>
+            </div>
+            <div class="card-body row container">
+                <div class="container rounded p-2">
+                    <div class="row">
+                        <div class="col-8 col-lg-8">
+
+                            <div class="row text-center pl-2">
+                                <label class="col-2 p-0 text-start" asp-for="Quantity">Quantity:</label>
+                                <input id="quantity" class="p-1 border border-0 shadow shadow-sm col-2" type="number" asp-for="Quantity" onchange="getTotalCost(@Model.Offer.Price)" />
+                                <span asp-validation-for="Quantity" style="color:red"></span>
+                            </div>
+                            <div class="mt-1 row text-center pl-2">
+                                <label class="col-2 p-0 text-start" asp-for="TotalCost">TotalCost:</label>
+                                <input id="totalCost" asp-for="TotalCost" class="p-0 border border-0 col-2 text-start" value="@Model.Offer.Price" readonly />
+                            </div>
+                            <div class="row pl-2 mt-3">
+                                <label class="p-0 text-start" asp-for="Offer.Description">Description</label>
+                                <p class="text-secondary">@Model.Offer.Description</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-3 offset-lg-1 text-center">
+                            <img src="@Model.Offer.ImageURL" width="100%" class="rounded" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="card-footer">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6 pb-1">
+                    <button type="submit" asp-action="CreateItem" asp-controller="OrderItem" class="btn btn-primary form-control" style="height:50px;">Add to Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    function getTotalCost(price) {
+        var quantity = parseInt(document.getElementById("quantity").value);
+        var totalCost = quantity * price;
+
+        if (quantity > 0) {
+            document.getElementById("totalCost").value = totalCost.toFixed(2);
+        } else {
+            document.getElementById("totalCost").innerText = "Invalid operation!";
+        }
+    }
+</script>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

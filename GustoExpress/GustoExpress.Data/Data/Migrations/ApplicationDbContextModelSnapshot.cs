@@ -131,15 +131,23 @@ namespace GustoExpress.Web.Data.Migrations
                     b.Property<Guid>("OfferId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("OrderId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("TotalCost")
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("OfferId");
+
+                    b.HasIndex("OrderId");
 
                     b.HasIndex("ProductId");
 
@@ -574,6 +582,10 @@ namespace GustoExpress.Web.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("GustoExpress.Data.Models.Order", null)
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId");
+
                     b.HasOne("GustoExpress.Data.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
@@ -685,6 +697,11 @@ namespace GustoExpress.Web.Data.Migrations
             modelBuilder.Entity("GustoExpress.Data.Models.Offer", b =>
                 {
                     b.Navigation("OfferProducts");
+                });
+
+            modelBuilder.Entity("GustoExpress.Data.Models.Order", b =>
+                {
+                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("GustoExpress.Data.Models.Restaurant", b =>
