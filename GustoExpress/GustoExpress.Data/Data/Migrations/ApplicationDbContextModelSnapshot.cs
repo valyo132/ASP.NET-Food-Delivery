@@ -128,13 +128,16 @@ namespace GustoExpress.Web.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("OfferId")
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid?>("OfferId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("OrderId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ProductId")
+                    b.Property<Guid?>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Quantity")
@@ -143,6 +146,10 @@ namespace GustoExpress.Web.Data.Migrations
                     b.Property<decimal>("TotalCost")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("OfferId");
@@ -150,6 +157,8 @@ namespace GustoExpress.Web.Data.Migrations
                     b.HasIndex("OrderId");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("OrderItems");
                 });
@@ -578,23 +587,29 @@ namespace GustoExpress.Web.Data.Migrations
                 {
                     b.HasOne("GustoExpress.Data.Models.Offer", "Offer")
                         .WithMany()
-                        .HasForeignKey("OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OfferId");
 
-                    b.HasOne("GustoExpress.Data.Models.Order", null)
+                    b.HasOne("GustoExpress.Data.Models.Order", "Order")
                         .WithMany("OrderItems")
                         .HasForeignKey("OrderId");
 
                     b.HasOne("GustoExpress.Data.Models.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("ProductId")
+                        .HasForeignKey("ProductId");
+
+                    b.HasOne("GustoExpress.Data.Models.ApplicationUser", "User")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Offer");
 
+                    b.Navigation("Order");
+
                     b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("GustoExpress.Data.Models.Product", b =>
@@ -715,6 +730,8 @@ namespace GustoExpress.Web.Data.Migrations
 
             modelBuilder.Entity("GustoExpress.Data.Models.ApplicationUser", b =>
                 {
+                    b.Navigation("OrderItems");
+
                     b.Navigation("Orders");
 
                     b.Navigation("Reviews");

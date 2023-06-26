@@ -9,5 +9,6 @@ namespace GustoExpress.Data.Models
 
         public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
         public ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
+        public ICollection<OrderItem> OrderItems { get; set; } = new HashSet<OrderItem>();
     }
 }

@@ -19,12 +19,23 @@ namespace GustoExpress.Data.Models
         [Required]
         public decimal TotalCost { get; set; }
 
+        public bool IsDeleted { get; set; } = false;
+
+        [Required]
+        [ForeignKey(nameof(User))]
+        public string UserId { get; set; }
+        public ApplicationUser User { get; set; }
+
+        [ForeignKey(nameof(Order))]
+        public Guid? OrderId { get; set; }
+        public Order? Order { get; set; }
+
         [ForeignKey(nameof(Product))]
-        public Guid ProductId { get; set; }
-        public Product Product { get; set; }
+        public Guid? ProductId { get; set; }
+        public Product? Product { get; set; }
 
         [ForeignKey(nameof(Offer))]
-        public Guid OfferId { get; set; }
-        public Offer Offer { get; set; }
+        public Guid? OfferId { get; set; }
+        public Offer? Offer { get; set; }
     }
 }

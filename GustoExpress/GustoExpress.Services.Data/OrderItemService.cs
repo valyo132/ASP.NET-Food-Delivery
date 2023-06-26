@@ -62,6 +62,16 @@ namespace GustoExpress.Services.Data
             return orderItemViewModel;
         }
 
+        public async Task<OrderItemViewModel> CreateOrderItem(CreateOrderItemViewModel model)
+        {
+            OrderItem orderItem = _mapper.Map<OrderItem>(model);
+
+            await _context.OrderItems.AddAsync(orderItem);
+            await _context.SaveChangesAsync();
+
+            return ProjectTo<OrderItemViewModel>(orderItem);
+        }
+
         private T ProjectTo<T>(OrderItem item)
         {
             return _mapper.Map<T>(item);

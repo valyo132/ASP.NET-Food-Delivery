@@ -1,11 +1,16 @@
 ﻿@using GustoExpress.Web.ViewModels;
+@using System.Security.Claims;
 @model CreateOrderItemViewModel
 
 <form method="post">
     <div class="mt-5 col-9 card container pt-4">
         @if (Model.Product != null)
         {
+            var discount = Model.Product.Discount != null ? Model.Product.Discount : 0;
+            var pricePeritem = Model.Product.Price - discount;
+
             <input type="hidden" asp-for="ProductId" value="@Model.Product.Id" />
+            <input type="hidden" asp-for="RestaurantId" value="@Model.Product.RestaurantId" />
             <!-- Product -->
             <div class="card-header ml-0 row justify-content-center">
                 <div class="col-12 col-md-6 text-center">
@@ -20,12 +25,13 @@
 
                             <div class="row text-center pl-2">
                                 <label class="col-2 p-0 text-start" asp-for="Quantity">Quantity:</label>
-                                <input id="quantity" class="p-1 border border-0 shadow shadow-sm col-2" type="number" asp-for="Quantity" onchange="getTotalCost(@Model.Product.Price)" />
+                                <input id="quantity" class="p-1 border border-0 shadow shadow-sm col-2" type="number" asp-for="Quantity" onchange="getTotalCost(@pricePeritem)" />
                                 <span asp-validation-for="Quantity" style="color:red"></span>
                             </div>
                             <div class="mt-1 row text-center pl-2">
                                 <label class="col-2 p-0 text-start" asp-for="TotalCost">TotalCost:</label>
-                                <input id="totalCost" asp-for="TotalCost" class="p-0 border border-0 col-2 text-start" value="@Model.Product.Price" readonly />
+                                <input id="totalCost" asp-for="TotalCost" class="p-0 border border-0 col-2 text-start" value="@pricePeritem" readonly />
+
                             </div>
                             <div class="row pl-2 mt-3">
                                 <label class="p-0 text-start" asp-for="Product.Description">Description</label>
@@ -41,7 +47,11 @@
         }
         else
         {
+            var discount = Model.Offer.Discount != null ? Model.Offer.Discount : 0;
+            var pricePeritem = Model.Offer.Price - discount;
+
             <input type="hidden" asp-for="OfferId" value="@Model.Offer.Id" />
+            <input type="hidden" asp-for="RestaurantId" value="@Model.Offer.RestaurantId" />
             <!-- Offer -->
             <div class="card-header ml-0 row justify-content-center">
                 <div class="col-12 col-md-6 text-center">
@@ -56,12 +66,12 @@
 
                             <div class="row text-center pl-2">
                                 <label class="col-2 p-0 text-start" asp-for="Quantity">Quantity:</label>
-                                <input id="quantity" class="p-1 border border-0 shadow shadow-sm col-2" type="number" asp-for="Quantity" onchange="getTotalCost(@Model.Offer.Price)" />
+                                <input id="quantity" class="p-1 border border-0 shadow shadow-sm col-2" type="number" asp-for="Quantity" onchange="getTotalCost(@pricePeritem)" />
                                 <span asp-validation-for="Quantity" style="color:red"></span>
                             </div>
                             <div class="mt-1 row text-center pl-2">
                                 <label class="col-2 p-0 text-start" asp-for="TotalCost">TotalCost:</label>
-                                <input id="totalCost" asp-for="TotalCost" class="p-0 border border-0 col-2 text-start" value="@Model.Offer.Price" readonly />
+                                <input id="totalCost" asp-for="TotalCost" class="p-0 border border-0 col-2 text-start" value="@pricePeritem" readonly />
                             </div>
                             <div class="row pl-2 mt-3">
                                 <label class="p-0 text-start" asp-for="Offer.Description">Description</label>
@@ -75,6 +85,7 @@
                 </div>
             </div>
         }
+        <input type="hidden" asp-for="UserId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
         <div class="card-footer">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6 pb-1">
@@ -92,8 +103,6 @@
 
         if (quantity > 0) {
             document.getElementById("totalCost").value = totalCost.toFixed(2);
-        } else {
-            document.getElementById("totalCost").innerText = "Invalid operation!";
         }
     }
 </script>

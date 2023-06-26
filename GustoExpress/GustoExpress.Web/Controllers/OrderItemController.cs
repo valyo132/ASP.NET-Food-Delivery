@@ -30,7 +30,10 @@ namespace GustoExpress.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                OrderItemViewModel model = await _orderItemService.CreateOrderItem(obj);
 
+                TempData["success"] = "An item was added to your order!";
+                return RedirectToAction("RestaurantPage", "Restaurant", new { id = obj.RestaurantId });
             }
 
             return View(obj);

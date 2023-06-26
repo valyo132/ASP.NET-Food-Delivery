@@ -6,5 +6,6 @@ namespace GustoExpress.Services.Data.Contracts
     {
         Task<object> GetObjectAsync(string objId);
         CreateOrderItemViewModel GetOrderItemViewModel(object obj);
+        Task<OrderItemViewModel> CreateOrderItem(CreateOrderItemViewModel model);
     }
 }
