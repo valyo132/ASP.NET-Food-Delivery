@@ -13,6 +13,8 @@ namespace GustoExpress.Data.Models
         [Key]
         public Guid Id { get; set; }
 
+        public bool IsCompleted { get; set; } = false;
+
         [ForeignKey(nameof(User))]
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }

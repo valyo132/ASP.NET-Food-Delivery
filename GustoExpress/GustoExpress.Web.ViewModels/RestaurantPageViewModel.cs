@@ -28,5 +28,6 @@ namespace GustoExpress.Web.ViewModels
         public ICollection<ProductViewModel> Products { get; set; } = new HashSet<ProductViewModel>();
         public ICollection<OfferViewModel> Offers { get; set; } = new HashSet<OfferViewModel>();
         public ICollection<ReviewViewModel> Reviews { get; set; } = new HashSet<ReviewViewModel>();
+        public ICollection<OrderItem> OrderItems { get; set; } = new HashSet<OrderItem>();
     }
 }

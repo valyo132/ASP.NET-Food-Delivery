@@ -63,7 +63,17 @@
         <div class="container-lg bg-light">
             <h2 class="text-center">Shopping cart</h2>
             <div class="container my-1 text-center" style="height: 100%;">
-                Products
+                @foreach (var item in Model.OrderItems.Where(i => i.IsDeleted == false))
+                {
+                    if (item.Product != null)
+                    {
+                        <p>@item.Product.Name</p>
+                    }
+                    else
+                    {
+                        <p>@item.Offer.Name</p>
+                    }
+                }
             </div>
         </div>
     </section>

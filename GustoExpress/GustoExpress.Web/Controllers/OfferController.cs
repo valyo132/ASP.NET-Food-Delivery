@@ -1,10 +1,11 @@
-﻿using GustoExpress.Services.Data.Contracts;
-using GustoExpress.Web.ViewModels;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-
-namespace GustoExpress.Web.Controllers
+﻿namespace GustoExpress.Web.Controllers
 {
+    using GustoExpress.Services.Data.Contracts;
+    using GustoExpress.Web.ViewModels;
+
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+
     [Authorize]
     public class OfferController : BaseController
     {

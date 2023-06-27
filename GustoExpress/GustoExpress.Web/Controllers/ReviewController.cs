@@ -1,10 +1,11 @@
-﻿using GustoExpress.Services.Data.Contracts;
-using GustoExpress.Web.ViewModels;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-
-namespace GustoExpress.Web.Controllers
+﻿namespace GustoExpress.Web.Controllers
 {
+    using GustoExpress.Services.Data.Contracts;
+    using GustoExpress.Web.ViewModels;
+
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+
     [Authorize]
     public class ReviewController : BaseController
     {
@@ -20,7 +21,7 @@ namespace GustoExpress.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                string userId = GetUserIdAsync();
+                string userId = GetUserId();
                 var review = await _reviewService.CreateReview(userId, obj);
 
                 TempData["success"] = "Successfully created review!";

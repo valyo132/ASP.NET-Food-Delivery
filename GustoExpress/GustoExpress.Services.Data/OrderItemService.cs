@@ -3,6 +3,7 @@ using GustoExpress.Data.Models;
 using GustoExpress.Services.Data.Contracts;
 using GustoExpress.Web.Data;
 using GustoExpress.Web.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace GustoExpress.Services.Data
@@ -23,6 +24,26 @@ namespace GustoExpress.Services.Data
             _productService = productService;
             _offerService = offerService;
             _mapper = mapper;
+        }
+
+        public async Task<OrderItem> GetOrderItemByIdAsync(string itemId)
+        {
+            return await _context.OrderItems
+                .Include(oi => oi.Product)
+                .Include(oi => oi.Offer)
+                .FirstOrDefaultAsync(oi => oi.Id.ToString() == itemId);
+        }
+
+        public string GetRestaurantId(OrderItem item)
+        {
+            string restaurantId = null;
+
+            if (item.Product == null)
+                restaurantId = item.Offer.RestaurantId.ToString();
+            else
+                restaurantId = item.Product.RestaurantId.ToString();
+
+            return restaurantId;
         }
 
         public async Task<object> GetObjectAsync(string objId)

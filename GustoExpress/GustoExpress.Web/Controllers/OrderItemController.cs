@@ -1,11 +1,11 @@
-﻿using GustoExpress.Data.Models;
-using GustoExpress.Services.Data.Contracts;
-using GustoExpress.Web.ViewModels;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-
-namespace GustoExpress.Web.Controllers
+﻿namespace GustoExpress.Web.Controllers
 {
+    using GustoExpress.Services.Data.Contracts;
+    using GustoExpress.Web.ViewModels;
+
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+
     [Authorize]
     public class OrderItemController : BaseController
     {
@@ -32,8 +32,7 @@ namespace GustoExpress.Web.Controllers
             {
                 OrderItemViewModel model = await _orderItemService.CreateOrderItem(obj);
 
-                TempData["success"] = "An item was added to your order!";
-                return RedirectToAction("RestaurantPage", "Restaurant", new { id = obj.RestaurantId });
+                return RedirectToAction("AddItemToOrder", "Order", new { id = model.Id.ToString() });
             }
 
             return View(obj);

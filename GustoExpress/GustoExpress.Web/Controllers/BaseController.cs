@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-
-namespace GustoExpress.Web.Controllers
+﻿namespace GustoExpress.Web.Controllers
 {
+    using System.Security.Claims;
+
+    using Microsoft.AspNetCore.Mvc;
+
     public class BaseController : Controller
     {
-        public string GetUserIdAsync()
+        public string GetUserId()
         {
             return this.User.FindFirstValue(ClaimTypes.NameIdentifier);
         }

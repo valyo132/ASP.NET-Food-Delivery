@@ -48,6 +48,8 @@ namespace GustoExpress.Services.Mapping
             CreateMap<OrderItem, OrderItemViewModel>();
 
             CreateMap<CreateOrderItemViewModel, OrderItem>();
+
+            CreateMap<Order, OrderViewModel>();
         }
     }
 }
