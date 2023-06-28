@@ -9,6 +9,7 @@ namespace GustoExpress.Web.ViewModels
         public string Name { get; set; } = null!;
         public string Description { get; set; } = null!;
         public City City { get; set; }
+        public Order Order { get; set; }
         public decimal DeliveryPrice { get; set; }
         public string TimeToDeliver { get; set; } = null!;
 
@@ -28,6 +29,5 @@ namespace GustoExpress.Web.ViewModels
         public ICollection<ProductViewModel> Products { get; set; } = new HashSet<ProductViewModel>();
         public ICollection<OfferViewModel> Offers { get; set; } = new HashSet<OfferViewModel>();
         public ICollection<ReviewViewModel> Reviews { get; set; } = new HashSet<ReviewViewModel>();
-        public ICollection<OrderItem> OrderItems { get; set; } = new HashSet<OrderItem>();
     }
 }

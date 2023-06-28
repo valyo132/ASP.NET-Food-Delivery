@@ -11,12 +11,15 @@
     {
         private readonly IRestaurantService _restaurantService;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IOrderService _orderService;
 
         public RestaurantController(IRestaurantService restaurantService,
-            IWebHostEnvironment webHostEnvironment)
+            IWebHostEnvironment webHostEnvironment,
+            IOrderService orderService)
         {
             _restaurantService = restaurantService;
             _webHostEnvironment = webHostEnvironment;
+            _orderService = orderService;
         }
 
         [HttpGet]
@@ -30,6 +33,7 @@
         public async Task<IActionResult> RestaurantPage(string id)
         {
             RestaurantPageViewModel model = await _restaurantService.ProjectToModel<RestaurantPageViewModel>(id);
+            model.Order = await _orderService.GetOrder(GetUserId(), id);
 
             return View(model);
         }
