@@ -31,5 +31,24 @@
                 return RedirectToAction("Index", "Home");
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> CompleteOrder(string id)
+        {
+            try
+            {
+                string userId = GetUserId();
+                OrderViewModel model = await _orderService.GetOrderToComplete(userId, id);
+                await _orderService.CompleteOrder(userId, id);
+
+                TempData["success"] = "Order completed!";
+                return RedirectToAction("RestaurantPage", "Restaurant", new { id = id });
+            }
+            catch (InvalidOperationException ioe)
+            {
+                TempData["danger"] = ioe.Message;
+                return RedirectToAction("RestaurantPage", "Restaurant", new { id = id });
+            }
+        }
     }
 }

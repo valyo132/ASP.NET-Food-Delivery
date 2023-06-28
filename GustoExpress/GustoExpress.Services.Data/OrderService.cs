@@ -22,6 +22,30 @@
             _mapper = mapper;
         }
 
+        public async Task<OrderViewModel> GetOrderToComplete(string userId, string restaurantId)
+        {
+            Order order = await GetOrder(userId, restaurantId);
+
+            if (order == null)
+            {
+                throw new InvalidOperationException("You don't have any item in your order yet!");
+            }
+
+            order.TotalCost = GetOrderTotalCost(order);
+
+            await _context.SaveChangesAsync();
+
+            return ProjectTo<OrderViewModel>(order);
+        }
+
+        public async Task CompleteOrder(string userId, string restaurantId)
+        {
+            Order order = await GetOrder(userId, restaurantId);
+            order.IsCompleted = true;
+
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<Order> GetOrder(string userId, string restaurantId)
         {
             return await _context.Orders
@@ -68,6 +92,11 @@
             await _context.SaveChangesAsync();
 
             return order;
+        }
+
+        private decimal GetOrderTotalCost(Order order)
+        {
+            return order.OrderItems.Sum(oi => oi.TotalCost);
         }
 
         private T ProjectTo<T>(Order item)
