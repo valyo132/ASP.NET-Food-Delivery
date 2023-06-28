@@ -2,7 +2,7 @@
 @model CreateProductViewModel
 
 <form asp-action="RestaurantPage" asp-controller="Restaurant" method="get">
-    <input type="hidden" name="id" value="@ViewData["restaurantId"]" />
+    <input type="hidden" name="id" value="@Model.RestaurantId" />
     <button class="btn btn-light rounded-1" type="submit"><i class="bi bi-arrow-left"></i> Go back</button>
 </form>
 
@@ -35,7 +35,7 @@
             <div class="my-3 row justify-content-center">
                 <div class="mx-4 col-lg-6">
 
-                    <input type="hidden" asp-for="RestaurantId" value="@ViewData["restaurantId"]" />
+                    <input type="hidden" name="RestaurantId" value="@Model.RestaurantId" />
 
                     <select class="form-select" aria-label="Default select example" asp-for="Category" asp-items="@Model.CategoryList">
                         <option selected>Select product category</option>

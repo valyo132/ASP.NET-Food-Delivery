@@ -38,6 +38,12 @@ namespace GustoExpress.Services.Data
         public async Task<ProductViewModel> CreateProductAsync(CreateProductViewModel model)
         {
             Product newProduct = _mapper.Map<Product>(model);
+
+            if (await CheckIfProductExists(newProduct.Name, newProduct.RestaurantId.ToString()))
+            {
+                throw new InvalidOperationException("An item with this name already exists!");
+            }
+
             await _context.Products.AddAsync(newProduct);
             await _restaurantService.AddProductAsync(newProduct);
 
@@ -69,6 +75,12 @@ namespace GustoExpress.Services.Data
             await _context.SaveChangesAsync();
 
             return ProjectTo<ProductViewModel>(product);
+        }
+
+        private async Task<bool> CheckIfProductExists(string name, string resntaurantId)
+        {
+            return await _context.Products
+                .AnyAsync(p => p.Name.ToLower() == name.ToLower() && p.IsDeleted == false && p.RestaurantId.ToString() == resntaurantId);
         }
 
         public async Task SaveImageURL(string url, ProductViewModel productVm)

@@ -26,9 +26,9 @@
         [Authorize(Roles = "Admin")]
         public IActionResult CreateProduct(string id)
         {
-            ViewData["restaurantId"] = id;
             CreateProductViewModel productVm = new CreateProductViewModel()
             {
+                RestaurantId = id,
                 CategoryList = _categoryService.GetCategories()
             };
 
@@ -39,17 +39,25 @@
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateProduct(IFormFile? file, CreateProductViewModel obj)
         {
-            if (ModelState.IsValid)
+            try
             {
-                ProductViewModel product = await _productService.CreateProductAsync(obj);
+                if (ModelState.IsValid)
+                {
+                    ProductViewModel product = await _productService.CreateProductAsync(obj);
 
-                if (file != null)
-                    await SaveImage(file, product);
+                    if (file != null)
+                        await SaveImage(file, product);
 
-                TempData["success"] = "Successfully created product!";
-                return RedirectToAction("RestaurantPage", "Restaurant", new {id = product.RestaurantId});
+                    TempData["success"] = "Successfully created product!";
+                    return RedirectToAction("RestaurantPage", "Restaurant", new { id = product.RestaurantId });
+                }
+            }
+            catch (InvalidOperationException ioe)
+            {
+                TempData["danger"] = ioe.Message;
             }
 
+            obj.CategoryList = _categoryService.GetCategories();
             return View(obj);
         }
 
@@ -59,8 +67,7 @@
         {
             CreateProductViewModel createProductVm = await _productService.ProjectToModel<CreateProductViewModel>(id);
             createProductVm.CategoryList = _categoryService.GetCategories();
-
-            ViewData["restaurantId"] = createProductVm.RestaurantId;
+            createProductVm.RestaurantId = id;
 
             return View(createProductVm);
         }
@@ -91,6 +98,7 @@
                 return RedirectToAction("RestaurantPage", "Restaurant", new { id = editedProduct.RestaurantId });
             }
 
+            obj.CategoryList = _categoryService.GetCategories();
             return View(obj);
         }
 

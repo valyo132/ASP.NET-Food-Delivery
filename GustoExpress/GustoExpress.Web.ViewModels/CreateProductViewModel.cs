@@ -24,7 +24,7 @@ namespace GustoExpress.Web.ViewModels
         [MaxLength(PRODUCT_DESCRIPTION_MAX_LENGHT), MinLength(PRODUCT_DESCRIPTION_MIN_LENGHT)]
         public string Description { get; set; } = null!;
 
-        public string RestaurantId { get; set; }
+        public string RestaurantId { get; set; } = null!;
 
         [Required]
         [Range(1, (double)decimal.MaxValue)]

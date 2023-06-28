@@ -22,9 +22,9 @@
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateOffer(string id)
         {
-            ViewData["RestaurantId"] = id;
             CreateOfferViewModel model = new CreateOfferViewModel()
             {
+                RestaurantId = id,
                 ProductsToChoose = await _offerService.GetProductsByRestaurantIdAsync(id)
             };
 
@@ -35,22 +35,30 @@
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateOffer(IFormFile? file, string id, CreateOfferViewModel obj)
         {
-            if (ModelState.IsValid)
+            try
             {
-                OfferViewModel offer = await _offerService.CreateOfferAsync(id, obj);
-
-                if (file != null)
+                if (ModelState.IsValid)
                 {
-                    if (offer.ImageURL != null)
-                        DeleteImage(offer.ImageURL);
+                    OfferViewModel offer = await _offerService.CreateOfferAsync(id, obj);
 
-                    await SaveImage(file, offer);
+                    if (file != null)
+                    {
+                        if (offer.ImageURL != null)
+                            DeleteImage(offer.ImageURL);
+
+                        await SaveImage(file, offer);
+                    }
+
+                    TempData["success"] = "Successfully created offer!";
+                    return RedirectToAction("RestaurantPage", "Restaurant", new { id = id });
                 }
-
-                TempData["success"] = "Successfully created offer!";
-                return RedirectToAction("RestaurantPage", "Restaurant", new { id = id });
+            }
+            catch (InvalidOperationException ioe)
+            {
+                TempData["danger"] = ioe.Message;
             }
 
+            obj.ProductsToChoose = await _offerService.GetProductsByRestaurantIdAsync(id);
             return View(obj);
         }
 

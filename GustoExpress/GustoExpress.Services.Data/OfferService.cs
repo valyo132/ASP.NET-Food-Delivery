@@ -64,6 +64,11 @@ namespace GustoExpress.Services.Data
             };
             offer.OfferProducts = await CreateOfferProducts(products, offer);
 
+            if (await CheckIfProductExists(offer.Name, offer.RestaurantId.ToString()))
+            {
+                throw new InvalidOperationException("An item with this name already exists!");
+            }
+
             await _context.Offers.AddAsync(offer);
             await _restaurantService.AddOfferAsync(offer);
 
@@ -128,6 +133,12 @@ namespace GustoExpress.Services.Data
             }
 
             return offerProducts;
+        }
+
+        private async Task<bool> CheckIfProductExists(string name, string resntaurantId)
+        {
+            return await _context.Offers
+                .AnyAsync(o => o.Name.ToLower() == name.ToLower() && o.IsDeleted == false && o.RestaurantId.ToString() == resntaurantId);
         }
 
         private T ProjectTo<T>(Offer offer)
