@@ -1,18 +1,22 @@
 ﻿namespace GustoExpress.Web.Controllers
 {
-    using GustoExpress.Services.Data.Contracts;
-    using GustoExpress.Web.ViewModels;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+
+    using GustoExpress.Services.Data.Contracts;
+    using GustoExpress.Web.ViewModels;
 
     [Authorize]
     public class OrderController : BaseController
     {
         private readonly IOrderService _orderService;
+        private readonly IOrderItemService _orderItemService;
 
-        public OrderController(IOrderService orderService)
+        public OrderController(IOrderService orderService,
+            IOrderItemService orderItemService)
         {
             _orderService = orderService;
+            _orderItemService = orderItemService;
         }
 
         public async Task<IActionResult> AddItemToOrder(string id)
@@ -28,7 +32,8 @@
             catch (InvalidOperationException ioe)
             {
                 TempData["danger"] = ioe.Message;
-                return RedirectToAction("Index", "Home");
+                string restaurantId = await _orderItemService.GetRestaurantIdAsync(id);
+                return RedirectToAction("RestaurantPage", "Restaurant", new { id = restaurantId });
             }
         }
 

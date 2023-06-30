@@ -33,7 +33,7 @@
         public async Task<IActionResult> RestaurantPage(string id)
         {
             RestaurantPageViewModel model = await _restaurantService.ProjectToModel<RestaurantPageViewModel>(id);
-            model.Order = await _orderService.GetOrder(GetUserId(), id);
+            model.Order = await _orderService.GetUserOrderAsync(GetUserId(), id);
 
             return View(model);
         }

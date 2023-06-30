@@ -30,7 +30,7 @@
         {
             if (ModelState.IsValid)
             {
-                OrderItemViewModel model = await _orderItemService.CreateOrderItem(obj);
+                OrderItemViewModel model = await _orderItemService.CreateOrderItemAsync(obj);
 
                 return RedirectToAction("AddItemToOrder", "Order", new { id = model.Id.ToString() });
             }

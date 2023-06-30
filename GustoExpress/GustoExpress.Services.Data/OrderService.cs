@@ -24,7 +24,7 @@
 
         public async Task<OrderViewModel> GetOrderToComplete(string userId, string restaurantId)
         {
-            Order order = await GetOrder(userId, restaurantId);
+            Order order = await GetUserOrderAsync(userId, restaurantId);
 
             if (order == null)
             {
@@ -40,13 +40,20 @@
 
         public async Task CompleteOrder(string userId, string restaurantId)
         {
-            Order order = await GetOrder(userId, restaurantId);
+            Order order = await GetUserOrderAsync(userId, restaurantId);
             order.IsCompleted = true;
 
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Order> GetOrder(string userId, string restaurantId)
+        public async Task<Order> GetOrderByIdAsync(string orderId)
+        {
+            return await _context.Orders
+                .Include(o => o.OrderItems)
+                .FirstOrDefaultAsync(o => o.Id.ToString() == orderId);
+        }
+
+        public async Task<Order> GetUserOrderAsync(string userId, string restaurantId)
         {
             return await _context.Orders
                 .Include(o => o.OrderItems)
@@ -56,9 +63,9 @@
         public async Task<OrderViewModel> AddItemToOrder(string userId, string itemId)
         {
             OrderItem item = await _orderItemService.GetOrderItemByIdAsync(itemId);
-            string restaurantId = _orderItemService.GetRestaurantId(item);
+            string restaurantId = await _orderItemService.GetRestaurantIdAsync(item.Id.ToString());
 
-            Order userOrder = await GetOrder(userId, restaurantId);
+            Order userOrder = await GetUserOrderAsync(userId, restaurantId);
 
             if (userOrder == null)
             {

@@ -1,13 +1,14 @@
-﻿using AutoMapper;
-using GustoExpress.Data.Models;
-using GustoExpress.Services.Data.Contracts;
-using GustoExpress.Web.Data;
-using GustoExpress.Web.ViewModels;
-using Microsoft.EntityFrameworkCore;
-using System;
-
+﻿
 namespace GustoExpress.Services.Data
 {
+    using Microsoft.EntityFrameworkCore;
+    using AutoMapper;
+
+    using GustoExpress.Data.Models;
+    using GustoExpress.Services.Data.Contracts;
+    using GustoExpress.Web.Data;
+    using GustoExpress.Web.ViewModels;
+
     public class OrderItemService : IOrderItemService
     {
         private readonly ApplicationDbContext _context;
@@ -34,8 +35,9 @@ namespace GustoExpress.Services.Data
                 .FirstOrDefaultAsync(oi => oi.Id.ToString() == itemId);
         }
 
-        public string GetRestaurantId(OrderItem item)
+        public async Task<string> GetRestaurantIdAsync(string id)
         {
+            OrderItem item = await GetOrderItemByIdAsync(id);
             string restaurantId = null;
 
             if (item.Product == null)
@@ -83,7 +85,7 @@ namespace GustoExpress.Services.Data
             return orderItemViewModel;
         }
 
-        public async Task<OrderItemViewModel> CreateOrderItem(CreateOrderItemViewModel model)
+        public async Task<OrderItemViewModel> CreateOrderItemAsync(CreateOrderItemViewModel model)
         {
             OrderItem orderItem = _mapper.Map<OrderItem>(model);
 
