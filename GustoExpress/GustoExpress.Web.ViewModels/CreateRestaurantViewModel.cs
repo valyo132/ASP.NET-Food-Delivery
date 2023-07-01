@@ -19,7 +19,7 @@ namespace GustoExpress.Web.ViewModels
         public string City { get; set; } = null!;
 
         [Required]
-        [Range(1, (double)decimal.MaxValue)]
+        [Range(1, 1_000)]
         public decimal DeliveryPrice { get; set; }
 
         [Required]

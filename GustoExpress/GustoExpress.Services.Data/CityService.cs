@@ -1,10 +1,11 @@
-﻿using GustoExpress.Data.Models;
-using GustoExpress.Services.Data.Contracts;
-using GustoExpress.Web.Data;
-using Microsoft.EntityFrameworkCore;
-
-namespace GustoExpress.Services.Data
+﻿namespace GustoExpress.Services.Data
 {
+    using Microsoft.EntityFrameworkCore;
+
+    using GustoExpress.Data.Models;
+    using GustoExpress.Services.Data.Contracts;
+    using GustoExpress.Web.Data;
+
     public class CityService : ICityService
     {
         private readonly ApplicationDbContext _context;
@@ -27,7 +28,9 @@ namespace GustoExpress.Services.Data
 
         public async Task<City> GetCityAsync(string cityName)
         {
-            return await _context.Cities.FirstOrDefaultAsync(x => x.CityName.ToLower() == cityName.ToLower());
+            return await _context.Cities
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.CityName.ToLower() == cityName.ToLower());
         }
     }
 }

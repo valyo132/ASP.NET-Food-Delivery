@@ -31,10 +31,10 @@
         public IEnumerable<SelectListItem> ProductsToChoose { get; set; }
 
         [Required]
-        [Range(1, (double)decimal.MaxValue)]
+        [Range(1, 10_000)]
         public decimal Price { get; set; }
 
-        [Range(0, (double)decimal.MaxValue)]
+        [Range(0, 10_000)]
         public decimal? Discount { get; set; }
 
         public string? ImageURL { get; set; }

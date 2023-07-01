@@ -1,13 +1,15 @@
-﻿using AutoMapper;
-using GustoExpress.Data.Models;
-using GustoExpress.Services.Data.Contracts;
-using GustoExpress.Web.Data;
-using GustoExpress.Web.ViewModels;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-
+﻿
 namespace GustoExpress.Services.Data
 {
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.EntityFrameworkCore;
+
+    using AutoMapper;
+    using GustoExpress.Data.Models;
+    using GustoExpress.Services.Data.Contracts;
+    using GustoExpress.Web.Data;
+    using GustoExpress.Web.ViewModels;
+
     public class OfferService : IOfferService
     {
         private readonly ApplicationDbContext _context;
