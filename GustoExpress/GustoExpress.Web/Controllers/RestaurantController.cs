@@ -23,9 +23,10 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> All(string city)
+        public async Task<IActionResult> All(string city, [FromQuery]AllRestaurantViewModel? obj)
         {
-            List<AllRestaurantViewModel> restaurants = await _restaurantService.AllAsync(city);
+            AllRestaurantViewModel restaurants = await _restaurantService.AllAsync(city, obj);
+            restaurants.SortingItems = _restaurantService.GetRestaurantSortingValues();
             return View(restaurants);
         }
 

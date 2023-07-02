@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using GustoExpress.Data.Models;
+using GustoExpress.Data.Models.Enums;
 using GustoExpress.Services.Data.Contracts;
 using GustoExpress.Web.Data;
 using GustoExpress.Web.ViewModels;
+using GustoExpress.Web.ViewModels.Enums.Restaurant;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace GustoExpress.Services.Data
@@ -42,12 +45,38 @@ namespace GustoExpress.Services.Data
                 .FirstOrDefaultAsync(r => r.Id.ToString() == id);
         }
 
-        public async Task<List<AllRestaurantViewModel>> AllAsync(string city)
+        public async Task<AllRestaurantViewModel> AllAsync(string city, AllRestaurantViewModel? model)
         {
-            return await _context.Restaurants
+            List<RestaurantViewModel> allRestaurants = await _context.Restaurants
                 .Where(r => r.City.CityName == city && r.IsDeleted == false)
-                .ProjectTo<AllRestaurantViewModel>(_mapper.ConfigurationProvider)
+                .ProjectTo<RestaurantViewModel>(_mapper.ConfigurationProvider)
                 .ToListAsync();
+
+            if (model.SearchString != null)
+            {
+                string searchString = model.SearchString.ToLower();
+
+                allRestaurants = allRestaurants
+                   .Where(r => r.Name.ToLower().Contains(searchString) ||
+                               r.Description.ToLower().Contains(searchString) ||
+                               r.City.CityName.ToLower().Contains(searchString))
+                   .ToList();
+            }
+
+            allRestaurants = model.Sort switch
+            {
+                RestaurantSorting.DeliveryPriceAscending => allRestaurants
+                    .OrderBy(r => r.DeliveryPrice).ToList(),
+                RestaurantSorting.DeliveryPriceDescending => allRestaurants
+                    .OrderByDescending(r => r.DeliveryPrice).ToList(),
+                _ => allRestaurants
+            };
+
+            return new AllRestaurantViewModel()
+            {
+                Restaurants = allRestaurants,
+                CityName = city
+            };
         }
 
         public async Task<RestaurantViewModel> CreateAsync(CreateRestaurantViewModel model)
@@ -125,6 +154,16 @@ namespace GustoExpress.Services.Data
             restraurant.ImageURL = url;
             await _context.SaveChangesAsync();
         }
+
+        public IEnumerable<SelectListItem> GetRestaurantSortingValues()
+            => Enum.GetValues(typeof(RestaurantSorting))
+                .Cast<RestaurantSorting>()
+                .Select(r => new SelectListItem()
+                {
+                    Value = r.ToString(),
+                    Text = r.ToString()
+                })
+                .ToList();
 
         private T ProjectTo<T>(Restaurant restaurant)
         {

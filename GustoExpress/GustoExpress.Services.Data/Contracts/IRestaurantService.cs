@@ -1,5 +1,6 @@
 ﻿using GustoExpress.Data.Models;
 using GustoExpress.Web.ViewModels;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GustoExpress.Services.Data.Contracts
 {
@@ -7,12 +8,13 @@ namespace GustoExpress.Services.Data.Contracts
     {
         Task<T> ProjectToModel<T>(string id);
         Task<Restaurant> GetByIdAsync(string id);
-        Task<List<AllRestaurantViewModel>> AllAsync(string city);
+        Task<AllRestaurantViewModel> AllAsync(string city, AllRestaurantViewModel? model);
         Task<RestaurantViewModel> CreateAsync(CreateRestaurantViewModel model);
         Task<RestaurantViewModel> EditRestaurantAsync(string id, CreateRestaurantViewModel model);
         Task<RestaurantViewModel> DeleteAsync(string id);
         Task AddProductAsync(Product product);
         Task AddOfferAsync(Offer offer);
+        IEnumerable<SelectListItem> GetRestaurantSortingValues();
         Task SaveImageURL(string url, RestaurantViewModel restaurant);
     }
 }

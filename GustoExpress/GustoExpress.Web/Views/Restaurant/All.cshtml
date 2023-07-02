@@ -1,5 +1,5 @@
 ﻿@using GustoExpress.Web.ViewModels;
-@model List<AllRestaurantViewModel>
+@model AllRestaurantViewModel
 
 <form asp-action="Index" asp-controller="Home" method="get">
     <button class="btn btn-light rounded-1" type="submit"><i class="bi bi-arrow-left"></i> Go back</button>
@@ -28,9 +28,31 @@
     </h1>
 </div>
 
+<form method="get">
+    <input type="hidden" name="city" id="city" value="@Model.CityName" />
+    <div class="row justify-content-center">
+        <div class="form-group col-md-3">
+            <label asp-for="SearchString"></label>
+            <input asp-for="SearchString" class="form-control" placeholder="...">
+        </div>
+
+        <div class="form-group col-md-3">
+            <div class="form-group">
+                <label asp-for="SortingItems"></label>
+                <select asp-for="Sort" class="form-control" asp-items="@Model.SortingItems">
+                </select>
+            </div>
+        </div>
+
+        <div class="col-2 ps-0 mt-4 text-center">
+            <button type="submit" asp-action="All" asp-controller="Restaurant" value="Search" class="btn btn-primary"><i class="bi bi-search"></i> Search</button>
+        </div>
+    </div>
+</form>
+
 <section class="my-5">
     <div class="container-lg-7">
-        @foreach (var restaurant in Model.Where(r => r.IsDeleted == false))
+        @foreach (var restaurant in Model.Restaurants.Where(r => r.IsDeleted == false))
         {
             <div class="mb-4 row justify-content-center">
                 <div class="col-lg-6">
