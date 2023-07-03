@@ -2,7 +2,6 @@
 {
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.EntityFrameworkCore;
 
     using GustoExpress.Data.Models;
@@ -139,16 +138,6 @@
             restraurant.ImageURL = url;
             await _context.SaveChangesAsync();
         }
-
-        public IEnumerable<SelectListItem> GetRestaurantSortingValues()
-            => Enum.GetValues(typeof(RestaurantSorting))
-                .Cast<RestaurantSorting>()
-                .Select(r => new SelectListItem()
-                {
-                    Value = r.ToString(),
-                    Text = r.ToString()
-                })
-                .ToList();
 
         public T ProjectTo<T>(Restaurant restaurant)
         {

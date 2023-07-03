@@ -1,6 +1,7 @@
 ﻿namespace GustoExpress.Web.Controllers
 {
     using GustoExpress.Services.Data.Contracts;
+    using GustoExpress.Services.Data.Helpers.Product;
     using GustoExpress.Web.ViewModels;
 
     using Microsoft.AspNetCore.Authorization;
@@ -11,15 +12,12 @@
     {
         private readonly IProductService _productService;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        private readonly ICategoryService _categoryService;
 
         public ProductController(IProductService productService,
-            IWebHostEnvironment webHostEnvironment,
-            ICategoryService categoryService)
+            IWebHostEnvironment webHostEnvironment)
         {
             _productService = productService;
             _webHostEnvironment = webHostEnvironment;
-            _categoryService = categoryService;
         }
 
         [HttpGet]
@@ -29,7 +27,7 @@
             CreateProductViewModel productVm = new CreateProductViewModel()
             {
                 RestaurantId = id,
-                CategoryList = _categoryService.GetCategories()
+                CategoryList = ProductHelper.GetCategories()
             };
 
             return View(productVm);
@@ -57,7 +55,7 @@
                 TempData["danger"] = ioe.Message;
             }
 
-            obj.CategoryList = _categoryService.GetCategories();
+            obj.CategoryList = ProductHelper.GetCategories();
             return View(obj);
         }
 
@@ -66,7 +64,7 @@
         public async Task<IActionResult> EditProduct(string id)
         {
             CreateProductViewModel createProductVm = await _productService.ProjectToModel<CreateProductViewModel>(id);
-            createProductVm.CategoryList = _categoryService.GetCategories();
+            createProductVm.CategoryList = ProductHelper.GetCategories();
             createProductVm.RestaurantId = id;
 
             return View(createProductVm);
@@ -98,7 +96,7 @@
                 return RedirectToAction("RestaurantPage", "Restaurant", new { id = editedProduct.RestaurantId });
             }
 
-            obj.CategoryList = _categoryService.GetCategories();
+            obj.CategoryList = ProductHelper.GetCategories();
             return View(obj);
         }
 

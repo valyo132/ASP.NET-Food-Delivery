@@ -1,12 +1,12 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 using GustoExpress.Data.Models;
 using GustoExpress.Services.Data;
 using GustoExpress.Services.Data.Contracts;
 using GustoExpress.Services.Mapping;
 using GustoExpress.Web.Data;
 using GustoExpress.Web.Modelbinder;
-
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,7 +58,6 @@ builder.Services.AddAutoMapper(cfg =>
 builder.Services.AddScoped<IRestaurantService, RestaurantService>();
 builder.Services.AddScoped<ICityService, CityService>();
 builder.Services.AddScoped<IProductService, ProductService>();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IOfferService, OfferService>();
 builder.Services.AddScoped<IReviewService, ReviewService>();
 builder.Services.AddScoped<IOrderItemService, OrderItemService>();

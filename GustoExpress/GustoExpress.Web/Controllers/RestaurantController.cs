@@ -1,10 +1,11 @@
 ﻿namespace GustoExpress.Web.Controllers
 {
-    using GustoExpress.Services.Data.Contracts;
-    using GustoExpress.Web.ViewModels;
-
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+
+    using GustoExpress.Services.Data.Contracts;
+    using GustoExpress.Services.Data.Helpers.Restaurant;
+    using GustoExpress.Web.ViewModels;
 
     [Authorize]
     public class RestaurantController : BaseController
@@ -26,7 +27,8 @@
         public async Task<IActionResult> All(string city, [FromQuery]AllRestaurantViewModel? obj)
         {
             AllRestaurantViewModel restaurants = await _restaurantService.AllAsync(city, obj);
-            restaurants.SortingItems = _restaurantService.GetRestaurantSortingValues();
+            restaurants.SortingItems = RestaurantHelper.GetRestaurantSortingValues();
+
             return View(restaurants);
         }
 
@@ -119,6 +121,7 @@
             string imageURL = @"/images/Restaurants/" + fileName;
             await _restaurantService.SaveImageURL(imageURL, restaurant);
         }
+
         private void DeleteImage(string file)
         {
             string wwwRootPath = _webHostEnvironment.WebRootPath;
