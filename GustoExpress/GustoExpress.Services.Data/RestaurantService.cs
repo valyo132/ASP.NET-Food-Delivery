@@ -10,7 +10,7 @@
     using GustoExpress.Web.Data;
     using GustoExpress.Web.ViewModels;
     using GustoExpress.Web.ViewModels.Enums.Restaurant;
-    using GustoExpress.Services.Data.Helpers;
+    using GustoExpress.Services.Data.Helpers.Contracts;
 
     public class RestaurantService : IRestaurantService, IProjectable<Restaurant>
     {

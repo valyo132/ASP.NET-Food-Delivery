@@ -1,13 +1,14 @@
 ﻿namespace GustoExpress.Services.Data
 {
     using AutoMapper;
-    using Microsoft.EntityFrameworkCore; 
+    using Microsoft.EntityFrameworkCore;
 
     using GustoExpress.Data.Models;
     using GustoExpress.Services.Data.Contracts;
-    using GustoExpress.Services.Data.Helpers;
     using GustoExpress.Web.Data;
     using GustoExpress.Web.ViewModels;
+    using GustoExpress.Services.Data.Helpers.Contracts;
+    using GustoExpress.Services.Data.Helpers.Order;
 
     public class OrderService : IOrderService, IProjectable<Order>
     {
@@ -33,7 +34,7 @@
                 throw new InvalidOperationException("You don't have any item in your order yet!");
             }
 
-            order.TotalCost = GetOrderTotalCost(order);
+            order.TotalCost = OrderHelper.GetOrderTotalCost(order);
 
             await _context.SaveChangesAsync();
 
@@ -83,6 +84,7 @@
                 }
 
                 userOrder.OrderItems.Add(item);
+                userOrder.TotalCost = OrderHelper.GetOrderTotalCost(userOrder);
 
                 await _context.SaveChangesAsync();
             }
@@ -90,7 +92,7 @@
             return ProjectTo<OrderViewModel>(userOrder);
         }
 
-        private async Task<Order> CreateOrderAsync(string userId, string restaurantId)
+        public async Task<Order> CreateOrderAsync(string userId, string restaurantId)
         {
             Order order = new Order();
             order.UserId = userId;
@@ -101,11 +103,6 @@
             await _context.SaveChangesAsync();
 
             return order;
-        }
-
-        private decimal GetOrderTotalCost(Order order)
-        {
-            return order.OrderItems.Sum(oi => oi.TotalCost);
         }
 
         public T ProjectTo<T>(Order item)

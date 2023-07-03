@@ -1,4 +1,4 @@
-﻿namespace GustoExpress.Services.Data.Helpers
+﻿namespace GustoExpress.Services.Data.Helpers.Contracts
 {
     public interface IProjectable<P>
     {

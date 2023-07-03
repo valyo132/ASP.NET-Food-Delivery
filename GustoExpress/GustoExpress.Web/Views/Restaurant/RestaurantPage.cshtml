@@ -87,6 +87,8 @@
                             <p class="col-5">$@item.TotalCost</p>
                         </div>
                     }
+
+                    <p>Total: $@Model.Order.TotalCost</p>
                 }
                 <form>
                     <button class="mb-3 btn btn-outline-secondary type="submit" asp-route-id="@Model.Id" asp-action="CompleteOrder" asp-controller="Order">Order</button>

@@ -9,7 +9,7 @@ namespace GustoExpress.Services.Data
     using GustoExpress.Services.Data.Contracts;
     using GustoExpress.Web.Data;
     using GustoExpress.Web.ViewModels;
-    using GustoExpress.Services.Data.Helpers;
+    using GustoExpress.Services.Data.Helpers.Contracts;
 
     public class OfferService : IOfferService, IProjectable<Offer>
     {
@@ -142,6 +142,7 @@ namespace GustoExpress.Services.Data
 
             return model;
         }
+
         public T ProjectTo<T>(Offer obj)
         {
             return _mapper.Map<T>(obj);

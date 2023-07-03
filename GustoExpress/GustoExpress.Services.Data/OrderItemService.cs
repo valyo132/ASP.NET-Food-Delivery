@@ -8,7 +8,7 @@ namespace GustoExpress.Services.Data
     using GustoExpress.Services.Data.Contracts;
     using GustoExpress.Web.Data;
     using GustoExpress.Web.ViewModels;
-    using GustoExpress.Services.Data.Helpers;
+    using GustoExpress.Services.Data.Helpers.Contracts;
 
     public class OrderItemService : IOrderItemService, IProjectable<OrderItem>
     {

@@ -5,9 +5,9 @@
 
     using GustoExpress.Data.Models;
     using GustoExpress.Services.Data.Contracts;
-    using GustoExpress.Services.Data.Helpers;
     using GustoExpress.Web.Data;
     using GustoExpress.Web.ViewModels;
+    using GustoExpress.Services.Data.Helpers.Contracts;
 
     public class ProductService : IProductService, IProjectable<Product>
     {

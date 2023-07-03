@@ -5,6 +5,7 @@
 
     public interface IOrderService
     {
+        Task<Order> CreateOrderAsync(string userId, string restaurantId);
         Task<OrderViewModel> GetOrderToComplete(string userId, string restaurantId);
         Task<Order> GetOrderByIdAsync(string orderId);
         Task CompleteOrder(string userId, string restaurantId);
