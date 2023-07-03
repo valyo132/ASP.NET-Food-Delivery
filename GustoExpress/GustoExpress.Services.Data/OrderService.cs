@@ -1,13 +1,15 @@
 ﻿namespace GustoExpress.Services.Data
 {
     using AutoMapper;
-    using GustoExpress.Data.Models;
-    using GustoExpress.Services.Data.Contracts;
-    using GustoExpress.Web.Data;
-    using GustoExpress.Web.ViewModels;
     using Microsoft.EntityFrameworkCore; 
 
-    public class OrderService : IOrderService
+    using GustoExpress.Data.Models;
+    using GustoExpress.Services.Data.Contracts;
+    using GustoExpress.Services.Data.Helpers;
+    using GustoExpress.Web.Data;
+    using GustoExpress.Web.ViewModels;
+
+    public class OrderService : IOrderService, IProjectable<Order>
     {
         private readonly ApplicationDbContext _context;
         private readonly IOrderItemService _orderItemService;
@@ -106,7 +108,7 @@
             return order.OrderItems.Sum(oi => oi.TotalCost);
         }
 
-        private T ProjectTo<T>(Order item)
+        public T ProjectTo<T>(Order item)
         {
             return _mapper.Map<T>(item);
         }

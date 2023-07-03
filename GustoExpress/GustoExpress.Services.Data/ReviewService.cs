@@ -1,13 +1,15 @@
-﻿using AutoMapper;
-using GustoExpress.Data.Models;
-using GustoExpress.Services.Data.Contracts;
-using GustoExpress.Web.Data;
-using GustoExpress.Web.ViewModels;
-using Microsoft.EntityFrameworkCore;
-
-namespace GustoExpress.Services.Data
+﻿namespace GustoExpress.Services.Data
 {
-    public class ReviewService : IReviewService
+    using AutoMapper;
+    using Microsoft.EntityFrameworkCore;
+
+    using GustoExpress.Data.Models;
+    using GustoExpress.Services.Data.Contracts;
+    using GustoExpress.Services.Data.Helpers;
+    using GustoExpress.Web.Data;
+    using GustoExpress.Web.ViewModels;
+
+    public class ReviewService : IReviewService, IProjectable<Review>
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
@@ -47,7 +49,7 @@ namespace GustoExpress.Services.Data
                 .FirstOrDefaultAsync(r => r.Id.ToString() == id);
         }
 
-        private T ProjectTo<T>(Review review)
+        public T ProjectTo<T>(Review review)
         {
             return _mapper.Map<T>(review);
         }

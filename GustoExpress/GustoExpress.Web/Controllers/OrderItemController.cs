@@ -1,10 +1,10 @@
 ﻿namespace GustoExpress.Web.Controllers
 {
-    using GustoExpress.Services.Data.Contracts;
-    using GustoExpress.Web.ViewModels;
-
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+
+    using GustoExpress.Services.Data.Contracts;
+    using GustoExpress.Web.ViewModels;
 
     [Authorize]
     public class OrderItemController : BaseController

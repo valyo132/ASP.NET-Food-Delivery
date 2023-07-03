@@ -9,8 +9,9 @@ namespace GustoExpress.Services.Data
     using GustoExpress.Services.Data.Contracts;
     using GustoExpress.Web.Data;
     using GustoExpress.Web.ViewModels;
+    using GustoExpress.Services.Data.Helpers;
 
-    public class OfferService : IOfferService
+    public class OfferService : IOfferService, IProjectable<Offer>
     {
         private readonly ApplicationDbContext _context;
         private readonly IProductService _productService;
@@ -26,14 +27,6 @@ namespace GustoExpress.Services.Data
             _mapper = mapper;
             _productService = productService;
             _restaurantService = restaurantService;
-        }
-
-        public async Task<T> ProjectToModel<T>(string id)
-        {
-            Offer offer = await GetByIdAsync(id);
-            T model = ProjectTo<T>(offer);
-
-            return model;
         }
 
         public async Task<Offer> GetByIdAsync(string id)
@@ -72,7 +65,6 @@ namespace GustoExpress.Services.Data
             }
 
             await _context.Offers.AddAsync(offer);
-            await _restaurantService.AddOfferAsync(offer);
 
             await _context.SaveChangesAsync();
 
@@ -143,9 +135,16 @@ namespace GustoExpress.Services.Data
                 .AnyAsync(o => o.Name.ToLower() == name.ToLower() && o.IsDeleted == false && o.RestaurantId.ToString() == resntaurantId);
         }
 
-        private T ProjectTo<T>(Offer offer)
+        public async Task<T> ProjectToModel<T>(string id)
         {
-            return _mapper.Map<T>(offer);
+            Offer offer = await GetByIdAsync(id);
+            T model = ProjectTo<T>(offer);
+
+            return model;
+        }
+        public T ProjectTo<T>(Offer obj)
+        {
+            return _mapper.Map<T>(obj);
         }
     }
 }

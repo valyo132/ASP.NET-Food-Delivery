@@ -1,13 +1,15 @@
-﻿using AutoMapper;
-using GustoExpress.Data.Models;
-using GustoExpress.Services.Data.Contracts;
-using GustoExpress.Web.Data;
-using GustoExpress.Web.ViewModels;
-using Microsoft.EntityFrameworkCore;
-
-namespace GustoExpress.Services.Data
+﻿namespace GustoExpress.Services.Data
 {
-    public class ProductService : IProductService
+    using AutoMapper;
+    using Microsoft.EntityFrameworkCore;
+
+    using GustoExpress.Data.Models;
+    using GustoExpress.Services.Data.Contracts;
+    using GustoExpress.Services.Data.Helpers;
+    using GustoExpress.Web.Data;
+    using GustoExpress.Web.ViewModels;
+
+    public class ProductService : IProductService, IProjectable<Product>
     {
         private readonly ApplicationDbContext _context;
         private readonly IRestaurantService _restaurantService;
@@ -45,7 +47,6 @@ namespace GustoExpress.Services.Data
             }
 
             await _context.Products.AddAsync(newProduct);
-            await _restaurantService.AddProductAsync(newProduct);
 
             await _context.SaveChangesAsync();
 
@@ -91,7 +92,7 @@ namespace GustoExpress.Services.Data
             await _context.SaveChangesAsync();
         }
 
-        private T ProjectTo<T>(Product product)
+        public T ProjectTo<T>(Product product)
         {
             return _mapper.Map<T>(product);
         }

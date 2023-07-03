@@ -1,17 +1,18 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using GustoExpress.Data.Models;
-using GustoExpress.Data.Models.Enums;
-using GustoExpress.Services.Data.Contracts;
-using GustoExpress.Web.Data;
-using GustoExpress.Web.ViewModels;
-using GustoExpress.Web.ViewModels.Enums.Restaurant;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-
-namespace GustoExpress.Services.Data
+﻿namespace GustoExpress.Services.Data
 {
-    public class RestaurantService : IRestaurantService
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.EntityFrameworkCore;
+
+    using GustoExpress.Data.Models;
+    using GustoExpress.Services.Data.Contracts;
+    using GustoExpress.Web.Data;
+    using GustoExpress.Web.ViewModels;
+    using GustoExpress.Web.ViewModels.Enums.Restaurant;
+    using GustoExpress.Services.Data.Helpers;
+
+    public class RestaurantService : IRestaurantService, IProjectable<Restaurant>
     {
         private readonly IMapper _mapper;
         private readonly ApplicationDbContext _context;
@@ -28,7 +29,7 @@ namespace GustoExpress.Services.Data
 
         public async Task<T> ProjectToModel<T>(string id)
         {
-            Restaurant restaurant = await GetByIdAsync(id);
+            var restaurant = await GetByIdAsync(id);
             T restaurantViewModel = ProjectTo<T>(restaurant);
             return restaurantViewModel;
         }
@@ -132,22 +133,6 @@ namespace GustoExpress.Services.Data
             return ProjectTo<RestaurantViewModel>(restaurant);
         }
 
-        public async Task AddProductAsync(Product product)
-        {
-            var restaurant = await GetByIdAsync(product.RestaurantId.ToString());
-            restaurant.Products.Add(product);
-
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task AddOfferAsync(Offer offer)
-        {
-            var restaurant = await GetByIdAsync(offer.RestaurantId.ToString());
-            restaurant.Offers.Add(offer);
-
-            await _context.SaveChangesAsync();
-        }
-
         public async Task SaveImageURL(string url, RestaurantViewModel restaurantVm)
         {
             Restaurant restraurant = await GetByIdAsync(restaurantVm.Id.ToString());
@@ -165,7 +150,7 @@ namespace GustoExpress.Services.Data
                 })
                 .ToList();
 
-        private T ProjectTo<T>(Restaurant restaurant)
+        public T ProjectTo<T>(Restaurant restaurant)
         {
             return _mapper.Map<T>(restaurant);
         }

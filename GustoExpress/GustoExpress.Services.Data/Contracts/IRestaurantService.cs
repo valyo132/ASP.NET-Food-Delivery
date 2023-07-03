@@ -12,8 +12,6 @@ namespace GustoExpress.Services.Data.Contracts
         Task<RestaurantViewModel> CreateAsync(CreateRestaurantViewModel model);
         Task<RestaurantViewModel> EditRestaurantAsync(string id, CreateRestaurantViewModel model);
         Task<RestaurantViewModel> DeleteAsync(string id);
-        Task AddProductAsync(Product product);
-        Task AddOfferAsync(Offer offer);
         IEnumerable<SelectListItem> GetRestaurantSortingValues();
         Task SaveImageURL(string url, RestaurantViewModel restaurant);
     }

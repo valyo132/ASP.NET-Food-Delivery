@@ -126,19 +126,19 @@ namespace GustoExpress.Services.Data.UnitTests
         [Test]
         public async Task Test_AllAsyncMethod_ShouldWork()
         {
-            var actualResult = await _restaurantService.AllAsync("TestCity");
+            var actualResult = await _restaurantService.AllAsync("TestCity", new AllRestaurantViewModel());
 
-            Assert.That(actualResult.Count, Is.EqualTo(1));
-            Assert.That(typeof(AllRestaurantViewModel), Is.EqualTo(actualResult.First().GetType()));
+            Assert.That(actualResult.Restaurants.Count, Is.EqualTo(1));
+            Assert.That(typeof(AllRestaurantViewModel), Is.EqualTo(actualResult.Restaurants.First().GetType()));
             Assert.That(typeof(List<AllRestaurantViewModel>), Is.EqualTo(actualResult.GetType()));
         }
 
         [Test]
         public async Task Test_AllAsyncMethod_ShouldReturnZero()
         {
-            var actualResult = await _restaurantService.AllAsync("Invalid City");
+            var actualResult = await _restaurantService.AllAsync("Invalid City", new AllRestaurantViewModel());
 
-            Assert.That(0, Is.EqualTo(actualResult.Count));
+            Assert.That(0, Is.EqualTo(actualResult.Restaurants.Count));
         }
 
         [Test]
@@ -193,26 +193,6 @@ namespace GustoExpress.Services.Data.UnitTests
             Assert.IsNotNull(deletedRestaurant);
             Assert.That(1, Is.EqualTo(_context.Restaurants.Count(r => r.IsDeleted == true)));
             Assert.That(restaurant.Id, Is.EqualTo(deletedRestaurant.Id));
-        }
-
-        [Test]
-        public async Task Test_AddProductToRestaurant_ShouldWork()
-        {
-            await _restaurantService.AddProductAsync(products.First());
-
-            var restaurantsProductsCount = _context.Restaurants.First().Products.Count;
-
-            Assert.That(1, Is.EqualTo(restaurantsProductsCount));
-        }
-
-        [Test]
-        public async Task Test_AddOffer_ShouldWork()
-        {
-            await _restaurantService.AddOfferAsync(offers.First());
-
-            var restaurantsOffersCount = _context.Restaurants.First().Offers.Count;
-
-            Assert.That(1, Is.EqualTo(restaurantsOffersCount));
         }
 
         [Test]

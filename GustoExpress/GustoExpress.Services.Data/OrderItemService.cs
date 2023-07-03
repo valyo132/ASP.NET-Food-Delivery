@@ -8,8 +8,9 @@ namespace GustoExpress.Services.Data
     using GustoExpress.Services.Data.Contracts;
     using GustoExpress.Web.Data;
     using GustoExpress.Web.ViewModels;
+    using GustoExpress.Services.Data.Helpers;
 
-    public class OrderItemService : IOrderItemService
+    public class OrderItemService : IOrderItemService, IProjectable<OrderItem>
     {
         private readonly ApplicationDbContext _context;
         private readonly IProductService _productService;
@@ -74,12 +75,14 @@ namespace GustoExpress.Services.Data
                 var product = @object as Product;
                 orderItemViewModel.ProductId = product.Id.ToString();
                 orderItemViewModel.Product = product;
+                orderItemViewModel.RestaurantId = product.RestaurantId.ToString();
             }
             else
             {
                 var offer = @object as Offer;
                 orderItemViewModel.OfferId = offer.Id.ToString();
                 orderItemViewModel.Offer = offer;
+                orderItemViewModel.RestaurantId = offer.RestaurantId.ToString();
             }
 
             return orderItemViewModel;
@@ -95,9 +98,9 @@ namespace GustoExpress.Services.Data
             return ProjectTo<OrderItemViewModel>(orderItem);
         }
 
-        private T ProjectTo<T>(OrderItem item)
+        public T ProjectTo<T>(OrderItem obj)
         {
-            return _mapper.Map<T>(item);
+            return _mapper.Map<T>(obj);
         }
     }
 }
