@@ -55,5 +55,10 @@
                 return RedirectToAction("RestaurantPage", "Restaurant", new { id = id });
             }
         }
+
+        public async Task<IActionResult> IncrementItem(string id)
+        {
+            return Ok();
+        }
     }
 }

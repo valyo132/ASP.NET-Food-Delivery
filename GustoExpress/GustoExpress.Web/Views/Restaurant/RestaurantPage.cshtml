@@ -60,42 +60,8 @@
     </section>
 
     <!-- Shopping cart -->
-    <section class="col-lg-4">
-        <div class="container-lg bg-light">
-            <h2 class="text-center">Shopping cart</h2>
-            <hr />
-            <div class="container my-1 text-center" style="height: 100%;">
-                @if (Model.Order != null)
-                {
-                    <p class="text-start">Offers</p>
-                    @foreach (var item in Model.Order.OrderItems.Where(o => o.Offer != null))
-                    {
-                        <div class="row">
-                            <p class="col-7 fw-bold">@item.Offer.Name</p>
-                            <p class="col-5">$@item.TotalCost</p>
-                        </div>
-                    }
-                    <hr />
-                    <p class="text-start">Products</p>
-                    @foreach (var item in Model.Order.OrderItems.Where(o => o.Product != null))
-                    {
-                        <div class="row">
-                            <div class="col-6">
-                                <p class="m-0 fw-bold">@item.Product.Name</p>
-                                <p>@item.Product.Category</p>
-                            </div>
-                            <p class="col-5">$@item.TotalCost</p>
-                        </div>
-                    }
+    <partial name="_ShoppingCartPartial" model="Model" />
 
-                    <p>Total: $@Model.Order.TotalCost</p>
-                }
-                <form>
-                    <button class="mb-3 btn btn-outline-secondary type="submit" asp-route-id="@Model.Id" asp-action="CompleteOrder" asp-controller="Order">Order</button>
-                </form>
-            </div>
-        </div>
-    </section>
 </div>
 
 <partial name="_CreateReviewPartial" model='new CreateReviewViewModel { RestaurantId = Model.Id.ToString() }' />

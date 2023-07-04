@@ -1,0 +1,47 @@
+﻿@using GustoExpress.Web.ViewModels;
+@model RestaurantPageViewModel
+
+<section class="col-lg-4">
+    <form>
+        <div class="container-lg bg-light">
+            <h2 class="text-center">Shopping cart</h2>
+            <hr />
+            <div class="container my-1 text-center" style="height: 100%;">
+                @if (Model.Order != null)
+                {
+                    <p class="text-start">Offers</p>
+                    @foreach (var item in Model.Order.OrderItems.Where(o => o.Offer != null))
+                    {
+                        <div class="d-flex justify-content-evenly">
+                            <p class="fw-bold">@item.Offer.Name</p>
+                            <p>@item.Quantity x</p>
+                            <button asp-route-id="@item.Id" class="btn btn-sm" style="height:20px"><i class="bi bi-dash"></i></button>
+                            <p>$@item.TotalCost</p>
+                            <button asp-route-id="@item.Id" asp-action="IncrementItem" asp-controller="Order" class="btn btn-sm" style="height:20px"><i class="bi bi-plus"></i></button>
+                        </div>
+                    }
+                    <hr />
+                    <p class="text-start">Products</p>
+                    @foreach (var item in Model.Order.OrderItems.Where(o => o.Product != null))
+                    {
+                        <div class="d-flex justify-content-evenly">
+                            <div>
+                                <p class="m-0 fw-bold">@item.Product.Name</p>
+                                <p>@item.Product.Category</p>
+                            </div>
+                            <p>@item.Quantity x</p>
+                            <div class="d-flex">
+                                <button asp-route-id="@item.Id" class="btn btn-sm" style="height:20px"><i class="bi bi-dash"></i></button>
+                                <p>$@item.TotalCost</p>
+                                <button asp-route-id="@item.Id" asp-action="IncrementItem" asp-controller="Order" class="btn btn-sm" style="height:20px"><i class="bi bi-plus"></i></button>
+                            </div>
+                        </div>
+                    }
+
+                    <p>Total: $@Model.Order.TotalCost</p>
+                }
+                <button class="mb-3 btn btn-outline-secondary type="submit" asp-route-id="@Model.Id" asp-action="CompleteOrder" asp-controller="Order">Order</button>
+            </div>
+        </div>
+    </form>
+</section>
