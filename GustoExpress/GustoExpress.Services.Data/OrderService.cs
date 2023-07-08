@@ -52,7 +52,11 @@
         public async Task<Order> GetOrderByIdAsync(string orderId)
         {
             return await _context.Orders
+                .Include(o => o.Restaurant)
                 .Include(o => o.OrderItems)
+                    .ThenInclude(i => i.Offer)
+                 .Include(o => o.OrderItems)
+                    .ThenInclude(i => i.Product)
                 .FirstOrDefaultAsync(o => o.Id.ToString() == orderId);
         }
 
@@ -60,6 +64,9 @@
         {
             return await _context.Orders
                 .Include(o => o.OrderItems)
+                    .ThenInclude(i => i.Offer)
+                 .Include(o => o.OrderItems)
+                    .ThenInclude(i => i.Product)
                 .FirstOrDefaultAsync(o => o.UserId == userId && o.IsCompleted == false && o.RestaurantId.ToString() == restaurantId);
         }
 
@@ -103,6 +110,13 @@
             await _context.SaveChangesAsync();
 
             return order;
+        }
+
+        public async Task<OrderViewModel> GetOrderDetails(string orderId)
+        {
+            Order order = await GetOrderByIdAsync(orderId);
+
+            return ProjectTo<OrderViewModel>(order);
         }
 
         public T ProjectTo<T>(Order item)

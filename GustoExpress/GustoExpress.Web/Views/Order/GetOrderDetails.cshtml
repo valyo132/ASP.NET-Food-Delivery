@@ -1,0 +1,78 @@
+﻿@using GustoExpress.Web.ViewModels;
+@model OrderViewModel
+
+@{
+    ViewData["Title"] = "Complete order";
+}
+
+<div>
+    <h1 class="mt-3 fw-bold text-center">
+        <svg width="64px" height="64px" viewBox="0 0 52.00 52.00" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+                <g id="Group_49" data-name="Group 49" transform="translate(-788.946 -1785.428)">
+                    <path id="Path_131" data-name="Path 131"
+                          d="M814.946,1793.095a24,24,0,0,0-24,24h48A24,24,0,0,0,814.946,1793.095Z" fill="#ffffff"
+                          stroke="#0d0c0c" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></path>
+                    <line id="Line_51" data-name="Line 51" x2="48" transform="translate(790.946 1825.761)"
+                          fill="#ffffff" stroke="#0d0c0c" stroke-linecap="round" stroke-linejoin="round"
+                          stroke-width="4"></line>
+                    <line id="Line_52" data-name="Line 52" y2="5.667" transform="translate(814.946 1787.428)"
+                          fill="#ffffff" stroke="#0d0c0c" stroke-linecap="round" stroke-linejoin="round"
+                          stroke-width="4"></line>
+                </g>
+            </g>
+        </svg>
+        GustoExpress
+    </h1>
+</div>
+
+<h1 class="m-4 text-center">Thank you for your order!</h1>
+
+<section class="m-3 bg-light">
+    <div class="p-4 container-sm">
+
+        <div class="row text-center">
+            <p><span class="fs-5">Restaurant:</span> <span class="lead">@Model.Restaurant.Name</span></p>
+            <p><span class="fs-5">Username:</span> <span class="lead">@this.User.FindFirst("FriendlyName").Value</span></p>
+        </div>
+        <hr class="mt-1" />
+
+        @foreach (var item in Model.OrderItems)
+        {
+            if (item.Product != null)
+            {
+                <div class="row">
+                    <h2 class="m-2 fw-bold">@item.Product.Name</h2>
+                    <div class="col-2">
+                        <img src="@item.Product.ImageURL" class="img-thumbnail" />
+                    </div>
+                    <div class="col-10">
+                        <p class="fs-5">@item.Product.Description</p>
+                        <p class="lead">$@item.Product.Price</p>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="row">
+                    <h2 class="m-2 fw-bold">@item.Offer.Name</h2>
+                    <div class="col-2">
+                        <img src="@item.Offer.ImageURL" class="img-thumbnail" />
+                    </div>
+                    <div class="col-10">
+                        <p class="fs-5">@item.Offer.Description</p>
+                        <p class="lead">$@item.Offer.Price</p>
+                    </div>
+                </div>
+            }
+            <br />
+        }
+    </div>
+</section>
+
+<form class="text-center" method="get">
+    <button class="btn btn-primary" asp-action="Index" asp-controller="Home">Home</button>
+    <button class="btn btn-secondary" asp-action="RestaurantPage" asp-controller="Restaurant" asp-route-id="@Model.RestaurantId">Go back to @Model.Restaurant.Name</button>
+</form>

@@ -15,9 +15,7 @@
                         <div class="d-flex justify-content-evenly">
                             <p class="fw-bold">@item.Offer.Name</p>
                             <p>@item.Quantity x</p>
-                            <button asp-route-id="@item.Id" class="btn btn-sm" style="height:20px"><i class="bi bi-dash"></i></button>
                             <p>$@item.TotalCost</p>
-                            <button asp-route-id="@item.Id" asp-action="IncrementItem" asp-controller="Order" class="btn btn-sm" style="height:20px"><i class="bi bi-plus"></i></button>
                         </div>
                     }
                     <hr />
@@ -31,9 +29,7 @@
                             </div>
                             <p>@item.Quantity x</p>
                             <div class="d-flex">
-                                <button asp-route-id="@item.Id" class="btn btn-sm" style="height:20px"><i class="bi bi-dash"></i></button>
                                 <p>$@item.TotalCost</p>
-                                <button asp-route-id="@item.Id" asp-action="IncrementItem" asp-controller="Order" class="btn btn-sm" style="height:20px"><i class="bi bi-plus"></i></button>
                             </div>
                         </div>
                     }

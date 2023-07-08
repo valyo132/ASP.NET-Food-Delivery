@@ -47,7 +47,8 @@
                 await _orderService.CompleteOrder(userId, id);
 
                 TempData["success"] = "Order completed!";
-                return RedirectToAction("RestaurantPage", "Restaurant", new { id = id });
+                //return RedirectToAction("RestaurantPage", "Restaurant", new { id = id });
+                return RedirectToAction("GetOrderDetails", "Order", new { orderId = model.Id });
             }
             catch (InvalidOperationException ioe)
             {
@@ -56,9 +57,12 @@
             }
         }
 
-        public async Task<IActionResult> IncrementItem(string id)
+        [HttpGet]
+        public async Task<IActionResult> GetOrderDetails(string orderId)
         {
-            return Ok();
+            OrderViewModel model = await _orderService.GetOrderDetails(orderId);
+
+            return View(model);
         }
     }
 }
