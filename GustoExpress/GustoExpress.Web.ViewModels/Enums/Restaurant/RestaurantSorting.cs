@@ -4,5 +4,6 @@
     {
         DeliveryPriceAscending = 0,
         DeliveryPriceDescending = 1,
+        TimeToDeliver = 2
     }
 }

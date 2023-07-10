@@ -47,7 +47,6 @@
                 await _orderService.CompleteOrder(userId, id);
 
                 TempData["success"] = "Order completed!";
-                //return RedirectToAction("RestaurantPage", "Restaurant", new { id = id });
                 return RedirectToAction("GetOrderDetails", "Order", new { orderId = model.Id });
             }
             catch (InvalidOperationException ioe)

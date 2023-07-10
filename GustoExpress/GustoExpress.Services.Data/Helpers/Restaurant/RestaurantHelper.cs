@@ -14,5 +14,14 @@
                    Text = r.ToString()
                })
                .ToList();
+
+        public static int GetTimeDifference(string timeToDeliver)
+        {
+            string[] times = timeToDeliver.Split('-');
+            int startTime = int.Parse(times[0]);
+            int endTime = int.Parse(times[1]);
+
+            return endTime - startTime;
+        }
     }
 }

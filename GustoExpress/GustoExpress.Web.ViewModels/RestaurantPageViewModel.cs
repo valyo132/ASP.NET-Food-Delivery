@@ -1,5 +1,4 @@
 ﻿using GustoExpress.Data.Models;
-using System.Runtime.CompilerServices;
 
 namespace GustoExpress.Web.ViewModels
 {

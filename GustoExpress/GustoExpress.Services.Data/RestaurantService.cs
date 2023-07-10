@@ -10,6 +10,7 @@
     using GustoExpress.Web.ViewModels;
     using GustoExpress.Web.ViewModels.Enums.Restaurant;
     using GustoExpress.Services.Data.Helpers.Contracts;
+    using GustoExpress.Services.Data.Helpers.Restaurant;
 
     public class RestaurantService : IRestaurantService, IProjectable<Restaurant>
     {
@@ -69,6 +70,8 @@
                     .OrderBy(r => r.DeliveryPrice).ToList(),
                 RestaurantSorting.DeliveryPriceDescending => allRestaurants
                     .OrderByDescending(r => r.DeliveryPrice).ToList(),
+                RestaurantSorting.TimeToDeliver => allRestaurants
+                    .OrderBy(r => RestaurantHelper.GetTimeDifference(r.TimeToDeliver)).ToList(),
                 _ => allRestaurants
             };
 
