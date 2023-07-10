@@ -1,6 +1,7 @@
 ﻿namespace GustoExpress.Web.Controllers
 {
     using GustoExpress.Services.Data.Contracts;
+    using GustoExpress.Services.Data.Helpers;
     using GustoExpress.Services.Data.Helpers.Product;
     using GustoExpress.Web.ViewModels;
 
@@ -127,15 +128,9 @@
         private void DeleteImage(string file)
         {
             string wwwRootPath = _webHostEnvironment.WebRootPath;
-
             string imagePath = wwwRootPath + file;
 
-            FileInfo fileInfo = new FileInfo(imagePath);
-            if (fileInfo != null)
-            {
-                System.IO.File.Delete(imagePath);
-                fileInfo.Delete();
-            }
+            FileHelper.DeleteImage(imagePath);
         }
     }
 }

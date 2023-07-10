@@ -3,7 +3,7 @@
 
 @foreach (var category in Model.Products.Where(p => p.IsDeleted == false).OrderBy(p => p.Category).Select(p => p.Category).Distinct())
 {
-    <h2>@category</h2>
+    <h2 class="mt-2">@category</h2>
 
     @foreach (var product in Model.Products.Where(p => p.IsDeleted == false && p.Category == category))
     {
