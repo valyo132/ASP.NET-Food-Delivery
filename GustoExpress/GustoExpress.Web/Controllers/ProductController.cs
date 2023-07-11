@@ -1,12 +1,12 @@
 ﻿namespace GustoExpress.Web.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+
     using GustoExpress.Services.Data.Contracts;
     using GustoExpress.Services.Data.Helpers;
     using GustoExpress.Services.Data.Helpers.Product;
     using GustoExpress.Web.ViewModels;
-
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Mvc;
 
     [Authorize]
     public class ProductController : BaseController

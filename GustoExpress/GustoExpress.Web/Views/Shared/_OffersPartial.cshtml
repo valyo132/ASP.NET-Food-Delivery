@@ -8,7 +8,7 @@
     <!-- Offer -->
     <article class="mt-2 container">
         <div>
-            <div class="col-lg-10">
+            <div class="position-relative d-flex col-10">
                 <div class="card border-0 shadow-sm">
                     <div class="row" style="height:150px">
                         <div class="col-7">
@@ -21,12 +21,12 @@
                                 {
                                     <div class="p-0 container d-flex gap-3">
                                         <p class="text-decoration-line-through"><i class="bi bi-currency-dollar"></i>@offer.Price lv.</p>
-                                        <p><i class="bi bi-currency-dollar"></i>@offer.DiscountedPrice lv.</p>
+                                        <p><i class="bi bi-currency-dollar"></i>@offer.DiscountedPrice</p>
                                     </div>
                                 }
                                 else
                                 {
-                                    <p><i class="bi bi-currency-dollar"></i>@offer.Price lv.</p>
+                                    <p><i class="bi bi-currency-dollar"></i>@offer.Price</p>
                                 }
                             </div>
                         </div>
@@ -45,6 +45,12 @@
                         </div>
                     </div>
                 </div>
+                @if (offer.Discount != null && offer.Discount > 0)
+                {
+                    <div class="position-absolute top-0 start-100 mt-3 p-1 ps-2 pe-2 bg-danger d-flex text-white" style="height:30px">
+                        Discount
+                    </div>
+                }
             </div>
         </div>
     </article>

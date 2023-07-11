@@ -10,7 +10,7 @@
         <!-- Product -->
         <article class="container mt-5">
             <div>
-                <div class="col-lg-10">
+                <div class="position-relative d-flex col-10">
                     <div class="card border-0 shadow-sm">
                         <div class="row" style="height:150px">
                             <div class="col-7">
@@ -23,12 +23,12 @@
                                     {
                                         <div class="p-0 container d-flex gap-3">
                                             <p class="text-decoration-line-through"><i class="bi bi-currency-dollar"></i>@product.Price lv.</p>
-                                            <p><i class="bi bi-currency-dollar"></i>@product.DiscountedPrice lv.</p>
+                                            <p><i class="bi bi-currency-dollar"></i>@product.DiscountedPrice</p>
                                         </div>
                                     }
                                     else
                                     {
-                                        <p><i class="bi bi-currency-dollar"></i>@product.Price lv.</p>
+                                        <p><i class="bi bi-currency-dollar"></i>@product.Price</p>
                                     }
                                 </div>
                             </div>
@@ -47,6 +47,12 @@
                             </div>
                         </div>
                     </div>
+                    @if (product.Discount != null && product.Discount > 0)
+                    {
+                        <div class="position-absolute top-0 start-100 mt-3 p-1 ps-2 pe-2 bg-danger text-white" style="height:30px">
+                            Discount
+                        </div>
+                    }
                 </div>
             </div>
         </article>
