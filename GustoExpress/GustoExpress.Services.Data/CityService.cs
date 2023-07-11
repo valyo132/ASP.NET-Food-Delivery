@@ -29,7 +29,6 @@
         public async Task<City> GetCityAsync(string cityName)
         {
             return await _context.Cities
-                .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.CityName.ToLower() == cityName.ToLower());
         }
     }

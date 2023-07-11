@@ -53,6 +53,11 @@
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateRestaurant(IFormFile? file, CreateRestaurantViewModel obj)
         {
+            if (obj.MinTimeToDeliver > obj.MaxTimeToDeliver)
+            {
+                ModelState.AddModelError("Invalid operation", "Invalid operation - Time to deliver");
+            }
+
             if (ModelState.IsValid)
             {
                 RestaurantViewModel restaurant = await _restaurantService.CreateAsync(obj);
@@ -64,6 +69,7 @@
                 return RedirectToAction("RestaurantPage", "Restaurant", new { id = restaurant.Id });
             }
 
+            TempData["danger"] = "Invalid operation!";
             return View(obj);
         }
 
