@@ -10,5 +10,12 @@
         {
             return this.User.FindFirstValue(ClaimTypes.NameIdentifier);
         }
+
+        public IActionResult GeneralError()
+        {
+            TempData["danger"] = "Unexpected error occurred! Please try again later or contact administrator";
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

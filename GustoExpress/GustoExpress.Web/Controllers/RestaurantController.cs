@@ -25,7 +25,7 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> All(string city, [FromQuery]AllRestaurantViewModel? obj)
+        public async Task<IActionResult> All(string city, [FromQuery] AllRestaurantViewModel? obj)
         {
             AllRestaurantViewModel restaurants = await _restaurantService.AllAsync(city, obj);
             restaurants.SortingItems = RestaurantHelper.GetRestaurantSortingValues();
@@ -36,10 +36,22 @@
         [HttpGet]
         public async Task<IActionResult> RestaurantPage(string id)
         {
-            RestaurantPageViewModel model = await _restaurantService.ProjectToModel<RestaurantPageViewModel>(id);
-            model.Order = await _orderService.GetUserOrderAsync(GetUserId(), id);
+            if (!await _restaurantService.HasRestaurantWithId(id))
+            {
+                return GeneralError();
+            }
 
-            return View(model);
+            try
+            {
+                RestaurantPageViewModel model = await _restaurantService.ProjectToModel<RestaurantPageViewModel>(id);
+                model.Order = await _orderService.GetUserOrderAsync(GetUserId(), id);
+
+                return View(model);
+            }
+            catch (Exception)
+            {
+                return GeneralError();
+            }
         }
 
         [HttpGet]
@@ -77,6 +89,11 @@
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditRestaurant(string id)
         {
+            if (!await _restaurantService.HasRestaurantWithId(id))
+            {
+                return GeneralError();
+            }
+
             CreateRestaurantViewModel model = await _restaurantService.ProjectToModel<CreateRestaurantViewModel>(id);
 
             return View(model);

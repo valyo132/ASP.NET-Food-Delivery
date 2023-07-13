@@ -10,32 +10,53 @@
     public class OrderItemController : BaseController
     {
         private readonly IOrderItemService _orderItemService;
+        private readonly IProductService _productService;
+        private readonly IOfferService _offerService;
 
-        public OrderItemController(IOrderItemService orderItemService)
+        public OrderItemController(IOrderItemService orderItemService, 
+            IProductService productService,
+            IOfferService offerService)
         {
             _orderItemService = orderItemService;
+            _productService = productService;
+            _offerService = offerService;
+
         }
 
         [HttpGet]
         public async Task<IActionResult> CreateItem(string id)
         {
-            var @object = await _orderItemService.GetObjectAsync(id);
-            CreateOrderItemViewModel model = _orderItemService.GetOrderItemViewModel(@object);
+            try
+            {
+                var @object = await _orderItemService.GetObjectAsync(id);
+                CreateOrderItemViewModel model = _orderItemService.GetOrderItemViewModel(@object);
 
-            return View(model);
+                return View(model);
+            }
+            catch (Exception)
+            {
+                return GeneralError();
+            }
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateItem(CreateOrderItemViewModel obj)
         {
-            if (ModelState.IsValid)
+            try
             {
-                OrderItemViewModel model = await _orderItemService.CreateOrderItemAsync(obj);
+                if (ModelState.IsValid)
+                {
+                    OrderItemViewModel model = await _orderItemService.CreateOrderItemAsync(obj);
 
-                return RedirectToAction("AddItemToOrder", "Order", new { id = model.Id.ToString() });
+                    return RedirectToAction("AddItemToOrder", "Order", new { id = model.Id.ToString() });
+                }
+
+                return View(obj);
             }
-
-            return View(obj);
+            catch (Exception)
+            {
+                return GeneralError();
+            }
         }
     }
 }

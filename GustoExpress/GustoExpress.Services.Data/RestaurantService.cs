@@ -27,6 +27,9 @@
             _cityService = cityService;
         }
 
+        public async Task<bool> HasRestaurantWithId(string id)
+            => await _context.Restaurants.AnyAsync(r => r.Id.ToString() == id);
+
         public async Task<T> ProjectToModel<T>(string id)
         {
             var restaurant = await GetByIdAsync(id);

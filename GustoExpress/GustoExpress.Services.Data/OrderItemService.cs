@@ -9,6 +9,7 @@ namespace GustoExpress.Services.Data
     using GustoExpress.Web.Data;
     using GustoExpress.Web.ViewModels;
     using GustoExpress.Services.Data.Helpers.Contracts;
+    using Microsoft.EntityFrameworkCore.Diagnostics;
 
     public class OrderItemService : IOrderItemService, IProjectable<OrderItem>
     {
@@ -27,6 +28,9 @@ namespace GustoExpress.Services.Data
             _offerService = offerService;
             _mapper = mapper;
         }
+
+        public async Task<bool> HasOrderItemWithId(string id)
+            => await _context.OrderItems.AnyAsync(oi => oi.Id.ToString() == id);
 
         public async Task<OrderItem> GetOrderItemByIdAsync(string itemId)
         {
@@ -61,7 +65,7 @@ namespace GustoExpress.Services.Data
             else if (@object is Offer offer)
                 return offer;
             else
-                return null;
+                throw new InvalidOperationException();
         }
 
         public CreateOrderItemViewModel GetOrderItemViewModel(object obj)

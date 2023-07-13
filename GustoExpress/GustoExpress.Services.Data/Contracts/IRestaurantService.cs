@@ -1,11 +1,11 @@
-﻿using GustoExpress.Data.Models;
-using GustoExpress.Web.ViewModels;
-using Microsoft.AspNetCore.Mvc.Rendering;
-
-namespace GustoExpress.Services.Data.Contracts
+﻿namespace GustoExpress.Services.Data.Contracts
 {
+    using GustoExpress.Data.Models;
+    using GustoExpress.Web.ViewModels;
+
     public interface IRestaurantService
     {
+        Task<bool> HasRestaurantWithId(string id);
         Task<T> ProjectToModel<T>(string id);
         Task<Restaurant> GetByIdAsync(string id);
         Task<AllRestaurantViewModel> AllAsync(string city, AllRestaurantViewModel? model);

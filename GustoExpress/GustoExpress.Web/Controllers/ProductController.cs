@@ -7,31 +7,47 @@
     using GustoExpress.Services.Data.Helpers;
     using GustoExpress.Services.Data.Helpers.Product;
     using GustoExpress.Web.ViewModels;
+    using GustoExpress.Services.Data;
 
     [Authorize]
     public class ProductController : BaseController
     {
         private readonly IProductService _productService;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IRestaurantService _restaurantService;
 
         public ProductController(IProductService productService,
-            IWebHostEnvironment webHostEnvironment)
+            IWebHostEnvironment webHostEnvironment,
+            IRestaurantService restaurantService)
         {
             _productService = productService;
             _webHostEnvironment = webHostEnvironment;
+            _restaurantService = restaurantService;
         }
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public IActionResult CreateProduct(string id)
+        public async Task<IActionResult> CreateProduct(string id)
         {
-            CreateProductViewModel productVm = new CreateProductViewModel()
+            if (!await _restaurantService.HasRestaurantWithId(id))
             {
-                RestaurantId = id,
-                CategoryList = ProductHelper.GetCategories()
-            };
+                return GeneralError();
+            }
 
-            return View(productVm);
+            try
+            {
+                CreateProductViewModel productVm = new CreateProductViewModel()
+                {
+                    RestaurantId = id,
+                    CategoryList = ProductHelper.GetCategories()
+                };
+
+                return View(productVm);
+            }
+            catch (Exception)
+            {
+                return GeneralError();
+            }
         }
 
         [HttpPost]
@@ -55,6 +71,10 @@
             {
                 TempData["danger"] = ioe.Message;
             }
+            catch (Exception)
+            {
+                return GeneralError();
+            }
 
             obj.CategoryList = ProductHelper.GetCategories();
             return View(obj);
@@ -64,6 +84,11 @@
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditProduct(string id)
         {
+            if (!await _productService.HasProductWithId(id))
+            {
+                return GeneralError();
+            }
+
             CreateProductViewModel createProductVm = await _productService.ProjectToModel<CreateProductViewModel>(id);
             createProductVm.CategoryList = ProductHelper.GetCategories();
             createProductVm.RestaurantId = id;
@@ -75,26 +100,33 @@
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditProduct(IFormFile? file, string id, CreateProductViewModel obj)
         {
-            if (ModelState.IsValid)
+            try
             {
-                if (obj.Discount > obj.Price)
+                if (ModelState.IsValid)
                 {
-                    TempData["danger"] = "Invalid operation!";
-                    return RedirectToAction("RestaurantPage", "Restaurant", new { id = obj.RestaurantId });
+                    if (obj.Discount > obj.Price)
+                    {
+                        TempData["danger"] = "Invalid operation!";
+                        return RedirectToAction("RestaurantPage", "Restaurant", new { id = obj.RestaurantId });
+                    }
+
+                    ProductViewModel editedProduct = await _productService.EditProductAsync(id, obj);
+
+                    if (file != null)
+                    {
+                        if (editedProduct.ImageURL != null)
+                            DeleteImage(editedProduct.ImageURL);
+
+                        await SaveImage(file, editedProduct);
+                    }
+
+                    TempData["success"] = "Successfully updated product!";
+                    return RedirectToAction("RestaurantPage", "Restaurant", new { id = editedProduct.RestaurantId });
                 }
-
-                ProductViewModel editedProduct = await _productService.EditProductAsync(id, obj);
-
-                if (file != null)
-                {
-                    if (editedProduct.ImageURL != null)
-                        DeleteImage(editedProduct.ImageURL);
-
-                    await SaveImage(file, editedProduct);
-                }
-
-                TempData["success"] = "Successfully updated product!";
-                return RedirectToAction("RestaurantPage", "Restaurant", new { id = editedProduct.RestaurantId });
+            }
+            catch (Exception)
+            {
+                return GeneralError();
             }
 
             obj.CategoryList = ProductHelper.GetCategories();
@@ -104,10 +136,22 @@
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteProduct(string id)
         {
-            ProductViewModel deletedProduct = await _productService.DeleteAsync(id);
+            if (!await _productService.HasProductWithId(id))
+            {
+                return GeneralError();
+            }
 
-            TempData["success"] = "Successfully deleted product!";
-            return RedirectToAction("RestaurantPage", "Restaurant", new { id = deletedProduct.RestaurantId });
+            try
+            {
+                ProductViewModel deletedProduct = await _productService.DeleteAsync(id);
+
+                TempData["success"] = "Successfully deleted product!";
+                return RedirectToAction("RestaurantPage", "Restaurant", new { id = deletedProduct.RestaurantId });
+            }
+            catch (Exception)
+            {
+                return GeneralError();
+            }
         }
 
         private async Task SaveImage(IFormFile file, ProductViewModel product)

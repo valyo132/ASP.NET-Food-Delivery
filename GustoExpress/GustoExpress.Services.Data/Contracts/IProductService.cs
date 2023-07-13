@@ -1,10 +1,11 @@
-﻿using GustoExpress.Data.Models;
-using GustoExpress.Web.ViewModels;
-
-namespace GustoExpress.Services.Data.Contracts
+﻿namespace GustoExpress.Services.Data.Contracts
 {
+    using GustoExpress.Data.Models;
+    using GustoExpress.Web.ViewModels;
+
     public interface IProductService
     {
+        Task<bool> HasProductWithId(string id);
         Task<Product> GetByIdAsync(string id);
         Task<ProductViewModel> CreateProductAsync(CreateProductViewModel model);
         Task<ProductViewModel> EditProductAsync(string id, CreateProductViewModel model);

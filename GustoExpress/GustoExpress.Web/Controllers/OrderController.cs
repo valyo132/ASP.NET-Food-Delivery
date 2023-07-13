@@ -11,16 +11,25 @@
     {
         private readonly IOrderService _orderService;
         private readonly IOrderItemService _orderItemService;
+        private readonly IRestaurantService _restaurantService;
 
         public OrderController(IOrderService orderService,
-            IOrderItemService orderItemService)
+            IOrderItemService orderItemService,
+            IRestaurantService restaurantService)
         {
             _orderService = orderService;
             _orderItemService = orderItemService;
+            _restaurantService = restaurantService;
+
         }
 
         public async Task<IActionResult> AddItemToOrder(string id)
         {
+            if (!await _orderItemService.HasOrderItemWithId(id))
+            {
+                return GeneralError();
+            }
+
             try
             {
                 string userId = GetUserId();
@@ -33,13 +42,23 @@
             {
                 TempData["danger"] = ioe.Message;
                 string restaurantId = await _orderItemService.GetRestaurantIdAsync(id);
+
                 return RedirectToAction("RestaurantPage", "Restaurant", new { id = restaurantId });
+            }
+            catch (Exception)
+            {
+                return GeneralError();
             }
         }
 
         [HttpGet]
         public async Task<IActionResult> CompleteOrder(string id)
         {
+            if (!await _restaurantService.HasRestaurantWithId(id))
+            {
+                return GeneralError();
+            }
+
             try
             {
                 string userId = GetUserId();
@@ -54,14 +73,30 @@
                 TempData["danger"] = ioe.Message;
                 return RedirectToAction("RestaurantPage", "Restaurant", new { id = id });
             }
+            catch (Exception)
+            {
+                return GeneralError();
+            }
         }
 
         [HttpGet]
         public async Task<IActionResult> GetOrderDetails(string orderId)
         {
-            OrderViewModel model = await _orderService.GetOrderDetails(orderId);
+            if (!await _orderService.HasOrderWithId(orderId))
+            {
+                return GeneralError();
+            }
 
-            return View(model);
+            try
+            {
+                OrderViewModel model = await _orderService.GetOrderDetails(orderId);
+
+                return View(model);
+            }
+            catch (Exception)
+            {
+                return GeneralError();
+            }
         }
     }
 }

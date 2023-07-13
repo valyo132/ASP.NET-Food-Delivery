@@ -25,6 +25,9 @@
             _mapper = mapper;
         }
 
+        public async Task<bool> HasOrderWithId(string id)
+            => await _context.Orders.AnyAsync(o => o.Id.ToString() == id);
+
         public async Task<OrderViewModel> GetOrderToComplete(string userId, string restaurantId)
         {
             Order order = await GetUserOrderAsync(userId, restaurantId);

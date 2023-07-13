@@ -29,6 +29,9 @@ namespace GustoExpress.Services.Data
             _restaurantService = restaurantService;
         }
 
+        public async Task<bool> HasOfferWithId(string id)
+            => await _context.Offers.AnyAsync(o => o.Id.ToString() == id);
+
         public async Task<Offer> GetByIdAsync(string id)
         {
             return await _context.Offers

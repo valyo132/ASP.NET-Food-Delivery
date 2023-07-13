@@ -6,23 +6,33 @@
     using GustoExpress.Services.Data.Contracts;
     using GustoExpress.Services.Data.Helpers;
     using GustoExpress.Web.ViewModels;
+    using GustoExpress.Services.Data;
 
     [Authorize]
     public class OfferController : BaseController
     {
         private readonly IOfferService _offerService;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IRestaurantService _restaurantService;
 
-        public OfferController(IOfferService offerService, IWebHostEnvironment webHostEnvironment)
+        public OfferController(IOfferService offerService,
+            IWebHostEnvironment webHostEnvironment,
+            IRestaurantService restaurantService)
         {
             _offerService = offerService;
             _webHostEnvironment = webHostEnvironment;
+            _restaurantService = restaurantService;
         }
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateOffer(string id)
         {
+            if (!await _restaurantService.HasRestaurantWithId(id))
+            {
+                return GeneralError();
+            }
+
             CreateOfferViewModel model = new CreateOfferViewModel()
             {
                 RestaurantId = id,
@@ -58,6 +68,10 @@
             {
                 TempData["danger"] = ioe.Message;
             }
+            catch (Exception)
+            {
+                return GeneralError();
+            }
 
             obj.ProductsToChoose = await _offerService.GetProductsByRestaurantIdAsync(id);
             return View(obj);
@@ -67,6 +81,11 @@
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditOffer(string id)
         {
+            if (!await _offerService.HasOfferWithId(id))
+            {
+                return GeneralError();
+            }
+
             CreateOfferViewModel model = await _offerService.ProjectToModel<CreateOfferViewModel>(id);
             model.ProductsToChoose = await _offerService.GetProductsByRestaurantIdAsync(model.RestaurantId.ToString());
 
@@ -77,32 +96,39 @@
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditOffer(IFormFile? file, string id, CreateOfferViewModel obj)
         {
-            if (ModelState.IsValid)
+            if (obj.Discount > obj.Price)
             {
-                if (obj.Discount > obj.Price)
+                TempData["danger"] = "Invalid operation!";
+                return RedirectToAction("RestaurantPage", "Restaurant", new { id = obj.RestaurantId });
+            }
+
+            try
+            {
+                if (ModelState.IsValid)
                 {
-                    TempData["danger"] = "Invalid operation!";
-                    return RedirectToAction("RestaurantPage", "Restaurant", new { id = obj.RestaurantId });
+                    OfferViewModel offer = await _offerService.EditOfferAsync(id, obj);
+
+                    if (offer.DiscountedPrice < 0)
+                    {
+                        TempData["danger"] = "Invalid operation!";
+                        return View(obj);
+                    }
+
+                    if (file != null)
+                    {
+                        if (offer.ImageURL != null)
+                            DeleteImage(offer.ImageURL);
+
+                        await SaveImage(file, offer);
+                    }
+
+                    TempData["success"] = "Successfully updated offer!";
+                    return RedirectToAction("RestaurantPage", "Restaurant", new { id = offer.RestaurantId });
                 }
-
-                OfferViewModel offer = await _offerService.EditOfferAsync(id, obj);
-
-                if (offer.DiscountedPrice < 0)
-                {
-                    TempData["danger"] = "Invalid operation!";
-                    return View(obj);
-                }
-
-                if (file != null)
-                {
-                    if (offer.ImageURL != null)
-                        DeleteImage(offer.ImageURL);
-
-                    await SaveImage(file, offer);
-                }
-
-                TempData["success"] = "Successfully updated offer!";
-                return RedirectToAction("RestaurantPage", "Restaurant", new { id = offer.RestaurantId });
+            }
+            catch (Exception)
+            {
+                return GeneralError();
             }
 
             return View(obj);
@@ -111,10 +137,22 @@
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteOffer(string id)
         {
-            OfferViewModel deletedOffer = await _offerService.DeleteOfferAsync(id);
+            if (!await _offerService.HasOfferWithId(id))
+            {
+                return GeneralError();
+            }
 
-            TempData["success"] = "Successfully deleted offer!";
-            return RedirectToAction("RestaurantPage", "Restaurant", new { id = deletedOffer.RestaurantId });
+            try
+            {
+                OfferViewModel deletedOffer = await _offerService.DeleteOfferAsync(id);
+
+                TempData["success"] = "Successfully deleted offer!";
+                return RedirectToAction("RestaurantPage", "Restaurant", new { id = deletedOffer.RestaurantId });
+            }
+            catch (Exception)
+            {
+                return GeneralError();
+            }
         }
 
         private async Task SaveImage(IFormFile file, OfferViewModel offer)

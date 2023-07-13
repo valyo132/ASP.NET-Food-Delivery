@@ -24,6 +24,9 @@
             _restaurantService = restaurantService;
         }
 
+        public async Task<bool> HasProductWithId(string id)
+            => await _context.Products.AnyAsync(p => p.Id.ToString() == id);
+
         public async Task<T> ProjectToModel<T>(string id)
         {
             Product product = await GetByIdAsync(id);
