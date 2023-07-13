@@ -7,6 +7,7 @@ using GustoExpress.Services.Data.Contracts;
 using GustoExpress.Services.Mapping;
 using GustoExpress.Web.Data;
 using GustoExpress.Web.Modelbinder;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,6 +39,7 @@ builder.Services.AddControllersWithViews(options =>
 {
     options.ModelBinderProviders
         .Insert(0, new DecimalModelBinderProvider());
+    options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
 });
 
 builder.Services.ConfigureApplicationCookie(options =>
