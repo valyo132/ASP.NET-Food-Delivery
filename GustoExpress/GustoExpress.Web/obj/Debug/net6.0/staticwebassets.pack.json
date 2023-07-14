@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\GustoExpress.Web.bundle.scp.css"
     },
     {
+      "Id": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\css\\error401.css",
+      "PackagePath": "staticwebassets\\css\\error401.css"
+    },
+    {
+      "Id": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\css\\error404.css",
+      "PackagePath": "staticwebassets\\css\\error404.css"
+    },
+    {
       "Id": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -159,6 +167,10 @@
     {
       "Id": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\images\\Products\\cb6d70fa-57ad-4d23-875b-b594431a7840.jfif",
       "PackagePath": "staticwebassets\\images\\Products\\cb6d70fa-57ad-4d23-875b-b594431a7840.jfif"
+    },
+    {
+      "Id": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\images\\Products\\d13f418d-badc-48c1-9350-211690af29c7.png",
+      "PackagePath": "staticwebassets\\images\\Products\\d13f418d-badc-48c1-9350-211690af29c7.png"
     },
     {
       "Id": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\images\\Products\\d930d25c-aed5-4905-b57d-dfcfab20a9e4.jfif",

@@ -91,7 +91,6 @@
 
             CreateProductViewModel createProductVm = await _productService.ProjectToModel<CreateProductViewModel>(id);
             createProductVm.CategoryList = ProductHelper.GetCategories();
-            createProductVm.RestaurantId = id;
 
             return View(createProductVm);
         }
