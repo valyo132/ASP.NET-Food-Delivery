@@ -12,7 +12,7 @@
             <div>
                 <div class="position-relative d-flex col-10">
                     <div class="card border-0 shadow-sm">
-                        <div class="row" style="height:150px">
+                        <div class="row">
                             <div class="col-7">
                                 <div class="card-body">
                                     <h5 class="card-title fw-bold">@product.Name [@product.Grams]grams</h5>
@@ -33,15 +33,15 @@
                                 </div>
                             </div>
                             <div class="col-3 d-flex align-items-center">
-                                <img class="img-fluid float-end" src="@product.ImageURL">
+                                <img class="img-fluid float-end" src="@product.ImageURL" style="max-width:80%;max-height:90%;">
                             </div>
-                            <div class="ms-4 col-1">
+                            <div class="ms-4 col-sm-1">
                                 <form>
-                                    <button type="submit" asp-action="CreateItem" asp-controller="OrderItem" asp-route-id="@product.Id" class="mt-2 btn rounded-circle border-0 shadow-sm bg-light"><i class="bi bi-plus"></i></button>
+                                    <button type="submit" asp-action="CreateItem" asp-controller="OrderItem" asp-route-id="@product.Id" class="btn rounded-circle border-0 shadow-sm bg-light"><i class="bi bi-plus"></i></button>
                                     @if (this.User.IsInRole("Admin"))
                                     {
-                                        <button asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@product.Id" class="my-2 btn rounded-circle shadow-sm border-0 bg-light" onclick="return confirm('Are you sure you want to delete product @product.Name from @Model.Name')"><i class="bi bi-trash3-fill"></i></button>
-                                        <button asp-action="EditProduct" asp-controller="Product" asp-route-id="@product.Id" class="mb-2 btn rounded-circle shadow-sm border-0 bg-light"><i class="bi bi-pencil-square"></i></button>
+                                        <button asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@product.Id" class="mt-2 mb-2 btn rounded-circle shadow-sm border-0 bg-light" onclick="return confirm('Are you sure you want to delete product @product.Name from @Model.Name')"><i class="bi bi-trash3-fill"></i></button>
+                                        <button asp-action="EditProduct" asp-controller="Product" asp-route-id="@product.Id" class="btn rounded-circle shadow-sm border-0 bg-light"><i class="bi bi-pencil-square"></i></button>
                                     }
                                 </form>
                             </div>

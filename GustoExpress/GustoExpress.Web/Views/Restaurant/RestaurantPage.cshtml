@@ -12,7 +12,7 @@
 </form>
 
 <div class="mt-4 row">
-    <section class="col-lg-8">
+    <section class="col-11">
         <div class="container-lg">
             <div class="row rounded container shadow">
                 <div class="p-3 col-8">
@@ -59,10 +59,26 @@
         }
     </section>
 
-    <!-- Shopping cart -->
-    <partial name="_ShoppingCartPartial" model="Model" />
-
 </div>
+
+<div class="position-absolute end-0 col-2 text-end" style="top:250px;">
+    <button class="btn btn-lg btn-outline-primary border-end-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+        <i class="bi bi-cart"></i>
+    </button>
+</div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div>
+            <!-- Shopping cart -->
+            <partial name="_ShoppingCartPartial" model="Model" />
+        </div>
+    </div>
+</div>
+
 
 <partial name="_CreateReviewPartial" model='new CreateReviewViewModel { RestaurantId = Model.Id.ToString() }' />
 
