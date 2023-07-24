@@ -36,6 +36,7 @@
         <div class="row text-center">
             <p><span class="fs-5">Restaurant:</span> <span class="lead">@Model.Restaurant.Name</span></p>
             <p><span class="fs-5">Username:</span> <span class="lead">@this.User.FindFirst("FriendlyName").Value</span></p>
+            <p><span class="fs-5">Total cost:</span> <span class="lead">$ @Model.TotalCost</span></p>
         </div>
         <hr class="mt-1" />
 
