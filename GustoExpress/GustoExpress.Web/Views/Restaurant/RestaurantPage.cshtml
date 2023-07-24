@@ -64,6 +64,10 @@
 <div class="position-absolute end-0 col-2 text-end" style="top:250px;">
     <button class="btn btn-lg btn-outline-primary border-end-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
         <i class="bi bi-cart"></i>
+        @if(Model.Order != null)
+        {
+            <span>@Model.Order.OrderItems.Count()</span>
+        }
     </button>
 </div>
 

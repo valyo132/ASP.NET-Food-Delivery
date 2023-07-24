@@ -129,8 +129,8 @@ namespace GustoExpress.Services.Data.UnitTests
             var actualResult = await _restaurantService.AllAsync("TestCity", new AllRestaurantViewModel());
 
             Assert.That(actualResult.Restaurants.Count, Is.EqualTo(1));
-            Assert.That(typeof(AllRestaurantViewModel), Is.EqualTo(actualResult.Restaurants.First().GetType()));
-            Assert.That(typeof(List<AllRestaurantViewModel>), Is.EqualTo(actualResult.GetType()));
+            Assert.That(typeof(RestaurantViewModel), Is.EqualTo(actualResult.Restaurants.First().GetType()));
+            Assert.That(typeof(AllRestaurantViewModel), Is.EqualTo(actualResult.GetType()));
         }
 
         [Test]
