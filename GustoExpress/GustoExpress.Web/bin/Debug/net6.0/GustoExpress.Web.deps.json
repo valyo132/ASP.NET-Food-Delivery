@@ -9,10 +9,12 @@
       "GustoExpress.Web/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
+          "Griesoft.AspNetCore.ReCaptcha": "2.2.0",
           "GustoExpress.Data": "1.0.0",
           "GustoExpress.Data.Models": "1.0.0",
           "GustoExpress.Services.Data": "1.0.0",
           "GustoExpress.Services.Mapping": "1.0.0",
+          "GustoExpress.Web.Common": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "6.0.11",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.16",
           "Microsoft.AspNetCore.Identity.UI": "6.0.16",
@@ -44,6 +46,17 @@
           "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {
             "assemblyVersion": "12.0.0.0",
             "fileVersion": "12.0.1.0"
+          }
+        }
+      },
+      "Griesoft.AspNetCore.ReCaptcha/2.2.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "lib/net6.0/Griesoft.AspNetCore.ReCaptcha.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       },
@@ -2702,6 +2715,14 @@
           "GustoExpress.Services.Mapping.dll": {}
         }
       },
+      "GustoExpress.Web.Common/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.UI": "6.0.16"
+        },
+        "runtime": {
+          "GustoExpress.Web.Common.dll": {}
+        }
+      },
       "GustoExpress.Web.ViewModels/1.0.0": {
         "dependencies": {
           "GustoExpress.Data.Models": "1.0.0",
@@ -2732,6 +2753,13 @@
       "sha512": "sha512-+g/K+Vpe3gGMKGzjslMOdqNlkikScDjWfVvmWTayrDHaG/n2pPmFBMa+jKX1r/h6BDGFdkyRjAuhFE3ykW+r1g==",
       "path": "automapper.extensions.microsoft.dependencyinjection/12.0.1",
       "hashPath": "automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512"
+    },
+    "Griesoft.AspNetCore.ReCaptcha/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6tLg4/0Pap5K8ZJ8tmYv4UsfVVpWscwOITpfBS3dBrDSLJx6xoVAEXlypMYhnPlqiYsgAP8EWTuIaKWkTPanjQ==",
+      "path": "griesoft.aspnetcore.recaptcha/2.2.0",
+      "hashPath": "griesoft.aspnetcore.recaptcha.2.2.0.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",
@@ -4280,6 +4308,11 @@
       "sha512": ""
     },
     "GustoExpress.Services.Mapping/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GustoExpress.Web.Common/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

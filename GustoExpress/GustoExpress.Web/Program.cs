@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 using GustoExpress.Data.Models;
 using GustoExpress.Services.Data;
@@ -7,7 +9,7 @@ using GustoExpress.Services.Data.Contracts;
 using GustoExpress.Services.Mapping;
 using GustoExpress.Web.Data;
 using GustoExpress.Web.Modelbinder;
-using Microsoft.AspNetCore.Mvc;
+using GustoExpress.Web.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -64,6 +66,9 @@ builder.Services.AddScoped<IOfferService, OfferService>();
 builder.Services.AddScoped<IReviewService, ReviewService>();
 builder.Services.AddScoped<IOrderItemService, OrderItemService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IEmailSender, EmailSender>();
+
+//builder.Services.AddRecaptchaService();
 
 var app = builder.Build();
 

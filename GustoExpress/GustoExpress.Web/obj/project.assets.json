@@ -31,6 +31,25 @@
           "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
+      "Griesoft.AspNetCore.ReCaptcha/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "compile": {
+          "lib/net6.0/Griesoft.AspNetCore.ReCaptcha.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Griesoft.AspNetCore.ReCaptcha.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -4446,6 +4465,19 @@
           "bin/placeholder/GustoExpress.Services.Mapping.dll": {}
         }
       },
+      "GustoExpress.Web.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.UI": "6.0.16"
+        },
+        "compile": {
+          "bin/placeholder/GustoExpress.Web.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GustoExpress.Web.Common.dll": {}
+        }
+      },
       "GustoExpress.Web.ViewModels/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -4490,6 +4522,26 @@
         "automapper.extensions.microsoft.dependencyinjection.nuspec",
         "icon.png",
         "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
+      ]
+    },
+    "Griesoft.AspNetCore.ReCaptcha/2.2.0": {
+      "sha512": "6tLg4/0Pap5K8ZJ8tmYv4UsfVVpWscwOITpfBS3dBrDSLJx6xoVAEXlypMYhnPlqiYsgAP8EWTuIaKWkTPanjQ==",
+      "type": "package",
+      "path": "griesoft.aspnetcore.recaptcha/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "griesoft.aspnetcore.recaptcha.2.2.0.nupkg.sha512",
+        "griesoft.aspnetcore.recaptcha.nuspec",
+        "lib/net461/Griesoft.AspNetCore.ReCaptcha.dll",
+        "lib/net461/Griesoft.AspNetCore.ReCaptcha.xml",
+        "lib/net5.0/Griesoft.AspNetCore.ReCaptcha.dll",
+        "lib/net5.0/Griesoft.AspNetCore.ReCaptcha.xml",
+        "lib/net6.0/Griesoft.AspNetCore.ReCaptcha.dll",
+        "lib/net6.0/Griesoft.AspNetCore.ReCaptcha.xml",
+        "lib/netcoreapp3.1/Griesoft.AspNetCore.ReCaptcha.dll",
+        "lib/netcoreapp3.1/Griesoft.AspNetCore.ReCaptcha.xml"
       ]
     },
     "Humanizer.Core/2.8.26": {
@@ -11909,6 +11961,11 @@
       "path": "../GustoExpress.Services.Mapping/GustoExpress.Services.Mapping.csproj",
       "msbuildProject": "../GustoExpress.Services.Mapping/GustoExpress.Services.Mapping.csproj"
     },
+    "GustoExpress.Web.Common/1.0.0": {
+      "type": "project",
+      "path": "../GustoExpress.Web.Common/GustoExpress.Web.Common.csproj",
+      "msbuildProject": "../GustoExpress.Web.Common/GustoExpress.Web.Common.csproj"
+    },
     "GustoExpress.Web.ViewModels/1.0.0": {
       "type": "project",
       "path": "../GustoExpress.Web.ViewModels/GustoExpress.Web.ViewModels.csproj",
@@ -11918,10 +11975,12 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.1",
+      "Griesoft.AspNetCore.ReCaptcha >= 2.2.0",
       "GustoExpress.Data >= 1.0.0",
       "GustoExpress.Data.Models >= 1.0.0",
       "GustoExpress.Services.Data >= 1.0.0",
       "GustoExpress.Services.Mapping >= 1.0.0",
+      "GustoExpress.Web.Common >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 6.0.11",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.16",
       "Microsoft.AspNetCore.Identity.UI >= 6.0.16",
@@ -11969,6 +12028,9 @@
             },
             "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Services.Mapping\\GustoExpress.Services.Mapping.csproj": {
               "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Services.Mapping\\GustoExpress.Services.Mapping.csproj"
+            },
+            "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Common\\GustoExpress.Web.Common.csproj": {
+              "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Common\\GustoExpress.Web.Common.csproj"
             }
           }
         }
@@ -11986,6 +12048,10 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
             "version": "[12.0.1, )"
+          },
+          "Griesoft.AspNetCore.ReCaptcha": {
+            "target": "Package",
+            "version": "[2.2.0, )"
           },
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",

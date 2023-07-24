@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "SEPigqBZl12c2edtgL9fFnJ9sh0tz3aw/iWqBBKsDa17aU5MylzXwA2TLOVnxG73ZuHLMQLlHr0QMMQdRI4SKw==",
+  "dgSpecHash": "/R2RT6lWoloVznFaWm5wkbUP8SyNkAKVp3XPAAatuvGP4a6X9yq4mhIzfskOcGfw2vCAxT9P5rg+3kwSOC76zQ==",
   "success": true,
   "projectFilePath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\GustoExpress.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Valentin Markov\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Valentin Markov\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\Valentin Markov\\.nuget\\packages\\griesoft.aspnetcore.recaptcha\\2.2.0\\griesoft.aspnetcore.recaptcha.2.2.0.nupkg.sha512",
     "C:\\Users\\Valentin Markov\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Valentin Markov\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\Valentin Markov\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
