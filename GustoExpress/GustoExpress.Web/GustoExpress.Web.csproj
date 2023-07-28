@@ -27,6 +27,7 @@
     <ProjectReference Include="..\GustoExpress.Services.Data\GustoExpress.Services.Data.csproj" />
     <ProjectReference Include="..\GustoExpress.Services.Mapping\GustoExpress.Services.Mapping.csproj" />
     <ProjectReference Include="..\GustoExpress.Web.Common\GustoExpress.Web.Common.csproj" />
+    <ProjectReference Include="..\GustoExpress.Web.Infrastructure\GustoExpress.Web.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

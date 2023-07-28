@@ -1,0 +1,17 @@
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Infrastructure\bin\Debug\net6.0\GustoExpress.Web.Infrastructure.deps.json
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Infrastructure\bin\Debug\net6.0\GustoExpress.Web.Infrastructure.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Infrastructure\bin\Debug\net6.0\GustoExpress.Web.Infrastructure.pdb
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Infrastructure\bin\Debug\net6.0\GustoExpress.Data.Common.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Infrastructure\bin\Debug\net6.0\GustoExpress.Data.Models.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Infrastructure\bin\Debug\net6.0\GustoExpress.Data.Models.pdb
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Infrastructure\bin\Debug\net6.0\GustoExpress.Data.Common.pdb
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Infrastructure\obj\Debug\net6.0\GustoExpress.Web.Infrastructure.csproj.AssemblyReference.cache
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Infrastructure\obj\Debug\net6.0\GustoExpress.Web.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Infrastructure\obj\Debug\net6.0\GustoExpress.Web.Infrastructure.AssemblyInfoInputs.cache
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Infrastructure\obj\Debug\net6.0\GustoExpress.Web.Infrastructure.AssemblyInfo.cs
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Infrastructure\obj\Debug\net6.0\GustoExpress.Web.Infrastructure.csproj.CoreCompileInputs.cache
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Infrastructure\obj\Debug\net6.0\GustoExpress.Web.Infrastructure.csproj.CopyComplete
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Infrastructure\obj\Debug\net6.0\GustoExpress.Web.Infrastructure.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Infrastructure\obj\Debug\net6.0\refint\GustoExpress.Web.Infrastructure.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Infrastructure\obj\Debug\net6.0\GustoExpress.Web.Infrastructure.pdb
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Infrastructure\obj\Debug\net6.0\ref\GustoExpress.Web.Infrastructure.dll

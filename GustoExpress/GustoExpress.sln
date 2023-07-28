@@ -27,7 +27,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{BD
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{794C9BE6-588F-4370-A641-CEA93A711A9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GustoExpress.Web.Common", "GustoExpress.Web.Common\GustoExpress.Web.Common.csproj", "{112A5A97-3FEC-43BA-95DB-2565C7797CE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GustoExpress.Web.Common", "GustoExpress.Web.Common\GustoExpress.Web.Common.csproj", "{112A5A97-3FEC-43BA-95DB-2565C7797CE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GustoExpress.Web.Infrastructure", "GustoExpress.Web.Infrastructure\GustoExpress.Web.Infrastructure.csproj", "{4D6703B1-16CC-412D-85D0-18D2AACAC021}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{112A5A97-3FEC-43BA-95DB-2565C7797CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{112A5A97-3FEC-43BA-95DB-2565C7797CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{112A5A97-3FEC-43BA-95DB-2565C7797CE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D6703B1-16CC-412D-85D0-18D2AACAC021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D6703B1-16CC-412D-85D0-18D2AACAC021}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D6703B1-16CC-412D-85D0-18D2AACAC021}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D6703B1-16CC-412D-85D0-18D2AACAC021}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +91,7 @@ Global
 		{BD2FE82F-A8BD-4453-996D-110F495D43C5} = {BD986C8D-0524-4DA9-B1F7-4188A909620E}
 		{C63FD539-1C74-4367-8893-8CC3E0FDD829} = {794C9BE6-588F-4370-A641-CEA93A711A9D}
 		{112A5A97-3FEC-43BA-95DB-2565C7797CE5} = {9AD72230-5A5B-4523-BB22-D2F1F4F69977}
+		{4D6703B1-16CC-412D-85D0-18D2AACAC021} = {9AD72230-5A5B-4523-BB22-D2F1F4F69977}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B7F6A7A4-1D6A-42EC-A1CA-D05F0DF424F4}

@@ -10,6 +10,7 @@ using GustoExpress.Services.Mapping;
 using GustoExpress.Web.Data;
 using GustoExpress.Web.Modelbinder;
 using GustoExpress.Web.Common;
+using GustoExpress.Web.Infrastructure.Extentions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -92,6 +93,8 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.SeedAdministrator("admin@admin.com");
 
 app.MapControllerRoute(
     name: "default",

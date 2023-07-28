@@ -4478,6 +4478,20 @@
           "bin/placeholder/GustoExpress.Web.Common.dll": {}
         }
       },
+      "GustoExpress.Web.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "GustoExpress.Data.Models": "1.0.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0"
+        },
+        "compile": {
+          "bin/placeholder/GustoExpress.Web.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GustoExpress.Web.Infrastructure.dll": {}
+        }
+      },
       "GustoExpress.Web.ViewModels/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -11966,6 +11980,11 @@
       "path": "../GustoExpress.Web.Common/GustoExpress.Web.Common.csproj",
       "msbuildProject": "../GustoExpress.Web.Common/GustoExpress.Web.Common.csproj"
     },
+    "GustoExpress.Web.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../GustoExpress.Web.Infrastructure/GustoExpress.Web.Infrastructure.csproj",
+      "msbuildProject": "../GustoExpress.Web.Infrastructure/GustoExpress.Web.Infrastructure.csproj"
+    },
     "GustoExpress.Web.ViewModels/1.0.0": {
       "type": "project",
       "path": "../GustoExpress.Web.ViewModels/GustoExpress.Web.ViewModels.csproj",
@@ -11981,6 +12000,7 @@
       "GustoExpress.Services.Data >= 1.0.0",
       "GustoExpress.Services.Mapping >= 1.0.0",
       "GustoExpress.Web.Common >= 1.0.0",
+      "GustoExpress.Web.Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 6.0.11",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.16",
       "Microsoft.AspNetCore.Identity.UI >= 6.0.16",
@@ -12031,6 +12051,9 @@
             },
             "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Common\\GustoExpress.Web.Common.csproj": {
               "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Common\\GustoExpress.Web.Common.csproj"
+            },
+            "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Infrastructure\\GustoExpress.Web.Infrastructure.csproj": {
+              "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Infrastructure\\GustoExpress.Web.Infrastructure.csproj"
             }
           }
         }

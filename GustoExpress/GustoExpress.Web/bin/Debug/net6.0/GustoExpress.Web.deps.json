@@ -15,6 +15,7 @@
           "GustoExpress.Services.Data": "1.0.0",
           "GustoExpress.Services.Mapping": "1.0.0",
           "GustoExpress.Web.Common": "1.0.0",
+          "GustoExpress.Web.Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "6.0.11",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.16",
           "Microsoft.AspNetCore.Identity.UI": "6.0.16",
@@ -2723,6 +2724,15 @@
           "GustoExpress.Web.Common.dll": {}
         }
       },
+      "GustoExpress.Web.Infrastructure/1.0.0": {
+        "dependencies": {
+          "GustoExpress.Data.Models": "1.0.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0"
+        },
+        "runtime": {
+          "GustoExpress.Web.Infrastructure.dll": {}
+        }
+      },
       "GustoExpress.Web.ViewModels/1.0.0": {
         "dependencies": {
           "GustoExpress.Data.Models": "1.0.0",
@@ -4313,6 +4323,11 @@
       "sha512": ""
     },
     "GustoExpress.Web.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GustoExpress.Web.Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -300,3 +300,5 @@ G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\appsetti
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\Griesoft.AspNetCore.ReCaptcha.dll
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\GustoExpress.Web.Common.dll
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\GustoExpress.Web.Common.pdb
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\GustoExpress.Web.Infrastructure.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\GustoExpress.Web.Infrastructure.pdb
