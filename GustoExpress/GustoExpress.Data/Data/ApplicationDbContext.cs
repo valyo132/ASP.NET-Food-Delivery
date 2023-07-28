@@ -1,11 +1,11 @@
-﻿using GustoExpress.Data.Data.Configuration;
-using GustoExpress.Data.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
-
-namespace GustoExpress.Web.Data
+﻿namespace GustoExpress.Web.Data
 {
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore;
+
+    using GustoExpress.Data.Data.Configuration;
+    using GustoExpress.Data.Models;
+
     public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)

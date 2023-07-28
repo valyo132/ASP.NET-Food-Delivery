@@ -1,7 +1,7 @@
-﻿using GustoExpress.Data.Models;
-
-namespace GustoExpress.Data.Seeding
+﻿namespace GustoExpress.Data.Seeding
 {
+    using GustoExpress.Data.Models;
+
     internal class RestaurantSeeder
     {
         internal Restaurant[] GenerateRestaurants()

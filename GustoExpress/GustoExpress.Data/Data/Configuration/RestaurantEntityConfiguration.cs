@@ -1,10 +1,11 @@
-﻿using GustoExpress.Data.Models;
-using GustoExpress.Data.Seeding;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace GustoExpress.Data.Data.Configuration
+﻿namespace GustoExpress.Data.Data.Configuration
 {
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+    using GustoExpress.Data.Models;
+    using GustoExpress.Data.Seeding;
+
     public class RestaurantEntityConfiguration : IEntityTypeConfiguration<Restaurant>
     {
         private readonly RestaurantSeeder _restaurantSeeder;

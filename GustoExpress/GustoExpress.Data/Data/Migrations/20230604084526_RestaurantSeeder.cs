@@ -30,6 +30,11 @@ namespace GustoExpress.Web.Data.Migrations
                 oldMaxLength: 60);
 
             migrationBuilder.InsertData(
+                table: "Cities",
+                columns: new[] { "Id", "CityName" },
+                values: new object[] { new Guid("9c7ab005-24e6-4b2e-a54d-70cf4d9658d1"), "Sofia" });
+
+            migrationBuilder.InsertData(
                 table: "Restaurants",
                 columns: new[] { "Id", "CityId", "DeliveryPrice", "Description", "ImageURL", "Name", "TimeToDeliver" },
                 values: new object[] { new Guid("2821f72a-ce41-4b15-8106-f2770cfb0bcf"), new Guid("9c7ab005-24e6-4b2e-a54d-70cf4d9658d1"), 4.00m, "Nunc magna arcu, pharetra ut mi vitae, hendrerit laoreet lacus.", "~\\images\\Restaurants\\download.png", "McDonald's", "15-20" });
