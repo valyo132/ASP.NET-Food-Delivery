@@ -29,6 +29,8 @@
 
             builder.ApplyConfiguration(new UserEntityConfiguration());
 
+            builder.ApplyConfiguration(new ProductEntityConfiguration());
+
             builder.Entity<Offer>()
                 .HasOne(o => o.Restaurant)
                 .WithMany(r => r.Offers)

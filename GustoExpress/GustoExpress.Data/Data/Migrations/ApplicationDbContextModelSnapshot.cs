@@ -208,6 +208,32 @@ namespace GustoExpress.Web.Data.Migrations
                     b.HasIndex("RestaurantId");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("34e46ce4-b7d1-4642-9b8a-15d1666f0dbe"),
+                            Category = 7,
+                            Description = "Simple cheeseburger",
+                            Grams = 150m,
+                            ImageURL = "/images/Products/2af60ede-d017-4c1a-9dda-27bc4fd9fb6b.jpg",
+                            IsDeleted = false,
+                            Name = "Cheeseburger",
+                            Price = 4.00m,
+                            RestaurantId = new Guid("c5f0aaf2-99f2-43de-8e48-9a8fb97ccc44")
+                        },
+                        new
+                        {
+                            Id = new Guid("b55643d9-5372-442b-b17d-c463bb1f4eaf"),
+                            Category = 6,
+                            Description = "Very taste bubble tea",
+                            Grams = 300m,
+                            ImageURL = "/images/Products/0d3fa9fe-d37c-4769-9f8b-bac4424ee3b1.png",
+                            IsDeleted = false,
+                            Name = "Bubble tea",
+                            Price = 3.00m,
+                            RestaurantId = new Guid("c5f0aaf2-99f2-43de-8e48-9a8fb97ccc44")
+                        });
                 });
 
             modelBuilder.Entity("GustoExpress.Data.Models.Restaurant", b =>
@@ -541,15 +567,15 @@ namespace GustoExpress.Web.Data.Migrations
                         {
                             Id = "1cd0be45-b9be-4fc9-9b0f-46a1d20a77be",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cde4c5fa-4c51-48e2-a7f8-c2e3323a5f56",
+                            ConcurrencyStamp = "cbba6db5-7180-405b-a3ba-9f1c10f500a1",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKOrNtp2wPZoUJvrcv40hB63DrqaZhmec26/m0WJzM9xvHeLEJnEfEcDI/IaoahU7w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJBzMkmkvusKIhM13nevotYSRGkvGMC2aTplC/TPiQ2YqDy1Z0xCMdCMnHYVUsMOvw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "11169612-f2e1-400f-a440-c6bdd2efc430",
+                            SecurityStamp = "00accc74-758b-4bfe-b53e-90a28992f2c4",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com",
                             FirstName = "Best",
