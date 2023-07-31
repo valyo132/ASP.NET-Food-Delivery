@@ -51,7 +51,7 @@
                     </div>
                     <div class="col-10">
                         <p class="fs-5">@item.Product.Description</p>
-                        <p class="lead">$@item.Product.Price</p>
+                        <p class="lead">@item.Quantity x $@(item.Product.Price - (item.Product.Discount ?? 0)) ($@item.TotalCost)</p>
                     </div>
                 </div>
             }
@@ -64,7 +64,7 @@
                     </div>
                     <div class="col-10">
                         <p class="fs-5">@item.Offer.Description</p>
-                        <p class="lead">$@item.Offer.Price</p>
+                        <p class="lead">@item.Quantity x $@(item.Offer.Price - (item.Offer.Discount ?? 0)) ($@item.TotalCost)</p>
                     </div>
                 </div>
             }
