@@ -1,4 +1,4 @@
-﻿namespace GustoExpress.Web.Controllers
+﻿namespace GustoExpress.Web.Areas.Admin.Controllers
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -7,10 +7,8 @@
     using GustoExpress.Services.Data.Helpers;
     using GustoExpress.Services.Data.Helpers.Product;
     using GustoExpress.Web.ViewModels;
-    using GustoExpress.Services.Data;
 
-    [Authorize]
-    public class ProductController : BaseController
+    public class ProductController : BaseAdminController
     {
         private readonly IProductService _productService;
         private readonly IWebHostEnvironment _webHostEnvironment;
@@ -26,7 +24,6 @@
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateProduct(string id)
         {
             if (!await _restaurantService.HasRestaurantWithId(id))
@@ -51,7 +48,6 @@
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateProduct(IFormFile? file, CreateProductViewModel obj)
         {
             try
@@ -64,7 +60,7 @@
                         await SaveImage(file, product);
 
                     TempData["success"] = "Successfully created product!";
-                    return RedirectToAction("RestaurantPage", "Restaurant", new { id = product.RestaurantId });
+                    return RedirectToAction("RestaurantPage", "Restaurant", new { id = product.RestaurantId, Area = "" });
                 }
             }
             catch (InvalidOperationException ioe)
@@ -81,7 +77,6 @@
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditProduct(string id)
         {
             if (!await _productService.HasProductWithId(id))
@@ -96,7 +91,6 @@
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditProduct(IFormFile? file, string id, CreateProductViewModel obj)
         {
             try
@@ -106,7 +100,7 @@
                     if (obj.Discount > obj.Price)
                     {
                         TempData["danger"] = "Invalid operation!";
-                        return RedirectToAction("RestaurantPage", "Restaurant", new { id = obj.RestaurantId });
+                        return RedirectToAction("RestaurantPage", "Restaurant", new { id = obj.RestaurantId, Area = "" });
                     }
 
                     ProductViewModel editedProduct = await _productService.EditProductAsync(id, obj);
@@ -120,7 +114,7 @@
                     }
 
                     TempData["success"] = "Successfully updated product!";
-                    return RedirectToAction("RestaurantPage", "Restaurant", new { id = editedProduct.RestaurantId });
+                    return RedirectToAction("RestaurantPage", "Restaurant", new { id = editedProduct.RestaurantId, Area = "" });
                 }
             }
             catch (Exception)
@@ -132,7 +126,6 @@
             return View(obj);
         }
 
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteProduct(string id)
         {
             if (!await _productService.HasProductWithId(id))
@@ -145,7 +138,7 @@
                 ProductViewModel deletedProduct = await _productService.DeleteAsync(id);
 
                 TempData["success"] = "Successfully deleted product!";
-                return RedirectToAction("RestaurantPage", "Restaurant", new { id = deletedProduct.RestaurantId });
+                return RedirectToAction("RestaurantPage", "Restaurant", new { id = deletedProduct.RestaurantId, Area = "" });
             }
             catch (Exception)
             {

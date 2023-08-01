@@ -40,8 +40,8 @@
                                     <button type="submit" asp-action="CreateItem" asp-controller="OrderItem" asp-route-id="@product.Id" class="btn rounded-circle border-0 shadow-sm bg-light"><i class="bi bi-plus"></i></button>
                                     @if (this.User.IsInRole("Admin"))
                                     {
-                                        <button asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@product.Id" class="mt-2 mb-2 btn rounded-circle shadow-sm border-0 bg-light" onclick="return confirm('Are you sure you want to delete product @product.Name from @Model.Name')"><i class="bi bi-trash3-fill"></i></button>
-                                        <button asp-action="EditProduct" asp-controller="Product" asp-route-id="@product.Id" class="btn rounded-circle shadow-sm border-0 bg-light"><i class="bi bi-pencil-square"></i></button>
+                                        <button asp-area="Admin" asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@product.Id" class="mt-2 mb-2 btn rounded-circle shadow-sm border-0 bg-light" onclick="return confirm('Are you sure you want to delete product @product.Name from @Model.Name')"><i class="bi bi-trash3-fill"></i></button>
+                                        <button asp-area="Admin" asp-action="EditProduct" asp-controller="Product" asp-route-id="@product.Id" class="btn rounded-circle shadow-sm border-0 bg-light"><i class="bi bi-pencil-square"></i></button>
                                     }
                                 </form>
                             </div>
