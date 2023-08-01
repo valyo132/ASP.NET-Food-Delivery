@@ -11,15 +11,12 @@
     public class RestaurantController : BaseController
     {
         private readonly IRestaurantService _restaurantService;
-        private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IOrderService _orderService;
 
         public RestaurantController(IRestaurantService restaurantService,
-            IWebHostEnvironment webHostEnvironment,
             IOrderService orderService)
         {
             _restaurantService = restaurantService;
-            _webHostEnvironment = webHostEnvironment;
             _orderService = orderService;
         }
 

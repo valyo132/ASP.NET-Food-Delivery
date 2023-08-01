@@ -6,10 +6,19 @@
     ViewData["Title"] = "Restaurant page";
 }
 
-<form asp-action="All" asp-controller="Restaurant" method="get">
-    <input type="hidden" name="city" value="@Model.City.CityName" />
-    <button class="btn btn-light rounded-1" type="submit"><i class="bi bi-arrow-left"></i> Go back</button>
-</form>
+@if (this.User.IsInRole("Admin"))
+{
+    <form asp-area="Admin" asp-action="All" asp-controller="Restaurant" method="get">
+        <button class="btn btn-light rounded-1" type="submit"><i class="bi bi-arrow-left"></i> Go back</button>
+    </form>
+}
+else
+{
+    <form asp-area="" asp-action="All" asp-controller="Restaurant" method="get">
+        <input type="hidden" name="city" value="@Model.City.CityName" />
+        <button class="btn btn-light rounded-1" type="submit"><i class="bi bi-arrow-left"></i> Go back</button>
+    </form>
+}
 
 <div class="mt-4 row">
     <section class="col-11">

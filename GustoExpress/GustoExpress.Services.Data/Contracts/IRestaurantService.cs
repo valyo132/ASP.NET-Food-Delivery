@@ -9,6 +9,7 @@
         Task<T> ProjectToModel<T>(string id);
         Task<Restaurant> GetByIdAsync(string id);
         Task<AllRestaurantViewModel> AllAsync(string city, AllRestaurantViewModel? model);
+        Task<AllRestaurantViewModel> AllWithoutCityAsync();
         Task<RestaurantViewModel> CreateAsync(CreateRestaurantViewModel model);
         Task<RestaurantViewModel> EditRestaurantAsync(string id, CreateRestaurantViewModel model);
         Task<RestaurantViewModel> DeleteAsync(string id);

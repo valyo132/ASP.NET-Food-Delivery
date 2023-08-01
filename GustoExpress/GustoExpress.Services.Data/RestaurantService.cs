@@ -85,6 +85,20 @@
             };
         }
 
+        public async Task<AllRestaurantViewModel> AllWithoutCityAsync()
+        {
+            List<RestaurantViewModel> allRestaurants = await _context.Restaurants
+                .Where(r => r.IsDeleted == false)
+                .ProjectTo<RestaurantViewModel>(_mapper.ConfigurationProvider)
+                .ToListAsync();
+
+            return new AllRestaurantViewModel()
+            {
+                Restaurants = allRestaurants,
+                CityName = null
+            };
+        }
+
         public async Task<RestaurantViewModel> CreateAsync(CreateRestaurantViewModel model)
         {
             Restaurant newRestaurant = new Restaurant();

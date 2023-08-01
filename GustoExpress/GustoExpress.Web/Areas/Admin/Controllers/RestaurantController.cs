@@ -6,6 +6,8 @@
     using GustoExpress.Services.Data.Helpers;
     using GustoExpress.Web.ViewModels;
 
+    using static GustoExpress.Web.Common.GeneralConstraints;
+
     public class RestaurantController : BaseAdminController
     {
         private readonly IRestaurantService _restaurantService;
@@ -16,6 +18,13 @@
         {
             _restaurantService = restaurantService;
             _webHostEnvironment = webHostEnvironment;
+        }
+
+        public async Task<IActionResult> All()
+        {
+            var allRestaurants = await _restaurantService.AllWithoutCityAsync();
+
+            return View(allRestaurants);
         }
 
         [HttpGet]
@@ -75,7 +84,7 @@
                 }
 
                 TempData["success"] = "Successfully updated restaurant!";
-                return RedirectToAction("RestaurantPage", "Restaurant", new { id = restaurant.Id });
+                return RedirectToAction("RestaurantPage", "Restaurant", new { id = restaurant.Id, Area = "" });
             }
 
             return View(obj);
@@ -86,7 +95,7 @@
             RestaurantViewModel restaurant = await _restaurantService.DeleteAsync(id);
 
             TempData["success"] = "Successfully deleted restaurant!";
-            return RedirectToAction("All", "Restaurant", new { city = restaurant.City.CityName });
+            return RedirectToAction("All", "Restaurant", new { city = restaurant.City.CityName, Area = ADMIN_AREA_NAME });
         }
 
         private async Task SaveImage(IFormFile file, RestaurantViewModel restaurant)
