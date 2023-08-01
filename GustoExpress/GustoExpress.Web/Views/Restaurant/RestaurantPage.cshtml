@@ -42,10 +42,10 @@ else
         {
             <form>
                 <div class="mt-5 ms-3 btn-group" role="group" aria-label="Basic outlined example">
-                    <button asp-action="CreateProduct" asp-controller="Product" asp-route-id="@Model.Id" type="submit" class="btn btn-outline-primary">Add product</button>
-                    <button asp-action="CreateOffer" asp-controller="Offer" asp-route-id="@Model.Id" type="submit" class="ms-2 btn btn-outline-primary">Add offer</button>
-                    <button asp-action="EditRestaurant" asp-controller="Restaurant" asp-route-id="@Model.Id" type="submit" class="ms-2 btn btn-outline-primary">Edit restaurant</button>
-                    <button asp-action="DeleteRestaurant" asp-controller="Restaurant" asp-route-id="@Model.Id" onclick="return confirm('Are you sure you want to delete restaurant @Model.Name')" type="submit" class="ms-2 btn btn-outline-primary">Delete restaurant</button>
+                    <button asp-area="Admin" asp-action="CreateProduct" asp-controller="Product" asp-route-id="@Model.Id" type="submit" class="btn btn-outline-primary">Add product</button>
+                    <button asp-area="Admin" asp-action="CreateOffer" asp-controller="Offer" asp-route-id="@Model.Id" type="submit" class="ms-2 btn btn-outline-primary">Add offer</button>
+                    <button asp-area="Admin" asp-action="EditRestaurant" asp-controller="Restaurant" asp-route-id="@Model.Id" type="submit" class="ms-2 btn btn-outline-primary">Edit restaurant</button>
+                    <button asp-area="Admin" asp-action="DeleteRestaurant" asp-controller="Restaurant" asp-route-id="@Model.Id" onclick="return confirm('Are you sure you want to delete restaurant @Model.Name')" type="submit" class="ms-2 btn btn-outline-primary">Delete restaurant</button>
                 </div>
             </form>
         }
