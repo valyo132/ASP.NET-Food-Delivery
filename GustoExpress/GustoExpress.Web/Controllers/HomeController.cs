@@ -2,6 +2,8 @@
 {
     using Microsoft.AspNetCore.Mvc;
 
+    using static GustoExpress.Web.Common.GeneralConstraints;
+
     public class HomeController : BaseController
     {
         public HomeController()
@@ -10,6 +12,11 @@
 
         public IActionResult Index(string? city)
         {
+            if (this.User.IsInRole("Admin"))
+            {
+                return RedirectToAction("Index", "Home", new { Area = ADMIN_AREA_NAME });
+            }
+
             if (city != null)
             {
                 return RedirectToAction("All", "Restaurant", new { city });
