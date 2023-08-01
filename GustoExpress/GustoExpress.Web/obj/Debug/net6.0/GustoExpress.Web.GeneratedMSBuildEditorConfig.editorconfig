@@ -20,6 +20,14 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[G:/ASP.NET-Food-Delivery/GustoExpress/GustoExpress.Web/Areas/Admin/Views/Offer/CreateOffer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT2ZmZXJcQ3JlYXRlT2ZmZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/ASP.NET-Food-Delivery/GustoExpress/GustoExpress.Web/Areas/Admin/Views/Offer/EditOffer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT2ZmZXJcRWRpdE9mZmVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [G:/ASP.NET-Food-Delivery/GustoExpress/GustoExpress.Web/Areas/Admin/Views/Product/CreateProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxDcmVhdGVQcm9kdWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -106,14 +114,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [G:/ASP.NET-Food-Delivery/GustoExpress/GustoExpress.Web/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/ASP.NET-Food-Delivery/GustoExpress/GustoExpress.Web/Views/Offer/CreateOffer.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJcQ3JlYXRlT2ZmZXIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[G:/ASP.NET-Food-Delivery/GustoExpress/GustoExpress.Web/Views/Offer/EditOffer.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJcRWRpdE9mZmVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [G:/ASP.NET-Food-Delivery/GustoExpress/GustoExpress.Web/Views/OrderItem/CreateItem.cshtml]
