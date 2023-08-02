@@ -5,9 +5,6 @@ using GustoExpress.Services.Mapping;
 using GustoExpress.Web.Data;
 using GustoExpress.Web.ViewModels;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query.Internal;
-using Moq;
-using NuGet.Frameworks;
 
 namespace GustoExpress.Services.Data.UnitTests
 {

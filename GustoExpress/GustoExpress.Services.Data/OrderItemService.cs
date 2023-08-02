@@ -1,15 +1,14 @@
-﻿
-namespace GustoExpress.Services.Data
+﻿namespace GustoExpress.Services.Data
 {
     using Microsoft.EntityFrameworkCore;
-    using AutoMapper;
 
     using GustoExpress.Data.Models;
     using GustoExpress.Services.Data.Contracts;
+    using GustoExpress.Services.Data.Helpers.Contracts;
     using GustoExpress.Web.Data;
     using GustoExpress.Web.ViewModels;
-    using GustoExpress.Services.Data.Helpers.Contracts;
-    using Microsoft.EntityFrameworkCore.Diagnostics;
+
+    using AutoMapper;
 
     public class OrderItemService : IOrderItemService, IProjectable<OrderItem>
     {
