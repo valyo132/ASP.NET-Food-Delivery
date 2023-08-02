@@ -15,6 +15,7 @@ namespace GustoExpress.Services.Data.UnitTests
         private IEnumerable<Offer> offers;
         private IEnumerable<Product> products;
         private IEnumerable<OfferProduct> offerProducts;
+
         private ApplicationDbContext _context;
         private IMapper _mapper;
         private IRestaurantService _restaurantService;
@@ -150,6 +151,26 @@ namespace GustoExpress.Services.Data.UnitTests
         }
 
         [Test]
+        public async Task Test_HasOfferWithId_ShouldReturnTrue()
+        {
+            string id = offers.First().Id.ToString();
+
+            bool actual = await _offerService.HasOfferWithId(id);
+
+            Assert.True(actual);
+        }
+
+        [Test]
+        public async Task Test_HasOfferWithId_ShouldReturnFalse()
+        {
+            string id = "ecd68e73-b904-4abf-b49d-7f6d4490afa5";
+
+            bool actual = await _offerService.HasOfferWithId(id);
+
+            Assert.False(actual);
+        }
+
+        [Test]
         public async Task Test_GetById_ShouldWork()
         {
             string id = offers.First().Id.ToString();
@@ -222,6 +243,30 @@ namespace GustoExpress.Services.Data.UnitTests
             Assert.IsNotNull(createdOffer);
             Assert.That(createdOffer.GetType(), Is.EqualTo(typeof(OfferViewModel)));
             Assert.That(restaurant.Offers.Count, Is.EqualTo(2));
+        }
+
+        [Test]
+        public async Task Test_CreateOfferShouldTrowInvalidOperationException()
+        {
+            string restaurantId = _context.Restaurants.First().Id.ToString();
+
+            var model = new CreateOfferViewModel()
+            {
+                Name = "Test offer",
+                Description = "Test Description",
+                FirstProductId = "ac5d914f-e8d7-42b7-b451-fa1cf598a5c6",
+                SecondProductId = "e98302f4-ebb4-4d59-80ba-aeedd755ebbb",
+                ThirdhProductId = "2ecac7ee-f9b6-40d2-8d2e-e505827de26f",
+                RestaurantId = restaurantId,
+                ProductsToChoose = await _offerService.GetProductsByRestaurantIdAsync(restaurantId),
+                Price = 10m,
+                Discount = 1m,
+            };
+
+            Assert.ThrowsAsync<InvalidOperationException>(async () =>
+            {
+                await _offerService.CreateOfferAsync(restaurantId, model);
+            });
         }
 
         [Test]

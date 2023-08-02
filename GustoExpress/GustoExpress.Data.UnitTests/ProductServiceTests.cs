@@ -80,6 +80,26 @@ namespace GustoExpress.Services.Data.UnitTests
         }
 
         [Test]
+        public async Task Test_HasProductWithId_ShouldReturnTrue()
+        {
+            string productId = products.First().Id.ToString();
+
+            bool actual = await _productService.HasProductWithId(productId);
+
+            Assert.True(actual);
+        }
+
+        [Test]
+        public async Task Test_HasProductWithId_ShouldReturnFalse()
+        {
+            string productId = "4e59d01f-6af8-44b7-9f44-048089911a44";
+
+            bool actual = await _productService.HasProductWithId(productId);
+
+            Assert.False(actual);
+        }
+
+        [Test]
         public async Task Test_ProjectToModel_ShouldWork()
         {
             var createProductViewModel = await _productService.ProjectToModel<CreateProductViewModel>(products.First().Id.ToString());
@@ -127,6 +147,27 @@ namespace GustoExpress.Services.Data.UnitTests
             Assert.That(typeof(ProductViewModel), Is.EqualTo(createdProduct.GetType()));
             Assert.That(_context.Products.Count(), Is.EqualTo(2));
             Assert.True(_context.Products.Any(p => p.Name == "Created product"));
+        }
+
+        [Test]
+        public async Task Test_CreateProduct_ShouldThrowsInvalidOperationException()
+        {
+            string restaurantId = products.First().RestaurantId.ToString();
+
+            var model = new CreateProductViewModel()
+            {
+                Name = "Test product",
+                Description = "This is test product",
+                Category = GustoExpress.Data.Models.Enums.Category.Meat,
+                Price = 10m,
+                RestaurantId = _context.Restaurants.First().Id.ToString(),
+                Grams = 200m
+            };
+
+            Assert.ThrowsAsync<InvalidOperationException>(async () =>
+            {
+                await _productService.CreateProductAsync(model);
+            });
         }
 
         [Test]

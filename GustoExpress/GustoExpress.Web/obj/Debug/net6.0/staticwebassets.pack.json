@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\images\\HomePage\\foodDelivery.png"
     },
     {
+      "Id": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\images\\Offers\\d8d3ee17-db61-4067-8984-7f5960f39f16.jpg",
+      "PackagePath": "staticwebassets\\images\\Offers\\d8d3ee17-db61-4067-8984-7f5960f39f16.jpg"
+    },
+    {
       "Id": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\images\\Offers\\fe48ab70-9b06-45e7-a6a4-4124e65ec768.jpg",
       "PackagePath": "staticwebassets\\images\\Offers\\fe48ab70-9b06-45e7-a6a4-4124e65ec768.jpg"
     },
@@ -35,6 +39,10 @@
     {
       "Id": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\images\\Products\\2af60ede-d017-4c1a-9dda-27bc4fd9fb6b.jpg",
       "PackagePath": "staticwebassets\\images\\Products\\2af60ede-d017-4c1a-9dda-27bc4fd9fb6b.jpg"
+    },
+    {
+      "Id": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\images\\Products\\5bc7898b-2795-43f3-8f3f-6974557833af.jpeg",
+      "PackagePath": "staticwebassets\\images\\Products\\5bc7898b-2795-43f3-8f3f-6974557833af.jpeg"
     },
     {
       "Id": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\wwwroot\\images\\Products\\f18ef6ba-10ce-45ac-8fde-dc689f0e3d2a.jpg",
