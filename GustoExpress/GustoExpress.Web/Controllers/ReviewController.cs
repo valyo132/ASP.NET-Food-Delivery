@@ -22,7 +22,7 @@
             if (ModelState.IsValid)
             {
                 string userId = GetUserId();
-                var review = await _reviewService.CreateReview(userId, obj);
+                ReviewViewModel review = await _reviewService.CreateReview(userId, obj);
 
                 TempData["success"] = "Successfully created review!";
                 return RedirectToAction("RestaurantPage", "Restaurant", new { id = review.RestaurantId.ToString() });
@@ -35,7 +35,7 @@
         [HttpPost]
         public async Task<IActionResult> DeleteReview(string id)
         {
-            var deletedReview = await _reviewService.DeleteAsync(id);
+            ReviewViewModel deletedReview = await _reviewService.DeleteAsync(id);
 
             TempData["success"] = "Successfully deleted review!";
             return RedirectToAction("RestaurantPage", "Restaurant", new { id = deletedReview.RestaurantId });

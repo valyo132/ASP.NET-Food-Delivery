@@ -1,10 +1,11 @@
-using GustoExpress.Data.Models;
-using GustoExpress.Services.Data.Contracts;
-using GustoExpress.Web.Data;
-using Microsoft.EntityFrameworkCore;
-
 namespace GustoExpress.Services.Data.UnitTests
 {
+    using Microsoft.EntityFrameworkCore;
+
+    using GustoExpress.Data.Models;
+    using GustoExpress.Services.Data.Contracts;
+    using GustoExpress.Web.Data;
+
     [TestFixture]
     public class CityServicesTests
     {

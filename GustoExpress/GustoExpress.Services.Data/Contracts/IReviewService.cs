@@ -5,7 +5,8 @@ namespace GustoExpress.Services.Data.Contracts
 {
     public interface IReviewService
     {
-        Task<Review> CreateReview(string userId, CreateReviewViewModel model);
+        Task<Review> GetByIdAsync(string id);
+        Task<ReviewViewModel> CreateReview(string userId, CreateReviewViewModel model);
         Task<ReviewViewModel> DeleteAsync(string id);
     }
 }

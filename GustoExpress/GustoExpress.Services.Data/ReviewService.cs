@@ -21,7 +21,7 @@
             _mapper = mapper;
         }
 
-        public async Task<Review> CreateReview(string userId, CreateReviewViewModel model)
+        public async Task<ReviewViewModel> CreateReview(string userId, CreateReviewViewModel model)
         {
             Review review = _mapper.Map<Review>(model);
             review.UserId = userId;
@@ -29,7 +29,7 @@
             await _context.Reviews.AddAsync(review);
             await _context.SaveChangesAsync();
 
-            return review;
+            return ProjectTo<ReviewViewModel>(review);
         }
 
         public async Task<ReviewViewModel> DeleteAsync(string id)
@@ -42,7 +42,7 @@
             return ProjectTo<ReviewViewModel>(reviewToDelete);
         }
 
-        private async Task<Review> GetByIdAsync(string id)
+        public async Task<Review> GetByIdAsync(string id)
         {
             return await _context.Reviews
                 .Include(r => r.User)

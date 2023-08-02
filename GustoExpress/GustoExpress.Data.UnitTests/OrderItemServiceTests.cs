@@ -1,14 +1,15 @@
-﻿using AutoMapper;
-using GustoExpress.Web.Data;
-using GustoExpress.Data.Models;
-using GustoExpress.Services.Data.Contracts;
-using Microsoft.EntityFrameworkCore;
-using GustoExpress.Services.Mapping;
-using NUnit.Framework.Constraints;
-using GustoExpress.Web.ViewModels;
-
-namespace GustoExpress.Services.Data.UnitTests
+﻿namespace GustoExpress.Services.Data.UnitTests
 {
+    using GustoExpress.Web.ViewModels;
+
+    using GustoExpress.Web.Data;
+    using GustoExpress.Data.Models;
+    using GustoExpress.Services.Data.Contracts;
+    using Microsoft.EntityFrameworkCore;
+    using GustoExpress.Services.Mapping;
+
+    using AutoMapper;
+
     [TestFixture]
     public class OrderItemServiceTests
     {
