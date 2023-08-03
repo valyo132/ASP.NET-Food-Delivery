@@ -1,0 +1,723 @@
+{
+  "format": 1,
+  "restore": {
+    "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Controllers.Tests\\GustoExpress.Web.Controllers.Tests.csproj": {}
+  },
+  "projects": {
+    "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data.Common\\GustoExpress.Data.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data.Common\\GustoExpress.Data.Common.csproj",
+        "projectName": "GustoExpress.Data.Common",
+        "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data.Common\\GustoExpress.Data.Common.csproj",
+        "packagesPath": "C:\\Users\\Valentin Markov\\.nuget\\packages\\",
+        "outputPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Valentin Markov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data.Models\\GustoExpress.Data.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data.Models\\GustoExpress.Data.Models.csproj",
+        "projectName": "GustoExpress.Data.Models",
+        "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data.Models\\GustoExpress.Data.Models.csproj",
+        "packagesPath": "C:\\Users\\Valentin Markov\\.nuget\\packages\\",
+        "outputPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Valentin Markov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data.Common\\GustoExpress.Data.Common.csproj": {
+                "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data.Common\\GustoExpress.Data.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.11, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data\\GustoExpress.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data\\GustoExpress.Data.csproj",
+        "projectName": "GustoExpress.Data",
+        "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data\\GustoExpress.Data.csproj",
+        "packagesPath": "C:\\Users\\Valentin Markov\\.nuget\\packages\\",
+        "outputPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Valentin Markov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data.Models\\GustoExpress.Data.Models.csproj": {
+                "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data.Models\\GustoExpress.Data.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.11, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Services.Data\\GustoExpress.Services.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Services.Data\\GustoExpress.Services.Data.csproj",
+        "projectName": "GustoExpress.Services.Data",
+        "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Services.Data\\GustoExpress.Services.Data.csproj",
+        "packagesPath": "C:\\Users\\Valentin Markov\\.nuget\\packages\\",
+        "outputPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Services.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Valentin Markov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data\\GustoExpress.Data.csproj": {
+                "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data\\GustoExpress.Data.csproj"
+              },
+              "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.ViewModels\\GustoExpress.Web.ViewModels.csproj": {
+                "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.ViewModels\\GustoExpress.Web.ViewModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Services.Mapping\\GustoExpress.Services.Mapping.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Services.Mapping\\GustoExpress.Services.Mapping.csproj",
+        "projectName": "GustoExpress.Services.Mapping",
+        "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Services.Mapping\\GustoExpress.Services.Mapping.csproj",
+        "packagesPath": "C:\\Users\\Valentin Markov\\.nuget\\packages\\",
+        "outputPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Services.Mapping\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Valentin Markov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.ViewModels\\GustoExpress.Web.ViewModels.csproj": {
+                "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.ViewModels\\GustoExpress.Web.ViewModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Common\\GustoExpress.Web.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Common\\GustoExpress.Web.Common.csproj",
+        "projectName": "GustoExpress.Web.Common",
+        "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Common\\GustoExpress.Web.Common.csproj",
+        "packagesPath": "C:\\Users\\Valentin Markov\\.nuget\\packages\\",
+        "outputPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Valentin Markov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Controllers.Tests\\GustoExpress.Web.Controllers.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Controllers.Tests\\GustoExpress.Web.Controllers.Tests.csproj",
+        "projectName": "GustoExpress.Web.Controllers.Tests",
+        "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Controllers.Tests\\GustoExpress.Web.Controllers.Tests.csproj",
+        "packagesPath": "C:\\Users\\Valentin Markov\\.nuget\\packages\\",
+        "outputPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Controllers.Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Valentin Markov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Services.Data\\GustoExpress.Services.Data.csproj": {
+                "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Services.Data\\GustoExpress.Services.Data.csproj"
+              },
+              "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\GustoExpress.Web.csproj": {
+                "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\GustoExpress.Web.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.5.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.18.4, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            },
+            "NUnit.Analyzers": {
+              "target": "Package",
+              "version": "[3.6.1, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.4.2, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Infrastructure\\GustoExpress.Web.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Infrastructure\\GustoExpress.Web.Infrastructure.csproj",
+        "projectName": "GustoExpress.Web.Infrastructure",
+        "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Infrastructure\\GustoExpress.Web.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Valentin Markov\\.nuget\\packages\\",
+        "outputPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Valentin Markov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data.Models\\GustoExpress.Data.Models.csproj": {
+                "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data.Models\\GustoExpress.Data.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.ViewModels\\GustoExpress.Web.ViewModels.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.ViewModels\\GustoExpress.Web.ViewModels.csproj",
+        "projectName": "GustoExpress.Web.ViewModels",
+        "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.ViewModels\\GustoExpress.Web.ViewModels.csproj",
+        "packagesPath": "C:\\Users\\Valentin Markov\\.nuget\\packages\\",
+        "outputPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.ViewModels\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Valentin Markov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data.Models\\GustoExpress.Data.Models.csproj": {
+                "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data.Models\\GustoExpress.Data.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.ViewFeatures": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\GustoExpress.Web.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\GustoExpress.Web.csproj",
+        "projectName": "GustoExpress.Web",
+        "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\GustoExpress.Web.csproj",
+        "packagesPath": "C:\\Users\\Valentin Markov\\.nuget\\packages\\",
+        "outputPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Valentin Markov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data.Models\\GustoExpress.Data.Models.csproj": {
+                "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data.Models\\GustoExpress.Data.Models.csproj"
+              },
+              "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data\\GustoExpress.Data.csproj": {
+                "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Data\\GustoExpress.Data.csproj"
+              },
+              "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Services.Data\\GustoExpress.Services.Data.csproj": {
+                "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Services.Data\\GustoExpress.Services.Data.csproj"
+              },
+              "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Services.Mapping\\GustoExpress.Services.Mapping.csproj": {
+                "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Services.Mapping\\GustoExpress.Services.Mapping.csproj"
+              },
+              "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Common\\GustoExpress.Web.Common.csproj": {
+                "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Common\\GustoExpress.Web.Common.csproj"
+              },
+              "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Infrastructure\\GustoExpress.Web.Infrastructure.csproj": {
+                "projectPath": "G:\\ASP.NET-Food-Delivery\\GustoExpress\\GustoExpress.Web.Infrastructure\\GustoExpress.Web.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Griesoft.AspNetCore.ReCaptcha": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.11, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.16, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.15, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
