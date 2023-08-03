@@ -1,9 +1,10 @@
-﻿using GustoExpress.Services.Data.Contracts;
-using GustoExpress.Web.ViewModels;
-using Microsoft.AspNetCore.Mvc;
-
-namespace GustoExpress.Web.Areas.Admin.Controllers
+﻿namespace GustoExpress.Web.Areas.Admin.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+
+    using GustoExpress.Services.Data.Contracts;
+    using GustoExpress.Web.ViewModels;
+
     public class UserController : BaseAdminController
     {
         private readonly IUserService _userService;
