@@ -1,6 +1,5 @@
 ﻿namespace GustoExpress.Web.Areas.Admin.Controllers
 {
-    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     using GustoExpress.Services.Data.Contracts;
@@ -31,20 +30,13 @@
                 return GeneralError();
             }
 
-            try
+            CreateProductViewModel productVm = new CreateProductViewModel()
             {
-                CreateProductViewModel productVm = new CreateProductViewModel()
-                {
-                    RestaurantId = id,
-                    CategoryList = ProductHelper.GetCategories()
-                };
+                RestaurantId = id,
+                CategoryList = ProductHelper.GetCategories()
+            };
 
-                return View(productVm);
-            }
-            catch (Exception)
-            {
-                return GeneralError();
-            }
+            return View(productVm);
         }
 
         [HttpPost]

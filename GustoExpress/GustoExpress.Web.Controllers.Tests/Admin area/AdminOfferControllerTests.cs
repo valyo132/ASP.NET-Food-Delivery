@@ -13,7 +13,7 @@
     using Moq;
 
     [TestFixture]
-    public class AdminOfferController
+    public class AdminOfferControllerTests
     {
         private OfferController controller;
 
