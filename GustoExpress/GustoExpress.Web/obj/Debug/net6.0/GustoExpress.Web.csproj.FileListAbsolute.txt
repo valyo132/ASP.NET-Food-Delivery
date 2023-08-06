@@ -280,3 +280,4 @@ G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\vi\Human
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\zh-CN\Humanizer.resources.dll
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\zh-Hans\Humanizer.resources.dll
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\zh-Hant\Humanizer.resources.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web\bin\Debug\net6.0\libman.json

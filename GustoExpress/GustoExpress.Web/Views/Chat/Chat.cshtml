@@ -1,0 +1,49 @@
+﻿@using GustoExpress.Data.Models;
+@using Microsoft.AspNetCore.Identity;
+@model string
+ 
+@{
+    var username = this.User.FindFirst("FriendlyName").Value;
+    bool isUserAdmin = this.User.IsInRole("Admin");
+}
+ 
+@{
+    ViewData["Title"] = "Home Page";
+}
+ 
+<div class="d-lfex flex-column gap-5" style="height:44vh;">
+    <div id="messagesList" class="p-3 d-flex flex-column gap-5" style="width:100%;height:100%;overflow-y:scroll;flex:1;">
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <hr />
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            &nbsp;
+        </div>
+        <input type="hidden" value="@username" id="userInput" />
+        <div class="row">
+            <div class="col-4" style="width:100%;">
+                <textarea type="text" id="messageInput" placeholder="Message:" style="width:100%;height:150px;resize:none;"></textarea>
+            </div>
+        </div>
+        @if (isUserAdmin)
+        {
+            <div class="row">
+                <div class="col-4">
+                    <input type="hidden" value="@Model" id="reveiverInput" />
+                </div>
+            </div>
+        }
+        <div class="row">
+            <div class="col-6 text-center" style="width:100%;">
+                <input class="btn btn-primary" type="button" id="sendButton" value="Send Message" />
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>

@@ -354,3 +354,10 @@ G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Controllers.Tests\obj\Deb
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Controllers.Tests\obj\Debug\net6.0\GustoExpress.Web.Controllers.Tests.pdb
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Controllers.Tests\obj\Debug\net6.0\GustoExpress.Web.Controllers.Tests.genruntimeconfig.cache
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Controllers.Tests\obj\Debug\net6.0\ref\GustoExpress.Web.Controllers.Tests.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Controllers.Tests\bin\Debug\net6.0\System.Web.Mvc.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Controllers.Tests\bin\Debug\net6.0\System.Web.Razor.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Controllers.Tests\bin\Debug\net6.0\System.Web.Helpers.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Controllers.Tests\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Controllers.Tests\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Controllers.Tests\bin\Debug\net6.0\System.Web.WebPages.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Controllers.Tests\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
