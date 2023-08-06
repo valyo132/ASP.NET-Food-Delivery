@@ -13,7 +13,6 @@
             <th><label>First name</label></th>
             <th><label>Last name</label></th>
             <th><label>Email</label></th>
-            <th><label>Connect</label></th>
         </tr>
     </thead>
     <tbody>
@@ -23,7 +22,6 @@
                 <td><label>@user.FirstName</label></td>
                 <td><label>@user.LastName</label></td>
                 <td><label>@user.Email</label></td>
-                <td><a asp-area="" asp-action="Chat" asp-controller="Chat" asp-route-email="@user.Email" class="link-opacity-100">Connect</a></td>
             </tr>
         }
     </tbody>

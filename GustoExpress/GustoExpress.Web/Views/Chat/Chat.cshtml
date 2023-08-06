@@ -1,18 +1,25 @@
 ﻿@using GustoExpress.Data.Models;
 @using Microsoft.AspNetCore.Identity;
 @model string
- 
+
 @{
     var username = this.User.FindFirst("FriendlyName").Value;
     bool isUserAdmin = this.User.IsInRole("Admin");
 }
- 
+
 @{
     ViewData["Title"] = "Home Page";
 }
- 
-<div class="d-lfex flex-column gap-5" style="height:44vh;">
+
+@if (Model != null)
+{
+    <h2 class="text-center">@Model</h2>
+}
+
+<div class="d-lfex flex-column gap-5" style="height:40vh;">
     <div id="messagesList" class="p-3 d-flex flex-column gap-5" style="width:100%;height:100%;overflow-y:scroll;flex:1;">
+        <div class="py-1 position-relative" style="width:100%;">
+        </div>
     </div>
     <div class="row">
         <div class="col-12">
@@ -44,6 +51,6 @@
         </div>
     </div>
 </div>
- 
+
 <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>

@@ -21,6 +21,14 @@
             _mapper = mapper;
         }
 
+        public async Task<string> GetUserEmailByUsername(string username)
+        {
+            var user = await _context.ApplicationUsers
+                .FirstOrDefaultAsync(u => u.FirstName.ToLower() == username.Split()[0].ToLower());
+
+            return user.Email;
+        }
+
         public async Task<List<UserViewModel>> AllUsersAsync()
         {
             return await _context.ApplicationUsers

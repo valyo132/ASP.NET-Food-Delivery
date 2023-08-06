@@ -5,5 +5,6 @@
     public interface IUserService
     {
         Task<List<UserViewModel>> AllUsersAsync();
+        Task<string> GetUserEmailByUsername(string username);
     }
 }

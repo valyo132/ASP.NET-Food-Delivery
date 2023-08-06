@@ -4,8 +4,9 @@ const messageInput = document.getElementById("messageInput");
 const sendButton = document.getElementById("sendButton");
 sendButton.disabled = true;
 
-connection.on("ReceiveMessage", function (message) {
-    addMessage(message, false);
+connection.on("ReceiveMessage", function (message, user) {
+    var username = message.split(':')[0]
+    addMessage(message, false, username);
 });
 
 connection.start().then(function () {
@@ -17,7 +18,7 @@ connection.start().then(function () {
 sendButton.addEventListener("click", function (event) {
     var user = document.getElementById("userInput").value;
     var receiver = (document.getElementById("reveiverInput") || {}).value || "admin@admin.com";
-    var message = messageInput.value;
+    var message = `${user}: ${messageInput.value}`;
     connection.invoke("SendToUserMessage", message, receiver).catch(function (err) {
         return console.error(err.toString());
     });
@@ -28,11 +29,17 @@ sendButton.addEventListener("click", function (event) {
     event.preventDefault();
 });
 
-function addMessage(text, isCurrentUser) {
+function addMessage(text, isCurrentUser, user) {
     const whichSideClass = isCurrentUser ? "end-0" : "start-0";
+    var p = createEl('p', { "class": 'border rounded p-2 px-3 m-0 position-absolute ' + whichSideClass }, text);
 
-    var div = createEl('div', { "class": 'py-1 position-relative', "style": 'width:100%;' },
-        createEl('p', { "class": 'border rounded p-2 px-3 m-0 position-absolute ' + whichSideClass }, text))
+    if (user != undefined) {
+        const href = `/Chat/Chat?user=${encodeURIComponent(user)}`;
+        p.appendChild(createEl('a', { "href": href },
+            createEl('i', { "class": 'bi bi-reply' })));
+    }
+
+    var div = createEl('div', { "class": 'py-1 position-relative', "style": 'width:100%;' }, p);
 
     document.getElementById("messagesList").appendChild(div);
 }
