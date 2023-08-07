@@ -46,13 +46,13 @@
                                 </form>
                             </div>
                         </div>
+                        @if (product.Discount != null && product.Discount > 0)
+                        {
+                            <div class="position-absolute top-0 start-100 mt-3 p-1 ps-2 pe-2 bg-danger text-white" style="height:30px">
+                                Discount
+                            </div>
+                        }
                     </div>
-                    @if (product.Discount != null && product.Discount > 0)
-                    {
-                        <div class="position-absolute top-0 start-100 mt-3 p-1 ps-2 pe-2 bg-danger text-white" style="height:30px">
-                            Discount
-                        </div>
-                    }
                 </div>
             </div>
         </article>
