@@ -361,3 +361,4 @@ G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Controllers.Tests\bin\Deb
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Controllers.Tests\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Controllers.Tests\bin\Debug\net6.0\System.Web.WebPages.dll
 G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Controllers.Tests\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
+G:\ASP.NET-Food-Delivery\GustoExpress\GustoExpress.Web.Controllers.Tests\bin\Debug\net6.0\libman.json
