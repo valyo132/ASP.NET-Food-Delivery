@@ -5,3 +5,4 @@
 <h1>Main page</h1>
 </hr>
 <p>This is the main page when the application is started. The client should just fill up the text bar with the city where he wants to look up for some restaurants.</p>
+<img src="README Images/Screenshot 2023-10-27 165708.png" />
