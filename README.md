@@ -31,3 +31,6 @@
 <hr/>
 <h1>Email Sender</h1>
 <p>When you register in the application it will send you an email.</p>
+<h1>One-to-One Chat with Administrator</h1>
+<p>When the Admin is in the Support page he can receive messages from clients and with the replay button next to the message he will start a direct chat with him</p>
+<img src="README Images/Screenshot 2023-10-27 174622.png" />
